@@ -1,1 +1,1 @@
-* [空白目录](default.md)
+* [mysql](mysql.md)
