@@ -1,5 +1,5 @@
 - 锁粒度不同
-    - myisam表锁,innodb行锁和表锁,并发上innodb优于myisam
+    - myisam表锁,innodb行锁和表锁(innodb在走索引的时候才会使用行锁,否则用表锁),并发上innodb优于myisam
 - 全文搜索
     - myisam支持全文搜索(其实有很多搜索引擎可以替代,如Sphinx和Elasticsearch),innodb不支持
 - 事务支持
