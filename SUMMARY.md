@@ -8,6 +8,8 @@
     * [慢查询日志](慢查询日志.md)
     * [sql](sql.md)
     * [参考](参考.md)
+* [php](php.md)
+    * [php垃圾回收](php/gc.md)
 * [redis](redis.md)
     * [应用场景](应用场景.md)
         * [消息队列](消息队列.md)
