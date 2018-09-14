@@ -1,5 +1,5 @@
 订阅发布主要用于广播系统,例如聊天系统中的群聊,消息推送,同步操作等等;这里以同步操作为例子作为讲解
-![订阅发布](../images/subscribe.png)  
+![订阅发布](../../images/subscribe.png)  
 图片来源于https://www.cnblogs.com/JasonLeemz/p/5116814.html  
 ##### 大概流程如下:
 - pc端游览器与websocket建立长连接

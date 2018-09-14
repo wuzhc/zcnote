@@ -34,4 +34,4 @@ function buying()
 }
 ```
 压力测试和结果: 
-![](../images/buy.png)
+![](../../images/buy.png)
