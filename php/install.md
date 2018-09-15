@@ -14,7 +14,11 @@ cp /data/php7.2.10/php.ini-development /opt/php7/lib/php.ini
 
 #### 编译安装php
 ```bash
+#!/usr/bin/env bash
+install_dir = '/home'
+
 echo "开始安装php"
+cd ${install_dir}
 wget http://am1.php.net/distributions/php-7.2.10.tar.gz
 tar zxvf php-7.2.10.tar.gz
 cd php-7.2.10
@@ -38,7 +42,11 @@ echo "已完成php"
 
 #### 编译安装扩展
 ```bash
+#!/usr/bin/env bash
+install_dir = '/home'
+
 echo "开始安装swoole"
+cd ${install_dir}
 curl -Ls -o swoole-src-4.0.3.tar.gz https://github.com/swoole/swoole-src/archive/v4.0.3.tar.gz 
 tar -zxvf swoole-src-4.0.3.tar.gz 
 cd swoole-src-4.0.3 
