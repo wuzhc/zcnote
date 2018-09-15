@@ -1,6 +1,7 @@
 * [php](php/php.md)
     * [垃圾回收机制](php/gc.md)
     * [专业名词](php/intro.md)
+    * [编译安装](php/install.md)
 * [c语言](c.md)
     * [指针](c/pointer.md)
 * [go](go.md)
