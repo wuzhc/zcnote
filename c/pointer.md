@@ -37,7 +37,7 @@ void read_msg(char msg[])
 // 等价于
 void read_msg(char *msg)
 ```
-指针数组
+指针的数组
 ```c
 char *songs[] = {"平凡之路","天路","2002年的第一场雪"};
 // songs[0]指向平凡之路第一个字节地址
