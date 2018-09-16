@@ -4,6 +4,7 @@
     * [编译安装](php/install.md)
 * [c语言](c.md)
     * [指针](c/pointer.md)
+    * [结构体,联合和位字段](c/struct_union_bit.md)
 * [go](go.md)
 * [python](python.md)
 * [redis](redis.md)
