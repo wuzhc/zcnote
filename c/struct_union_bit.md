@@ -126,6 +126,7 @@ typedef struct
 #### 位字段和数值计算
 最大值 = 2^位数 - 1,即4位只能保存0到15的值
 
+#### demo
 ```c
 #include <stdio.h>
 #include <string.h>
