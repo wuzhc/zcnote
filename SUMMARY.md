@@ -5,7 +5,7 @@
     * [生命周期](php/life_cycle.md)
     * [变量底层实现](php/zval.md)
     * [c扩展开发](php/extend.md)
-        * [函数参数解析](php/parse_parameters.md)
+        * [函数参数解析](php/extend/parse_parameters.md)
     * [yaf扩展底层源码](php/yaf.md)
     * [swoole扩展底层源码](php/swoole.md)
 * [c语言](c.md)
