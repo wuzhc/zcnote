@@ -2,7 +2,8 @@
 phpize用于安装扩展模块,作用在于侦测环境,生成configure文件
 
 #### --with-php-config
-假如你的服务器上安装了多个版本php，那么需要告诉phpize要建立基于哪个版本的扩展。通过使用--with-php-config=指定你使用哪个php版本。
+用法: --with-php-config=/path/to/php-config (php-config一般放在安装目录bin下)    
+php-config用于获取PHP安装信息,如安装路径,版本,依赖,编译参数(执行./configure时带的参数)等等,它提供给configure.in信息,用于生成makefile
 
 #### --enable-fpm
 启用sapi的fpm
@@ -58,3 +59,5 @@ rm -rf swoole-src-4.0.3.tar.gz
 echo "已完成swoole"
 ```
 
+#### 编译工具
+![](https://box.kancloud.cn/302fc3e158fcb689336665ddf01b47cb_537x361.png)

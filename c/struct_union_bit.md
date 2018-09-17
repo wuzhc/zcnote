@@ -89,17 +89,31 @@ void modifyAge(stu *s)
 ```
 
 #### 联合union
-联合即用一个字段表示各种意义的字段,如总数,重量通常为量;当定义联合时,计算机会为最大的字段分配空间,如下:
+当定义联合时,计算机会为最大的字段分配空间,如php的zend_value如下:
 ```c
-typeof union {
-    short count;
-    float weight;
-    float volume
-} quantity;
+typedef union _zend_value {
+    zend_long         lval;    //int整形
+    double            dval;    //浮点型
+    zend_refcounted  *counted;
+    zend_string      *str;     //string字符串
+    zend_array       *arr;     //array数组
+    zend_object      *obj;     //object对象
+    zend_resource    *res;     //resource资源类型
+    zend_reference   *ref;     //引用类型，通过&$var_name定义的
+    zend_ast_ref     *ast;     //下面几个都是内核使用的value
+    zval             *zv;
+    void             *ptr;
+    zend_class_entry *ce;
+    zend_function    *func;
+    struct {
+        uint32_t w1;
+        uint32_t w2;
+    } ww;
+} zend_value;
 ```
 初始化:
 ```c
-quantity q = {.weight=1.5}
+zend_value zv = {.dval=1.5}
 ```
 
 #### 枚举
