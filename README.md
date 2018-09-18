@@ -12,7 +12,7 @@
 * [c语言](c.md)
     * [指针](c/pointer.md)
     * [结构体,联合和位字段](c/struct_union_bit.md)
-    * [宏定义井号说明](c/define_#.md)
+    * [宏定义井号说明](c/define.md)
 * [go](go.md)
 * [python](python.md)
 * [redis](redis.md)
