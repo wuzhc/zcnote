@@ -10,6 +10,7 @@
     * [yaf扩展底层源码](php/yaf.md)
     * [swoole扩展底层源码](php/swoole.md)
 * [c语言](c.md)
+    * [gcc](c/gcc.md)
     * [指针](c/pointer.md)
     * [结构体,联合和位字段](c/struct_union_bit.md)
     * [宏定义井号说明](c/define.md)
