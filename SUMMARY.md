@@ -18,6 +18,7 @@
     * [makefile自动化构建](c/makefile.md)
     * [信号signal](c/signal.md)
     * [socket编程](c/socket.md)
+    * [文件IO多路复用](c/io.md)
     * [共享内存](c/memory.md)
     * [多进程](c/process.md)
     * [多线程](c/thead.md)
