@@ -15,6 +15,8 @@ int vfprintf(FILE *stream, const char *format, va_list ap);
 int vsprintf(char *str, const char *format, va_list ap);
 int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 ```
+
+#### 一个例子
 ```c
 static void outputError(Boolean useErr, int err, Boolean flushStdout, const char *format, va_list ap)
 {
