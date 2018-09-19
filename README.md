@@ -1,3 +1,4 @@
+* [说明](intro.md)
 * [php](php/php.md)
     * [编译安装](php/install.md)
     * [基本概念](php/intro.md)
@@ -47,3 +48,5 @@
 * [算法](算法.md)
     * [多维数组合并排序](算法/array_sort.md)
     * [红包金额分配](红包金额分配.md)
+
+
