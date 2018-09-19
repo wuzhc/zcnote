@@ -14,6 +14,7 @@
     * [指针](c/pointer.md)
     * [结构体,联合和位字段](c/struct_union_bit.md)
     * [宏定义井号说明](c/define.md)
+    * [printf家族函数和可变参数](c/printf.md)
     * [共享函数](c/share_core.md)
     * [makefile自动化构建](c/makefile.md)
     * [信号signal](c/signal.md)
