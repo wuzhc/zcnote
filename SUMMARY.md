@@ -1,4 +1,3 @@
-* [说明](intro.md)
 * [php](php/php.md)
     * [编译安装](php/install.md)
     * [基本概念](php/intro.md)
