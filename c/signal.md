@@ -1,4 +1,4 @@
-signal.h库文件包括对信号的定义;信号可以分为标准信号和实时信号,标准信号的编号为1~31(信号最大编号为常量NSIG),用于内核向进程通知事件,两者的区别是同一信号在阻塞状态下产生多次,实时信号会进行排队,而标准信号不会,当阻塞解除时,标准信号只会传递一次
+信号是发生某种事件的通知机制,signal.h库文件包括对信号的定义,信号最大编号为常量NSIG
 
 #### 信号集
 信号集结构类型为sigset_t,包含一组信号
@@ -9,7 +9,7 @@ signal.h库文件包括对信号的定义;信号可以分为标准信号和实�
 #### 暂停进程进行,等待进程的到达
 
 #### 信号处理器
-信号处理器用于响应信号的处理事件,当进程收到信号时,会中断程序的执行,等待信号处理器完成之后,继续从中断处执行
+信号处理器用于响应信号的处理事件,当进程收到信号时,会中断程序的执行,等待信号处理器完成之后,继续从中断处执行;详细内容参考(信号处理器)[]
 ```c
 #include <signal.h>
 
@@ -62,10 +62,75 @@ strsignal(int sig)
 // return pointer to signal description string
 sigaction(int sig, struct sigaction *act, struct sigaction *oldact)
 ```
+- sig要处理的信号
+- struct sigaction *act指向信号处置后的新结构
+- struct sigaction *oldact执行信号处理之前的结构
+sigaction的结构如下:
+```c
+struct sigaction {
+    void (*handler)(int);       // 信号处理器地址
+    sigset_t sa_mask;           // 信号掩码
+    int flags;                  // 位掩码,标识信号处理器的行为
+    void (*sa_restorer)(void)    
+}
+```
+- sa_mask定义了一组信号,该组信号将被添加到信号掩码中,处理器函数返回时自动删除;除此之外,处理器处理的信号也会被添加到掩码中,这意味着,程序在处理信号时,如果由产生一次信号,那么不会程序不会递归中断
+- flags是位掩码,多个位掩码用与
+    - SA_NODEFER 不会在执行处理器程序时候将该信号自动添加到进程掩码中
+    - SA_ONSTACK 使用了sigaltstack()安装的备选栈
+    - SA_SIGINFO 信号处理器程序携带了额外的参数
+    - SA_RESTART 重启
+
+当flags为SA_SIGINFO时,额外会提供信号其他信息,此时的sigaction结构多一个sa_sigaction字段,结构体如下:
+```c
+struct sigaction {
+    union {
+        void (*sa_hander)(int);
+        void (*sa_sigaction)(int,siginfo_t *,void *);
+    },
+    sigset_t sa_mask;           // 信号掩码
+    int flags;                  // 位掩码,标识信号处理器的行为
+    void (*sa_restorer)(void)    
+}
+```
+
+以下是sigaction的使用
+```c
+#include <stdio.h>
+#include <string.h>
+#include <signal.h>
+#include <unistd.h>
+
+// SIGQUIT信号处理器
+void handler(int sig)
+{
+    printf("sig %i %s\n", sig, strsignal(sig));
+}
+
+int main(int argc, char const *argv[])
+{
+    struct sigaction sa;
+
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sa.sa_handler = handler;
+
+    if (sigaction(SIGQUIT, &sa, NULL) == -1) // 终端ctrl+\触发信号
+    {
+        printf("sigaction failed\n");
+    }
+
+    for(;;)
+    {
+        sleep(2);
+    }
+    return 0;
+}
+```
 
 ##### sigprocmask 向信号掩码添加或删除信号
 ```c
-// return pointer to signal description string
+// return pointer to signal description string, or -1 on error
 sigprocmask(int how, sigset_t *set, sigset_t *oldset)
 ```
 - how决定了sigprocmask的行为
@@ -139,10 +204,14 @@ int main(int argc, char const *argv[])
 }
 ```
 
-#### 几个会使进程退出的信号
+#### 一些常见信号
 - SIGKILL 强制杀掉进程,如kill -9 pid,程序处理器无法忽略，捕获，阻塞
+- SIGSTOP 暂停，程序处理器无法忽略，捕获，阻塞,不允许修改信号的默认行为
 - SIGINT  中断信号，Ctrl + c
 - SIGTERM 以正常的方式结束程序来终止（预先清除临时文件，释放资源）
 - SIGHUP  启动被终止的信号，类似于重启 
 - SIGQUIT Ctrl + \ ， 退出信号，并生成可用于调试的核心转储文件，由gdb调试器调用
-- SIGSTOP 暂停，程序处理器无法忽略，捕获，阻塞
+- SIGABRT 异常终止程序
+- SIGSEGV 空间不够用,默认动作是终止进程
+
+

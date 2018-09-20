@@ -17,7 +17,9 @@
     * [printf家族函数和可变参数](c/printf.md)
     * [共享函数](c/share_core.md)
     * [makefile自动化构建](c/makefile.md)
-    * [信号signal](c/signal.md)
+    * [信号一](c/signal.md)
+    * [信号二](c/signal_two.md)
+    * [信号三](c/signal_three.md)
     * [socket编程](c/socket.md)
     * [文件IO多路复用](c/io.md)
     * [共享内存](c/memory.md)
@@ -47,5 +49,3 @@
 * [算法](算法.md)
     * [多维数组合并排序](算法/array_sort.md)
     * [红包金额分配](红包金额分配.md)
-
-
