@@ -32,10 +32,10 @@ volatile sig_atomic_t flag
 - 使用_exit()退出进程,不要使用exit(),exit()不是安全函数,它在调用_exit()函数之前会刷新stdio的缓冲区
 
 ### 备选栈处理信号
-一般是内存不够了,才会需要备选栈的情况,先忽略它,有需要在回头总结下 todo review
+&emsp;&emsp;一般是内存不够了,才会需要备选栈的情况,先忽略它,有需要在回头总结下 todo review
 
 ### 非本地跳转技术
-非本地跳转即从信号处理器跳转到主程序?实在看不懂...
+&emsp;&emsp;非本地跳转即从信号处理器跳转到主程序?实在看不懂...
 ```c
 #include <setjmp.h>
 sigsetjump(sigjmp_buf env, int savesigs)
