@@ -88,8 +88,123 @@ struct sigaction {
 - 同类型信号被阻塞时产生多次,当解除阻塞时,标准信号只会传递一次,而实时信号因为会排队等待,可以都被传递
 - 实时信号可以通过设置SA_SIGINFO传递给信号处理器额外的信息
 - 一组标准信号在解除阻塞时,传递顺序按编号升序传递;实时信号根据信号发送顺序传递
-SIGRTMAX实时信号最大值
-SIGRTMIN实时信号最小值
+- SIGRTMAX表示实时信号最大值
+- SIGRTMIN表示实时信号最小值
+发送实时信号如下:
+```c
+// Returns 0 on success , or -1 on error
+sigqueue(pid_t pid, int sig, const union sigval value)
+// union sigval
+union sigval {
+    int sival_int;      // 保存整数
+    void *sival_ptr;    // 一个指针(一般用不到)
+}
+```
+排队信号数量有限制,当sigqueue发送数量超过这个限制,调用失败并会设置errno为EAGAIN,表示需要再次发送该信号
+demo:
+```c
+#define _POSIX_C_SOURCE 199309
+#include <signal.h>
+#include "../tlpi_hdr.h"
+
+int main(int argc, char const *argv[])
+{
+    union sigval sv;
+    pid_t pid;
+    int sig, num, value;
+
+    if (argc < 4 || strcmp(argv[1], "--help") == 0)
+    {
+        usageErr("%s pid sig value [num]\n", argv[0]);
+    }
+
+    printf("%s: pid: %ld; uid: %ld\n", argv[0], (long)getpid(), (long)getuid());
+
+    pid = getLong(argv[1], GN_GT_0, "pid");
+    sig = getInt(argv[2], GN_GT_0, "sig");
+    value = getInt(argv[3], 0, "value");
+    num = argc > 4 ? getInt(argv[4], GN_GT_0, "num") : 1;
+
+    for (int i = 0; i < num; ++i)
+    {
+        sv.sival_int = value + i;
+        if (sigqueue(pid, sig, sv) == 1)
+        {
+            errExit("sigqueue failed \n");
+        }
+    }
+
+    return 0;
+}
+```
+
+### 使用掩码来等待信号sigsuspend
+&emsp;&emsp;使用掩码阻塞信号，防止信号中止主程序某关键代码段的执行；如果中断处发送在解除信号和pasue挂起进程之间，会导致信号处理器返回的时候，主程序将再次被挂起直到下一次信号到来（正常的情况是挂起进程后接收到信号，触发信号处理器，处理后退出进程）；  
+sigsuspend把解除信号阻塞和挂起进程封装成一个原子操作
+```c
+// returns -1 with errno set to EINTR
+sigsuspend(sigset_t *mask)
+```
+- mask代替进程的信号掩码,例如要解除某个信号，就把这个信号去掉，不要放在mask中
+- 当处理器返回，sigsuspend会将进程的信号掩码恢复到调用前的值
+demo
+```c
+#define _GNU_SOURCE
+#include <signal.h>
+#include "../tlpi_hdr.h"
+
+void handler(int sig)
+{
+   printf("sig %i %s\n", sig, strsignal(sig));
+}
+
+int main(int argc, char const *argv[])
+{
+    struct sigaction sa;
+    sigset_t blockMask, prevMask;
+
+    printf("%s: pid:%ld; uid:%ld\n", argv[0], (long)getpid(), (long)getuid());
+
+    sigaddset(&blockMask, SIGINT);
+    sigaddset(&blockMask, SIGQUIT);
+
+    // 阻塞SIGINT和SIGQUIT，并且保留原来的信号掩码，用于恢复
+    if(sigprocmask(SIG_BLOCK, &blockMask, &prevMask) == -1)
+    {
+        errExit("sigprocmask failed \n");
+    }
+
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sa.sa_handler = handler;
+
+    // 阻塞SIGINT和SIGQUIT信号
+    if (sigaction(SIGINT, &sa, NULL) == -1)
+    {
+        errExit("sigaction SIGINT failed \n");
+    }
+    if (sigaction(SIGQUIT, &sa, NULL) == -1)
+    {
+        errExit("sigaction SIGQUIT failed \n");
+    }
+
+    // do something (不能被SIGINT和SIGQUIT信号中断的代码段，以sleep代替)
+    sleep(10);
+
+    // 解除信号阻塞并挂起进程
+    if (sigsuspend(&prevMask) == -1 && errno != EINTR)
+    {
+        errExit("sigsuspend failed");
+    }
+
+    // 恢复信号掩码
+    if (sigprocmask(SIG_SETMASK, &prevMask, NULL) == -1)
+    {
+        errExit("sigprocmask failed \n");
+    }
+    return 0;
+}
+```
 
 ### 同步等待信号到达
 
