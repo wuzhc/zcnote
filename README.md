@@ -16,6 +16,7 @@
     * [宏定义井号说明](c/define.md)
     * [printf家族函数和可变参数](c/printf.md)
     * [共享函数](c/share_core.md)
+    * [静态库和动态库](c/dl.md)
     * [makefile自动化构建](c/makefile.md)
     * [信号一](c/signal.md)
     * [信号二](c/signal_two.md)
