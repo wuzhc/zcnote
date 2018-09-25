@@ -9,6 +9,7 @@
         * [函数参数解析](php/extend/parse_parameters.md)
         * [扩展创建类](php/extend/class.md)
         * [钩子函数](php/extend/hook.md)
+        * [读取php.ini配置](php/extend/config.md)
         * [自定义扩展demo](php/extend/demo.md)
     * [yaf扩展底层源码](php/yaf.md)
     * [swoole扩展底层源码](php/swoole.md)
