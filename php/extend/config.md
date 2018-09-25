@@ -1,4 +1,4 @@
-### 定义全局变量结构体
+### 第一步：定义全局变量结构体
 扩展的全局变量统一定义在一个结构体中，如下
 ```c
 // php_hello.h
@@ -14,7 +14,7 @@ typedef struct _zend_hello_globals
 } zend_hello_globals;
 ```
 
-### 声明全局变量
+### 第二步：声明全局变量
 以上在定义好了结构体，接下来就是要去使用它，声明如下：
 ```c
 // hello.c
@@ -30,7 +30,7 @@ ts_rsrc_id module_name##_globals_id;
 zend_hello_globals hello_globals;
 ```
 
-### 读写全局变量
+### 第三步：读写全局变量
 php_hello.h定义了HELLO_G(v)宏，可以通过HELLO_G(v)读写全局变量，宏定义如下：
 ```c
 #define HELLO_G(v) ZEND_MODULE_GLOBALS_ACCESSOR(hello, v)
