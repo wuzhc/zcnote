@@ -1,16 +1,17 @@
 一般我们自定义的扩展都是以动态编译方式生成动态链接库.so文件，通过在php.ini读取扩展信息,php会将动态链接库加载到内存；php的扩展可以分为两类，一种是php扩展，需要实现zend_module_entry结构体，在php.ini中通过extension=xx.so加载扩展;一种是zend扩展，需要实现zend_extension,在php.ini通过zend_extension=xx.so加载扩展
+以下主要记录php扩展：zend_module_entry定义了扩展的全部信息：扩展名、扩展版本、扩展提供的函数列表以及PHP四个执行阶段的hook函数等
 
 ### 第一步：生成骨架
 位于源代码的ext目录下，执行
 ```c
-./ext_skel --extname=hello --proto=xxx.def
+./ext_skel --extname=hello --proto=hello.def
 ```
 --proto用来指定函数原型，例如
 ```c
 vi hello.def
 int wcl(string filename) // 添加wcl函数原型，wcl用于统计文件行数
 ```
-骨架生成对应代码如下：
+函数原型对应会生成如下代码：
 ```c
 PHP_FUNCTION(wcl)
 {
@@ -27,6 +28,7 @@ PHP_FUNCTION(wcl)
 PHP_FUNCTION(wcl)即我们要实现功能代码，如果不指定函数原型，需要自己手动添加该函数
 
 ### 第二步：config.m4配置编译信息
+config.m4主要用于配置编译参数(PHP_ARG_ENABLE)和设置扩展的源文件(PHP_NEW_EXTENSION)
 ```c
 PHP_ARG_ENABLE(hello, whether to enable hello support,
 dnl Make sure that the comment is aligned:
@@ -78,6 +80,7 @@ PHP_FUNCTION(wcl)
 ```
 
 ### 第四步：注册函数
+代码为hello.c源文件：
 ```c
 /* {{{ hello_functions[]
  *
