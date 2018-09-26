@@ -169,3 +169,55 @@ const zend_function_entry hello_functions[] =
     PHP_FE_END 
 };
 ```
+
+### 调用其他函数
+通过call_user_function，内部函数可以调用PHP脚本自定义函数或其他扩展的内部函数
+```c
+ZEND_API int call_user_function(HashTable *function_table, zval *object, zval *function_name, zval *retval_ptr, uint32_t param_count, zval params[]);
+```
+- function_table符号表，普通函数边到EG(function_table)，类成员方法保存在zend_class_entry.function
+- 类（成员方法才需要用到，普通函数设置为NULL）
+- function_name 调用函数名
+- retval_ptr 返回值地址
+- param_count 参数个数
+- params 参数数组
+
+以一个例子为说明：
+```php
+// 调用扩展内部函数my_array_merge,内部函数my_array_merge将调用array_merge函数
+$arr1 = array(1,2);
+$arr2 = array(3,4);
+$arr3 = my_array_merge($arr1, $arr2);
+print_r($arr3);
+```
+my_array_merge实现如下：
+```c
+PHP_FUNCTION(my_array_merge)
+{
+    zend_array *arr1, *arr2;
+    zval call_func_name, call_func_ret, call_func_params[2];
+    zend_string *call_func_str;
+    char *func_name = "array_merge";
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS(), "hh", &arr1, &arr2) == FAILURE)
+    {
+        return ;
+    }
+
+    call_func_str = zend_string_init(func_name, strlen(func_name), 0); // 分配zend_string
+    ZVAL_STR(&call_func_name, call_func_str); // call_func_name.value.str = call_func_str(string字符串指针)
+    ZVAL_ARR(&call_func_params[0], arr1); // call_func_params[0].value.arr = arr1 (array数组指针)
+    ZVAL_ARR(&call_func_params[1], arr2); // call_func_params[1].value.arr = arr2 (array数组指针)
+
+    if (SUCCESS != call_user_function(EG(function_table), NULL, &call_func_name, &call_func_ret, 2, call_func_params))
+    {
+        zend_string_release(call_func_str);
+        RETURN_FALSE;
+    }
+    else
+    {
+        zend_string_release(call_func_str);
+        RETURN_ARR(Z_ARRVAL(call_func_ret)); // 调用array_merge结果地址会存放在call_func_ret，RETURN_ARR参数是一个数组指针
+    }
+}
+```
