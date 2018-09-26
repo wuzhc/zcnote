@@ -11,7 +11,7 @@ if(zend_parse_parameters(ZEND_NUM_ARGS(), "S", &str) == FAILURE){
     - l 或 L 表示传入的参数解析为zend_long(l!或L!则会检测参数是否为null,若为null,则设置为0,同时zend_bool设置为1)
     - b表示传入的参数解析为zend_bool
     - d表示传入的参数解析为double
-    - s, S, P, p表示传入的参数解析为zend_string
+    - s, S, P, p表示传入的参数解析为string,s解析到char*,且需要一个size_t类型用于获取字符串长度，S解析到zend_string
     - a, A, h, H表示传入的参数解析为array,aA解析到zval,hH解析到hashTable
     - o, O 对象, 解析到zval
     - r 资源, 解析到zval

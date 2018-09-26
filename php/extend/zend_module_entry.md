@@ -60,19 +60,3 @@ ZEND_GET_MODULE(hello)
 extern "C" { __declspec(dllexport) zend_module_entry *get_module(void) { return &hello_module_entry; } }
 
 ```
-### 扩展函数列表(hello_functions)
-```c
-/* {{{ hello_functions[]
- *
- * Every user visible function must have an entry in hello_functions[].
- */
-const zend_function_entry hello_functions[] =
-{
-    PHP_FE(confirm_hello_compiled,  NULL)   /* For testing, remove later. */
-    PHP_FE(wcl, NULL)
-    PHP_FE(helloworld, NULL)
-    PHP_FE_END  /* Must be the last line in hello_functions[] */
-};
-/* }}} */
-```
-通过PHP_FE把函数注册到zend_function_entry
