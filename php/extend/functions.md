@@ -1,3 +1,4 @@
+### 定义函数
 函数会被注册到EG(function_table)，函数被调用时根据函数名称在这个符号表中查找  
 内部函数即由C实现逻辑的函数，可以直接供php调用，用户函数是指PHP脚本中用户自定义函数；  
 内部函数结构如下：
@@ -85,3 +86,86 @@ const zend_function_entry hello_functions[] =
 };
 ```
 最后将hello_functions赋值给zend_module_entry.functions即可
+
+### 函数参数解析
+通过zend_parse_parameters()解析保存在zend_execute_data的参数;
+```c
+zend_string   *str;
+if(zend_parse_parameters(ZEND_NUM_ARGS(), "S", &str) == FAILURE){
+    ...
+}
+```
+- num_args: 通过ZEND_NUM_ARGS()获得参数个数
+- type_spec: 是一个字符串,用来标识解析参数类型
+    - l 或 L 表示传入的参数解析为zend_long(l!或L!则会检测参数是否为null,若为null,则设置为0,同时zend_bool设置为1)
+    - b表示传入的参数解析为zend_bool
+    - d表示传入的参数解析为double
+    - s, S, P, p表示传入的参数解析为string,s解析到char*,且需要一个size_t类型用于获取字符串长度，S解析到zend_string
+    - a, A, h, H表示传入的参数解析为array,aA解析到zval,hH解析到hashTable
+    - o, O 对象, 解析到zval
+    - r 资源, 解析到zval
+    - C 类, 解析到zend_class_entry
+    - f 回调函数, 解析到zend_fcall_info
+    - z 任意类型  
+   
+    
+type_spec标识符:
+- | 表示之后的参数为可选,例如al|b可以表示3个参数或2个参数,b为可选
+- \* 可变参数,可以不传递
+- \+ 可变参数,至少一个
+    
+### 引用传参
+如果用到参数引用，需要定义参数数组，参数数组定义在ZEND_BEGIN_ARG_INFO_EX和ZEND_END_ARG_INFO两个宏之间
+```c
+#define ZEND_BEGIN_ARG_INFO_EX(name, _unused, return_reference, required_num_args)
+```
+- name参数数组名，对应PHP_FE的第二个参数
+- required_num_args 函数有多少个引用参数，就需要在参数数组中定义多少个zend_internal_arg_info
+
+zend_internal_arg_info宏定义如下：
+```c
+//pass_by_ref表示是否引用传参，name为参数名称
+#define ZEND_ARG_INFO(pass_by_ref, name)                             { #name, NULL, 0, pass_by_ref, 0, 0 },
+
+//只声明此参数为引用传参
+#define ZEND_ARG_PASS_INFO(pass_by_ref)                              { NULL,  NULL, 0, pass_by_ref, 0, 0 },
+
+//显式声明此参数的类型为指定类的对象，等价于PHP中这样声明：MyClass $obj
+#define ZEND_ARG_OBJ_INFO(pass_by_ref, name, classname, allow_null)  { #name, #classname, IS_OBJECT, pass_by_ref, allow_null, 0 },
+
+//显式声明此参数类型为数组，等价于：array $arr
+#define ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)           { #name, NULL, IS_ARRAY, pass_by_ref, allow_null, 0 },
+
+//显式声明为callable，将检查函数、成员方法是否可调
+#define ZEND_ARG_CALLABLE_INFO(pass_by_ref, name, allow_null)        { #name, NULL, IS_CALLABLE, pass_by_ref, allow_null, 0 },
+
+//通用宏，自定义各个字段
+#define ZEND_ARG_TYPE_INFO(pass_by_ref, name, type_hint, allow_null) { #name, NULL, type_hint, pass_by_ref, allow_null, 0 },
+
+//声明为可变参数
+#define ZEND_ARG_VARIADIC_INFO(pass_by_ref, name)                    { #name, NULL, 0, pass_by_ref, 0, 1 },
+```
+引用参数通过zend_parse_parameters()解析时只能使用"z"解析，不能再直接解析为zend_value了，否则引用将失效，下面是一个引用参数的例子
+```c
+// 引用参数数组定义
+ZEND_BEGIN_ARG_INFO_EX(arginfo_changeName, 0, 0, 1)
+ZEND_ARG_INFO(1, name) // zend_internal_arg_info宏定义
+ZEND_END_ARG_INFO()
+
+PHP_FUNCTION(changeName)
+{
+    zval *lval;
+    if (zend_parse_parameters(ZEND_NUM_ARGS(), "z", &lval) == FAILURE) // z表示任意类型，将参数解析到zval地址
+    {
+        return;
+    }
+    zval *real_val = Z_REFVAL_P(lval); // Z_REFVAL_P展开后&(lval.value->ref.val)
+    Z_LVAL_P(real_val) = 100; // Z_LVAL_P展开后lval.value->ref.val.value.lval = 100
+}
+
+const zend_function_entry hello_functions[] =
+{
+    PHP_FE(changeName, arginfo_changeName) // 第二个参数为参数数组名
+    PHP_FE_END 
+};
+```
