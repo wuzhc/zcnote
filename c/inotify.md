@@ -158,3 +158,6 @@ int main(int argc, char const *argv[])
     return 0;
 }
 ```
+
+### 参考
+- Linux系统编程手册(上册)
