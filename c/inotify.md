@@ -158,6 +158,8 @@ int main(int argc, char const *argv[])
     return 0;
 }
 ```
+### 相关链接
+- [我用inotify实现的一个php扩展](https://github.com/wuzhc/php-inotify)
 
 ### 参考
 - Linux系统编程手册(上册)
