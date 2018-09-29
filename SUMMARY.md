@@ -24,7 +24,6 @@
     * [makefile自动化构建](c/makefile.md)
     * [信号一](c/signal.md)
     * [信号二](c/signal_two.md)
-    * [信号三](c/signal_three.md)
     * [inotify监控文件事件](c/inotify.md)
     * [socket编程](c/socket.md)
     * [文件IO多路复用](c/io.md)
