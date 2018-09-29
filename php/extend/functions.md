@@ -91,11 +91,11 @@ const zend_function_entry hello_functions[] =
 通过zend_parse_parameters()解析保存在zend_execute_data的参数;
 ```c
 zend_string   *str;
-if(zend_parse_parameters(ZEND_NUM_ARGS(), "S", &str) == FAILURE){
+if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "S", &str) == FAILURE){
     ...
 }
 ```
-- num_args: 通过ZEND_NUM_ARGS()获得参数个数
+- num_args: 通过ZEND_NUM_ARGS()获得参数个数，TSRMLS_CC用来确保线程安全 
 - type_spec: 是一个字符串,用来标识解析参数类型
     - l 或 L 表示传入的参数解析为zend_long(l!或L!则会检测参数是否为null,若为null,则设置为0,同时zend_bool设置为1)
     - b表示传入的参数解析为zend_bool
@@ -170,13 +170,42 @@ const zend_function_entry hello_functions[] =
 };
 ```
 
+### 函数返回值
+#### 返回数组
+```c
+PHP_FUNCTION(getArray)
+{
+    array_init(return_value);
+    add_assoc_string(return_value, "name", "wuzhc");
+    add_assoc_string(return_value, "address", "GD");
+    add_next_index_string(return_value, "Guangzhou");
+    add_next_index_string(return_value, "School");
+}
+```
+- add_assoc_* 添加关联索引数组元素，如key=>value
+- add_next_index_* 添加数字索引数组元素
+```php
+print_r(getArray());
+```
+php脚本输出如下：
+```bash
+Array
+(
+    [name] => wuzhc
+    [address] => GD
+    [0] => Guangzhou
+    [1] => School
+)
+```
+
+
 ### 调用其他函数
 通过call_user_function，内部函数可以调用PHP脚本自定义函数或其他扩展的内部函数
 ```c
 ZEND_API int call_user_function(HashTable *function_table, zval *object, zval *function_name, zval *retval_ptr, uint32_t param_count, zval params[]);
 ```
 - function_table符号表，普通函数边到EG(function_table)，类成员方法保存在zend_class_entry.function
-- 类（成员方法才需要用到，普通函数设置为NULL）
+- object（成员方法才需要用到，普通函数设置为NULL）
 - function_name 调用函数名
 - retval_ptr 返回值地址
 - param_count 参数个数
@@ -221,3 +250,5 @@ PHP_FUNCTION(my_array_merge)
     }
 }
 ```
+
+### 回调函数

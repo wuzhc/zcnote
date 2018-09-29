@@ -3,16 +3,18 @@
 图片来源于Linux/Unix系统编程手册
 
 ### 同类信号阻塞
-&emsp;&emsp;在执行某信号的处理器函数会阻塞同类信号(即处理器函数在执行过程,如果再次产生同类型信号,会将信号标记为等待状态,当处理器函数返回时再进行传递;若有有多个,则只会传递一次)
+&emsp;&emsp;在执行某信号的处理器函数会阻塞同类信号(即处理器函数在执行过程,如果再次产生同类型信号,会将信号标记为等待状态,当处理器函数返回时再进行传递;
+若有有多个,则只会传递一次)
 
 ### 安全性问题
-&emsp;&emsp;信号处理器会中断主程序运行,然后变成两条独立的线程(信号处理器和主程序),两条线程对全局变量的修改会相互影响对方,这就是所谓的不安全;(问题是既然中断了主程序执行,那么两个线程应该是不会同时调用某个函数或修改某个全局变量啊???原来是执行到一半的时候被中断了)
+&emsp;&emsp;信号处理器会中断主程序运行,然后变成两条独立的线程(信号处理器和主程序),两条线程对全局变量的修改会相互影响对方,这就是所谓的不安全;(问题是既
+然中断了主程序执行,那么两个线程应该是不会同时调用某个函数或修改某个全局变量啊???原来是执行到一半的时候被中断了，额...，还是不懂...)
 如何规避?
 - 确保信号处理器函数使用可重入函数和异步信号安全函数
 - 在主程序执行不安全函数时,阻塞信号的传递(借助于sigprocmask函数)
 
 #### 重置errno问题
-在入口处保存errno,在返回时恢复errno旧值
+由于信号器处理器会修改errno的值，从而影响到主程序的errno，解决方法在入口处保存errno,在返回时恢复errno旧值
 ```c
 void handler(int sig) {
     int oldErrno = errno;
@@ -29,13 +31,13 @@ volatile sig_atomic_t flag
 - sig_atomic_t整数数据类型,作用是保证读写操作的原子性
 
 ### 终止信号处理器其他方法
-- 使用_exit()退出进程,不要使用exit(),exit()不是安全函数,它在调用_exit()函数之前会刷新stdio的缓冲区
+- 使用_exit()退出进程,不要使用exit(),exit()不是安全函数,它在调用_exit()函数之前会刷新stdio的缓冲区（是不是会刷新主程序的缓冲区？？）
 
 ### 备选栈处理信号
 &emsp;&emsp;一般是内存不够了,才会需要备选栈的情况,先忽略它,有需要在回头总结下 todo review
 
 ### 非本地跳转技术
-&emsp;&emsp;非本地跳转即从信号处理器跳转到主程序?实在看不懂...
+&emsp;&emsp;非本地跳转即从信号处理器跳转到主程序?实在看不懂，先跳过...
 ```c
 #include <setjmp.h>
 sigsetjump(sigjmp_buf env, int savesigs)
@@ -46,7 +48,8 @@ siglongjump(sigjmp_buf env, int val)
 - 需要宏定义USE_SIGSETJMP
 
 ### SA_SIGINFO
-信号处理器携带了额外信息,同时信号处理器应该声明如下:
+由上一节我们知道sigaction结构有一个位掩码flags，当sigaction.flags=SA_SIGINFO时，可以传递更多的信号信息；例如信号处理器携带了额外信息,同时信号处
+理器应该声明如下:
 ```c
 void handler(int sig, siginfo_t *siginfo, void *context);
 ```
@@ -64,14 +67,15 @@ struct sigaction {
 ```
 要获取signal.h对siginfo_t的声明,需要将特性测试宏_POSIX_C_SOURCE的值定义为大于或等于199309,siginfo结构如下:
 ![](../images/signinfo.png)  
-图片来源于Linux/Uninx系统编程手册
+
+重点关注下面几个：
 - si_value包含调用sigqueue发送信号伴随的数据
 - si_pid发送进程id
 - si_fd包含于io相关的文件描述符号
 - si_code信号来源;例如通过sigqueue发送的实时信号,该字段为SI_QUEUE
 
 ### 系统调用中断和重启
-&emsp;&emsp;如果有一个阻塞的系统调用,当信号来传递过来时,主程序被中断,当信号处理器完成返回时,系统调用失败,并将errno设置为EINTR;如果要继续运行主程序,可以将sigaction.flags设置SA_RESTART(所谓的重启是主程序从中断处继续执行还是整个主程序重启?)
+&emsp;&emsp;如果有一个阻塞的系统调用,当信号来传递过来时,主程序被中断,当信号处理器完成返回时,系统调用失败,并将errno设置为EINTR;如果要继续运行主程序,可以将sigaction.flags设置SA_RESTART(所谓的重启是主程序从中断处继续执行还是整个主程序重启？)
 
 ### 信号同步产生和异步产生
 - 同步信号,执行进程知道信号产生的时机,例如执行进程调用raise()向自己发送一个信号
@@ -80,7 +84,6 @@ struct sigaction {
 ### 信号传递时机和顺序
 &emsp;&emsp;当进程解除对一组等待标准信号的阻塞的时候,与各个信号产生时机先后无关,等待信号会根据信号编号从小到大优先传递;执行流程如下:
 ![](../images/signal_run.png)  
-图片来源于Linux/Unix系统编程手册
 
 ### 实时信号
 实时信号和标准信号的区别:
@@ -139,15 +142,17 @@ int main(int argc, char const *argv[])
 ```
 
 ### 使用掩码来等待信号sigsuspend
-&emsp;&emsp;使用掩码阻塞信号，防止信号中止主程序某关键代码段的执行；如果中断处发送在解除信号和pasue挂起进程之间，会导致信号处理器返回的时候，主程序将再次被挂起直到下一次信号到来（正常的情况是挂起进程后接收到信号，触发信号处理器，处理后退出进程）；  
+&emsp;&emsp;使用掩码阻塞信号，防止信号中止主程序某关键代码段的执行；如果中断处发送在解除信号和pasue挂起进程之间，会导致信号处理器返回的时候，主程序将
+再次被挂起直到下一次信号到来（正常的情况是解除和挂起进程视为一个原子操作，挂起进程后接收到信号，触发信号处理器，处理后退出进程）；  
 sigsuspend把解除信号阻塞和挂起进程封装成一个原子操作
 ```c
 // returns -1 with errno set to EINTR
 sigsuspend(sigset_t *mask)
 ```
 - mask代替进程的信号掩码,例如要解除某个信号，就把这个信号去掉，不要放在mask中
-- 当处理器返回，sigsuspend会将进程的信号掩码恢复到调用前的值
-demo
+- 当处理器返回，sigsuspend会将进程的信号掩码恢复到调用前的值  
+
+一个简单的例子：
 ```c
 #define _GNU_SOURCE
 #include <signal.h>
@@ -178,7 +183,6 @@ int main(int argc, char const *argv[])
     sa.sa_flags = 0;
     sa.sa_handler = handler;
 
-    // 阻塞SIGINT和SIGQUIT信号
     if (sigaction(SIGINT, &sa, NULL) == -1)
     {
         errExit("sigaction SIGINT failed \n");
@@ -213,3 +217,5 @@ int main(int argc, char const *argv[])
 ### 问题
 - 信号处理器如何中断处于阻塞状态的系统调用,如何重启系统调用
 
+### 参考
+- Linux系统编程手册(上册)

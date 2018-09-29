@@ -75,7 +75,7 @@ struct _zend_array {
                 zend_uchar    flags,
                 zend_uchar    nApplyCount,
                 zend_uchar    nIteratorsCount,
-                zend_uchar    reserve)
+                zend_uchar    consistency)
         } v;
         uint32_t flags;
     } u;
@@ -88,6 +88,16 @@ struct _zend_array {
     zend_long         nNextFreeElement;
     dtor_func_t       pDestructor;
 };
+```
+数组使用哈希表(hashTable)来实现，哈希表即通过key-value访问数据，这里的key是直接映射到内存地址，也就是说根据key可以直接获得保存在内存的值（这种方式称寻址技术）；  
+数组的元素存在Bucket结构：
+```c
+//Bucket：散列表中存储的元素
+typedef struct _Bucket {
+    zval             val; //存储的具体value，这里嵌入了一个zval，而不是一个指针
+    zend_ulong       h;   //key根据times 33计算得到的哈希值，或者是数值索引编号
+    zend_string      *key; //存储元素的key
+} Bucket;
 ```
 
 #### 对象 zend_object
@@ -125,3 +135,24 @@ struct _zend_reference {
 ### 参考：
 - 《PHP7内核剖析》
 - 《PHP7底层设计和源码分析》
+
+
+
+
+
+
+
+
+
+#define ZVAL_DEREF(z) do {								\
+		if (UNEXPECTED(Z_ISREF_P(z))) {					\
+			(z) = Z_REFVAL_P(z);						\
+		}												\
+	} while (0)
+	
+	
+do {
+    if (__builtin_expect(!!(z->u1.v.type == IS_REFERENCE), 0)) {
+        z = &((*z).value.ref->val)
+    }
+}
