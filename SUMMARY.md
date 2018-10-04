@@ -9,6 +9,7 @@
         * [自定义扩展简单demo](php/extend/demo.md)
         * [钩子函数](php/extend/hook.md)
         * [读取php.ini配置](php/extend/config.md)
+        * [数组](php/extend/array.md)
         * [函数](php/extend/functions.md)
         * [类](php/extend/object.md)
     * [yaf扩展底层源码](php/yaf.md)
