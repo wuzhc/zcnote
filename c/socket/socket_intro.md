@@ -102,3 +102,7 @@ ssize_t sendto(int sockfd, void *buffer, size_t length, int flags, struct sockad
 
 #### 数据报也可以使用connect
 当数据报使用connect连接到对端的socket，那么可以使用简单系统IO调用，如write,无需为发送出去的数据报指定目标地址
+
+### 参考
+- 嗨翻C语言
+- Linux系统编程手册(下册)
