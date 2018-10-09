@@ -8,6 +8,7 @@
 ```
 --proto用来指定函数原型，例如
 ```c
+// hello.def
 vi hello.def
 int wcl(string filename) // 添加wcl函数原型，wcl用于统计文件行数
 ```

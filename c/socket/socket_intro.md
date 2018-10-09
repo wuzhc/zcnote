@@ -1,6 +1,7 @@
 &emsp;&emsp;允许在同一个主机或通过一个网络连接起来的不同主机上的应用程序之间的通信
 
 ### socket domain
+socket domain即通信范围，各种domain如下，下图中的AF表示地址族
 ![](../../images/socket_domain.png)
 
 ### socket类型
@@ -87,21 +88,148 @@ EPIPE错误
 
 ### socket_dgram流程
 ![](../../images/socket_dgram.png)  
-数据报使用recvfrom和sendto来接收和发送数据
-- recvfrom 接收数据
+数据报使用recvfrom和sendto来接收和发送数据,recvfrom接收从bind绑定的数据，所以recvfrom之前，需要bind
+#### recvfrom 接收数据
 ```c
 // returns number of bytes received, 0 on EOF, or -1 on error
 ssize_t recvfrom(int sockfd, void *buffer, size_t length, int flags, struct sockaddr *src_addr, socklen_t *addrlen)
 ```
-- sendto 发送数据  
+- buffer 接收的数据会保存到buffer
+- length 指定buffer的长度
+- struct sockaddr *src_addr 从src_addr地址接收的数据，即源socket地址
+- socklen_t *addrlen 指例如sockaddr_un结构地址大小
+
+#### sendto 发送数据  
 ```c
 // returns number of bytes send, or -1 on error
 ssize_t sendto(int sockfd, void *buffer, size_t length, int flags, struct sockaddr *src_addr, socklen_t *addrlen)
 ```
-以上的src_addr都为对端的socket地址
+- buffer 要发送的数据缓冲区
+- length 发送长度
+- struct sockaddr *src_addr 发送的目标地址
+- socklen_t *addrlen 指例如sockaddr_un结构地址大小
+
+#### demo
+&emsp;&emsp;以下是php扩展实现两个方法，unix domain中的数据报 socket
+```c
+// header
+#ifndef DOMORE_SOCKET
+#define DOMORE_SOCKET
+
+#include <sys/socket.h>
+#include <sys/un.h>
+
+#define UNIX_SOCK_PATH "/tmp/mysock3"
+#define BUF_SIZE 10
+
+#endif
+
+// server
+PHP_METHOD(domore_socket, unix_dgram_sv)
+{
+    int sfd;
+    char buf[BUF_SIZE];
+    ssize_t numBytes;
+    socklen_t len;
+    struct sockaddr_un addr, cl_addr;
+
+    sfd = socket(AF_UNIX, SOCK_DGRAM, 0);
+    if(sfd == -1)
+    {
+        DOMORE_ERROR_DOCREF("socket failed");
+    }
+
+    // remove old socket unix path
+    if(remove(UNIX_SOCK_PATH) == -1 && errno != ENOENT)
+    {
+        DOMORE_ERROR_DOCREF("remove failed");
+    }
+
+    memset(&addr, 0, sizeof(struct sockaddr_un));
+    addr.sun_family = AF_UNIX;
+    strncpy(addr.sun_path, UNIX_SOCK_PATH, sizeof(addr.sun_path) - 1);
+
+    // bind unix path
+    if(bind(sfd, (struct sockaddr_un *)&addr, sizeof(struct sockaddr_un)) == -1)
+    {
+        DOMORE_ERROR_DOCREF("bind failed");
+    }
+
+    // recv from client
+    len = sizeof(struct sockaddr_un);
+    while((numBytes = recvfrom(sfd, buf, BUF_SIZE, 0, (struct sockaddr_un *)&cl_addr, &len)) > 0)
+    {
+        php_printf("recvfrom %d bytes \n", numBytes);
+
+        for (int i = 0; i < numBytes; ++i)
+        {
+            buf[i] = toupper((unsigned char)buf[i]);
+        }
+
+        if (sendto(sfd, buf, numBytes, 0, (struct sockaddr_un *)&cl_addr, len) != numBytes)
+        {
+            DOMORE_ERROR_DOCREF("sendto failed");
+        }
+    }
+    if (numBytes == -1)
+    {
+        DOMORE_ERROR_DOCREF("recvfrom failed");
+    }
+}
+
+// client
+PHP_METHOD(domore_socket, unix_dgram_cl)
+{
+    int sfd;
+    ssize_t numBytes;
+    size_t msglen;
+    struct sockaddr_un claddr, svaddr;
+    char buf[BUF_SIZE];
+    char *msg[3] = {"one", "two", "three"};
+
+    sfd = socket(AF_UNIX, SOCK_DGRAM, 0);
+    if (sfd == -1)
+    {
+        DOMORE_ERROR_DOCREF("socket failed");
+    }
+
+     // client path
+    memset(&claddr, 0, sizeof(struct sockaddr_un));
+    claddr.sun_family = AF_UNIX;
+    snprintf(claddr.sun_path,sizeof(claddr.sun_path),"/tmp/ud_ucase_cl.%ld",(long)getpid());
+
+    // bind unix path
+    if(bind(sfd, (struct sockaddr_un *)&claddr, sizeof(struct sockaddr_un)) == -1)
+    {
+        DOMORE_ERROR_DOCREF("bind failed");
+    }
+
+    // server path
+    memset(&svaddr, 0, sizeof(struct sockaddr_un));
+    svaddr.sun_family = AF_UNIX;
+    strncpy(svaddr.sun_path, UNIX_SOCK_PATH, sizeof(svaddr.sun_path) - 1);
+
+    for (int i = 0; i < sizeof(msg)/sizeof(char *); ++i)
+    {
+        msglen = strlen(msg[i]) + 1; // 字符串以'\0'结尾
+        if (sendto(sfd, msg[i], msglen, 0, (struct sockaddr_un *)&svaddr, sizeof(struct sockaddr_un)) != msglen)
+        {
+            DOMORE_ERROR_DOCREF("sendto failed");
+        }
+        if ((numBytes = recvfrom(sfd, buf, BUF_SIZE, 0, NULL, NULL)) > 0)
+        {
+            php_printf("recvfrom server %d bytes: %s \n", numBytes, buf);
+        }
+    }
+}
+```
 
 #### 数据报也可以使用connect
 当数据报使用connect连接到对端的socket，那么可以使用简单系统IO调用，如write,无需为发送出去的数据报指定目标地址
+
+#### 问题
+- 数据报传输大小限制？
+
 
 ### 参考
 - 嗨翻C语言

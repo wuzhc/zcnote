@@ -46,6 +46,8 @@ rm -rf php7.2.10.tar.gz
 echo "已完成php"
 ```
 
+
+
 ### 编译安装扩展
 ```bash
 #!/usr/bin/env bash

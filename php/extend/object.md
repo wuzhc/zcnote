@@ -97,3 +97,19 @@ ZEND_API int zend_update_static_property_double(zend_class_entry *scope, char *n
 ZEND_API int zend_update_static_property_string(zend_class_entry *scope, char *name, int name_length, const char *value TSRMLS_DC); 
 ZEND_API int zend_update_static_property_stringl(zend_class_entry *scope, char *name, int name_length, const char *value, int value_length TSRMLS_DC);
 ```
+
+### PHP_METHOD
+PHP_METHOD(classname, name)
+```c
+// php.h
+#define PHP_METHOD  			ZEND_METHOD
+
+// zend_API.h
+#define ZEND_METHOD(classname, name)	ZEND_NAMED_FUNCTION(ZEND_MN(classname##_##name))
+ZEND_MN(name) zim_##name
+#define ZEND_NAMED_FUNCTION(name)		void name(INTERNAL_FUNCTION_PARAMETERS)
+```
+例如PHP_METHOD(hello, saying)展开后如下：
+```c
+zim_hello_saying(zend_execute_data *execute_data, zval *return_value)
+```
