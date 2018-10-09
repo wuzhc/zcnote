@@ -120,6 +120,7 @@ ssize_t sendto(int sockfd, void *buffer, size_t length, int flags, struct sockad
 #include <sys/socket.h>
 #include <sys/un.h>
 
+#define DOMORE_ERROR_DOCREF(msg) php_error_docref(0, E_ERROR, msg)
 #define UNIX_SOCK_PATH "/tmp/mysock3"
 #define BUF_SIZE 10
 
