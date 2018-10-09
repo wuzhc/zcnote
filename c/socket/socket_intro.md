@@ -232,7 +232,6 @@ PHP_METHOD(domore_socket, unix_dgram_cl)
 #### 问题
 - 数据报传输大小限制？
 
-
 ### 参考
 - 嗨翻C语言
 - Linux系统编程手册(下册)
