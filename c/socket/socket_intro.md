@@ -1,4 +1,4 @@
-&emsp;&emsp;允许在同一个主机或通过一个网络连接起来的不同主机上的应用程序之间的通信
+socket允许在同一个主机或通过一个网络连接起来的不同主机上的应用程序之间的通信
 
 ### socket domain
 socket domain即通信范围，各种domain如下，下图中的AF表示地址族
@@ -87,9 +87,10 @@ int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
 EPIPE错误
 
 ### socket_dgram流程
-![](../../images/socket_dgram.png)  
-数据报使用recvfrom和sendto来接收和发送数据,recvfrom接收从bind绑定的数据，所以recvfrom之前，需要bind
+![](../../images/socket_dgram.png)    
+
 #### recvfrom 接收数据
+数据报使用recvfrom和sendto来接收和发送数据,recvfrom接收从bind绑定的数据，所以recvfrom之前，需要bind
 ```c
 // returns number of bytes received, 0 on EOF, or -1 on error
 ssize_t recvfrom(int sockfd, void *buffer, size_t length, int flags, struct sockaddr *src_addr, socklen_t *addrlen)
@@ -110,7 +111,7 @@ ssize_t sendto(int sockfd, void *buffer, size_t length, int flags, struct sockad
 - socklen_t *addrlen 指例如sockaddr_un结构地址大小
 
 #### demo
-&emsp;&emsp;以下是php扩展实现两个方法，unix domain中的数据报 socket
+以下是我实现的php扩展的两个方法，unix domain中的数据报 socket
 ```c
 // header
 #ifndef DOMORE_SOCKET
