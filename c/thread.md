@@ -74,3 +74,6 @@ int main(int argc, char const *argv[])
     return 0;
 }
 ```
+
+### 参考
+- 嗨翻C语言
