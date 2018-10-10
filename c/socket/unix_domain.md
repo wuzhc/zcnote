@@ -1,6 +1,7 @@
 unix domain允许在同一主机上的不同应用程序之间的通信，它通过文件系统中的一个路径名来标识；
 
 ### 地址结构 sockaddr_un
+unix domain地址结构定义在<sys/un.h>
 ```c
 struct sockaddr_un {
     sa_family_t sun_family; // AF_UNIX

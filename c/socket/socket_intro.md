@@ -38,7 +38,7 @@ int socket(int domain, int type, int protocol)
 int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
 ```
 - sockfd; 由socket创建返回的文件描述符
-- addr; 绑定的地址，它是一个结构体
+- addr; 绑定的地址，它是一个结构体（各个domain对应的结构地址：sockaddr_un,sockaddr_in,sockaddr_in6）
 - addrlen
 通用socket地址结构如下：
 ```c
