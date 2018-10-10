@@ -76,6 +76,7 @@ int getaddrinfo(const char *host, const char *service, const struct addrinfo *hi
 - hints 指向一个addrinfo结构，规定了通过result返回socket地址结构的标准
 - result指向一个addrinfo结构的链表
 
+#### addrinfo结构
 ```c
 struct addrinfo {
     int ai_flags; 
@@ -88,6 +89,7 @@ struct addrinfo {
     struct sockaddr *ai_next;
 }
 ```
+使用addrinfo结构前，调用memset设置addrinfo结构每个字段为0
 - ai_flags 
     - AI_PASSIVE 当host设置为NULL时，将绑定到通配地址
     - AI_NUMERICSERV 防止服务名解析
@@ -95,6 +97,7 @@ struct addrinfo {
 - ai_next 指向下个addrinfo结构
 - ai_family AF_INET，AF_INET6，AF_UNSPEC（表示ipv4和ipv6）
 
+#### freeaddrinfo 释放getaddrinfo分配内存
 getaddrinfo会动态为result引用的结构分配内存，所以需要释放内存，调用freeaddrinfo()
 ```c
 #include <netdb.h>
@@ -225,6 +228,7 @@ PHP_METHOD(domore_socket, inet_server)
             php_printf("get client name info failed \n");
         }
 
+        memset(recv_data, 0, strlen(recv_data));
         if (read(cfd, recv_data, BUF_SIZE) == -1)
         {
             DOMORE_ERROR_DOCREF("read failed");

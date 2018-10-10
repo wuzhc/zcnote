@@ -35,7 +35,7 @@
     * [文件IO多路复用](c/io.md)
     * [共享内存](c/memory.md)
     * [多进程](c/process.md)
-    * [多线程](c/thead.md)
+    * [多线程](c/thread.md)
 * [go](go.md)
 * [python](python.md)
 * [redis](redis.md)
