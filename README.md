@@ -34,6 +34,7 @@
         * [TCP/IP](c/socket/tcp_ip.md)
     * [文件IO多路复用](c/io.md)
     * [共享内存](c/memory.md)
+    * [进程组，会话和控制终端](c/session_tty.md)
     * [daemon守护进程](c/daemon.md)
     * [多进程](c/process.md)
     * [多线程](c/thread.md)
