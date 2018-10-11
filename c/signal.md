@@ -246,7 +246,7 @@ void printPendingSigs(FILE *of, const char *msg)
 - SIGINT  中断信号，Ctrl + c
 - SIGTERM 以正常的方式结束程序来终止（预先清除临时文件，释放资源）
 - SIGHUP  启动被终止的信号，类似于重启 
-- SIGQUIT Ctrl + \ ， 退出信号，并生成可用于调试的核心转储文件，由gdb调试器调用
+- SIGQUIT Ctrl + \ ， 退出信号，并生成可用于调试的核心转储文件，提供给gdb调试器调试使用
 - SIGABRT 异常终止程序
 - SIGSEGV 空间不够用,默认动作是终止进程
 
