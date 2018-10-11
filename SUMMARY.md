@@ -37,6 +37,7 @@
     * [daemon守护进程](c/daemon.md)
     * [多进程](c/process.md)
     * [多线程](c/thread.md)
+    * [常用进制转换](c/hexadecimal.md)
 * [go](go.md)
 * [python](python.md)
 * [redis](redis.md)
