@@ -14,7 +14,7 @@
         * [类](php/extend/object.md)
     * [yaf扩展底层源码](php/yaf.md)
     * [swoole扩展底层源码](php/swoole.md) 
-        * [信号处理器](php/swoole/signal.md)
+        * [memoryGlobal内存池](php/swoole/memory_global.md)
 * [c & linux](c.md)
     * [gcc](c/gcc.md)
     * [指针](c/pointer.md)
