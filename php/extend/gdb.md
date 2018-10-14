@@ -36,7 +36,7 @@ r test.php      # 运行test.php文件
 - r run运行代码
 - info b显示所有断点
 - disable <num> 禁用断点
-- clear <num> 删除断点
+- delete <num> 删除断点
 - p <var> print打印变量
 - whatis <var> 显示变量类型
 - q退出
