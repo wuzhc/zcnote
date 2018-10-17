@@ -1,22 +1,57 @@
+### 关于线程的一些描述
 - 共享数据方便
-- 线程不安全，多线程之间相互影响共享变量，需要互斥锁
 - 一个进程中多个线程可以同时运行
-- POSIX线程库，pthread
-- 线程函数返回的类型为void *
+- POSIX线程库，pthread，编译的时候需要加上-lphread
+- 所有线程共享相同的全局和堆变量，但每个线程都有自己存放局部变量的私有栈
+- 线程不安全，多线程之间相互影响共享变量，需要互斥锁
+- 一个线程出问题，会危及到其他线程，即不稳定
+- 线程避免使用信号
 
 ### pthread_create
 创建线程并运行
 ```c
+// returns 0 on success, or a positice error number on error
+#include <pthread.h>
+pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start)(void *), void *arg)
+```
+- 线程函数返回的类型为void *
 
+### pthread_exit
+终止进程
+```c
+#include <pthread.h>
+pthread_exit(void *retval)
+```
+- 任意线程调用exit()或主线程执行了return语句都会导致进程中所有线程立即终止
+- pthread_exit其返回值可以由另一线程通过pthread_join()来获取
+- 参数retval指定了线程的返回值，指向的内容不应分配于线程栈中
+
+### pthread_self
+获取当前线程ID
+```c
+include <pthread.h>
+pthread_t pthread_self(void);
 ```
 
 ### pthread_join
 等待线程结束
 ```c
+// returns 0 on success, or a positive error number on error
+#include <pthread.h>
+pthread_join(pthread_t thread, void **retval);
+```
+- retval 保存线程终止时返回值的拷贝，即线程调用return或pthread_exit时所指定的值
+- 没有调用pthread_join将产生僵尸线程，除非是分离状态的线程（pthread_detach）
 
+### pthread_detach
+将线程标识为分离状态，这样线程终止能够自动清理和移除，不需要调用pthread_join来获取其返回状态
+```c
+// returns 0 on success, or a positive error number on error
+#include <pthread.h>
+pthread_detach(pthread_t thread);
 ```
 
-### 线程互斥锁
+### 互斥量
 互斥锁必须对所有线程可见，即互斥锁是一个全局变量，互斥锁用在需要修改共享变量位置
 ```c
 pthread_mutex_t a_lock = PTHTEAD_MUTEX_INITIALIZE;

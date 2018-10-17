@@ -26,8 +26,35 @@ TCP/IP 分层联网协议，包括数据链路层，网络层，传输层，应�
 - 流量控制；防止一个快速的发送者压垮一个慢速接收者；大概就是接收端的缓冲区满了，发送TCP就会停止传输数据
 - 拥塞控制；防止一个快速的发送者压垮整个网络
 
-### tcp建立3次握手
-![](http://owql68l6p.bkt.clouddn.com/tcp%20%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E7%9B%91%E5%90%AC%E5%A5%97%E6%8E%A5%E5%AD%97%E7%9A%84%E4%B8%A4%E4%B8%AA%E9%98%9F%E5%88%97.png)
+### tcp三次握手四次挥手
+![](http://hi.csdn.net/attachment/201108/7/0_131271823564Rx.gif)  
+
+### tcp一些控制位说明
+- ACK 确认序号，接收端在上一个成功收到的数据字节的序列号加1
+- RST 重置连接，用来处理多种错误情况
+- SYN 同步序列号
+- FIN 发送端提示完成发送任务
+
+### tcp一些状态说明
+- 三次握手
+    - LISTEN server端正在等待连接
+    - SYN_SEND client发送一个SYN报文，等待server回应
+    - SYN_RECV server端收到client发来的SYN后，回应SYN/ACK之后进入SYN_RECV状态
+    - ESTABLISHED 两个tcp节点连接建立完成
+
+- 四次挥手
+    - FIN_WAIT1 client端发送FIN到server端，等待server回应ACK
+    - FIN_WAIT2 处于FIN_WAIT1状态的client收到server端的ACK
+    - TIME_WAIT client端收到server端FIN，完成主动关闭；client端等待了2MSL后才会关闭，因为要等Server端已正常关闭
+    - CLOSE_WAIT server端收到client端发来的FIN时，就处于CLOSE_WAIT状态
+    - LAST_ACK server端收到ACK时，server端关闭
+
+### 客户端经历状态  
+![](http://hi.csdn.net/attachment/201108/7/0_1312719804oSkK.gif)  
+
+### 服务端经历状态
+![](http://hi.csdn.net/attachment/201108/7/0_1312719833030b.gif)
 
 ### 参考
 - Linux系统编程手册(下册)
+- [TCP协议中的三次握手和四次挥手(图解)](https://blog.csdn.net/whuslei/article/details/6667471/)

@@ -1,11 +1,11 @@
-socket允许在同一个主机或通过一个网络连接起来的不同主机上的应用程序之间的通信
+socket允许在同一个主机或通过一个网络连接起来的不同主机上的应用程序之间的通信，简单来说，PHP连接MySQL就是一个socket
 
 ### socket domain
-socket domain即通信范围，各种domain如下，下图中的AF表示地址族
+socket domain即通信范围，主要有3种类型，如下图所示，其中AF表示地址族
 ![](../../images/socket_domain.png)
 
 ### socket类型
-socket的类型有两种，流（socket stream）和数据报（socket dgram）；流使用了传输控制协议TCP，数据报使用了用户数据报协议UDP，两者socket的区别如下：
+socket的类型用的最多的两种，流（socket stream）和数据报（socket dgram）；流使用了传输控制协议TCP，数据报使用了用户数据报协议UDP，两者socket的区别如下：
 
 | 属性 | 流 | 数据报 |
 | :--- | :---: | :---: |
@@ -55,7 +55,7 @@ int listen(int sockfd, int backlog)
 ```
 - sockfd; 由socket创建的文件描述符
 - backlog; 最大处理连接数，例如backlog等于10表示可以10个客户端同时尝试连接服务器，他们不会立即得到响应，但是可以等待；而第11个客户端会被告知服务器繁忙，
-如收到ECONNREFUSED错误，backlog可以用SOMAXCONN常量，该常量被定义为128
+如收到ECONNREFUSED错误，backlog可以用SOMAXCONN常量表示，该常量被定义为128
 
 #### 接受连接accept
 ```c
@@ -226,10 +226,40 @@ PHP_METHOD(domore_socket, unix_dgram_cl)
 }
 ```
 
-#### 数据报也可以使用connect
+### 数据报也可以使用connect
 当数据报使用connect连接到对端的socket，那么可以使用简单系统IO调用，如write,无需为发送出去的数据报指定目标地址
 
-#### 问题
+### 套接字选项
+```c
+// returns 0 on success, or -1 on error
+#include <sys/socket.h>
+int getsockopt(int sockfd, int level, int optname, void *optval, socklen_t *optlen);
+```
+- level 套接字选项所使用的协议，可以设置为SOL_SOCKET
+- optname 标识套接字选项，如SO_TYPE, SO_REUSEADDR
+- optval 指向返回值的指针
+- optlen 指向返回值大小的指针
+
+```c
+#include <sys/socket.h>
+int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t optlen);
+```
+- level 套接字选项所使用的协议，可以设置为SOL_SOCKET
+- optname 标识套接字选项，如SO_TYPE, SO_REUSEADDR
+- optval 指向返回值指针
+- optlen 由optval指向缓冲区空间大小
+
+```C
+#include <sys/socket.h>
+int sockfd, optval;
+sockfd = socket(AF_INET, SOCK_STREAM, 0);
+optval = 1;
+setsockopt(sockfd, SO_REUSEADDR, &optval, sizeof(optval));
+bind(sockfd, &addr, addrlen);
+listen(sockfd, backlog);
+```
+
+### 问题
 - 数据报传输大小限制？
 
 ### 参考
