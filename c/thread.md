@@ -23,7 +23,7 @@ pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start)(voi
 pthread_exit(void *retval)
 ```
 - 任意线程调用exit()或主线程执行了return语句都会导致进程中所有线程立即终止
-- pthread_exit其返回值可以由另一线程通过pthread_join()来获取
+- 其返回值可以由另一线程通过pthread_join()来获取
 - 参数retval指定了线程的返回值，指向的内容不应分配于线程栈中
 
 ### pthread_self
@@ -51,13 +51,43 @@ pthread_join(pthread_t thread, void **retval);
 pthread_detach(pthread_t thread);
 ```
 
-### 互斥量
-互斥锁必须对所有线程可见，即互斥锁是一个全局变量，互斥锁用在需要修改共享变量位置
+### 互斥量mutex（mutual exclusion）
+- 互斥锁必须对所有线程可见，即互斥锁是一个全局变量，互斥锁用在需要修改共享变量位置
+- 类型为pthread_mutex_t
+- 静态分配的互斥量，PTHREAD_MUTEX_INITIALIZER
+- 动态分配的互斥量，pthread_mutext_init
 ```c
-pthread_mutex_t a_lock = PTHTEAD_MUTEX_INITIALIZE;
+pthread_mutex_t a_lock = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_lock(&a_lock);   // 加锁
 pthread_mutex_unlock(&a_lock); // 解锁
 ```
+
+### 动态初始化互斥量
+```c
+// returns 0 on success, or a positive error number on error
+#include <pthread.h>
+pthread_mutex_init(pthread_mutex_t *mutext, const pthread_mutexattr_t *attr)
+```
+动态分配的互斥量需要通过pthread_mutex_destroy
+```c
+// returns 0 on success, or a positive error number on error
+#include <pthread.h>
+pthread_mutex_destory(pthread_mutex_t *mutex)
+```
+
+### 互斥量类型
+```c
+pthread_mutexattr_settype(pthread_mutexattr *attr, type)
+```
+type类型如下：
+- PTHREAD_MUTEX_NORMAL 互斥量不具有死锁检测功能
+- PTHREAD_MUTEX_ERRORCHECK 对此类互斥量的所有操作都会执行错误检查，运行慢
+- PTHREAD_MUTEX_RECURSIVE 递归互斥量维护一个锁计数器
+
+
+### 互斥量的死锁
+一般出现在线程有多个互斥量
+- 确定互斥量的层级关系
 
 ```c
 #include <stdio.h>
@@ -70,6 +100,7 @@ pthread_mutex_unlock(&a_lock); // 解锁
 
 int num = 2000000;
 pthread_mutex_t a_lock = PTHREAD_MUTEX_INITIALIZER;
+
 
 void *modify_num()
 {
