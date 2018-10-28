@@ -240,11 +240,233 @@ fmt.Println(items)
 ```
 
 ### channel管道
+- 类似于unix管道（pipe）
+- 线程安全，多个goroutine同时访问，不需要加锁
+channel声明和初始化： chan type，这块相当于一个类型
+```go
+var ch0 chan int // 一个只能存放整数的名字叫ch0的管道channel
+var ch1 chan int = make(chan int) // 通过make创建一个channel类型
+```
 
+### channel缓冲
+通过make第二个参数可以指定channel缓冲大小，这个意义在于：
+- 对于发送者来说，直到channel满时会阻塞，直到被接收者接受；
+- 对于接收者来说，channel为空时，接收会阻塞，直到channel有数据
+
+
+### channel发送和接受，关闭
+```go
+var ch chan int = make(chan int)
+ch <- 1 // 发送数据到channel
+x := <- ch // 从接受channel数据
+close(ch) // 向关闭的channel发送数据会引起panic，接收数据会得到零值
+```
+- 执行关闭的channel，此时如果channel还有数据，则会在channel接收完毕后返回零值
+```go
+var ch0 chan int
+ch0 = make(chan int, 11)
+ch0 <- 99
+for i := 0; i < 10; i++ {
+    ch0 <- i
+}
+frist_ch, ok := <-ch0
+if ok {
+    fmt.Printf("fist ch is %v\n", frist_ch)
+}
+
+ch0 <- 10
+close(ch0) // 关闭channel，若channel有值，则可以继续接收channel，但是不能在向channel发送新数据
+for {
+    var num int
+    num, ok := <-ch0
+    if ok == false {
+        fmt.Println("has close")
+        break
+    }
+    fmt.Println(num)
+}
+
+fmt.Println("all done")
+```
+
+或者
+```go
+close(ch0)
+for num := range ch0 {
+    fmt.Println(num)
+}
+```
+
+#### 单向channel
+```go
+c := make(chan int, 3)
+
+var send chan<- int = c // send-only
+var recv <-chan int = c // receive-only
+
+send <- 1
+// <-send               // Error: receive from send-only type chan<- int
+
+val, ok := <-recv
+if ok {
+    fmt.Println(val)
+}
+// recv <- 2           // Error: send to receive-only type <-chan int
+```
+- chan<- 只发送数到channel
+- <-chan 只从channel接收数据
+
+#### channel demo
+```go
+package main
+
+import "fmt"
+
+type Request struct {
+	data []int
+	ret  chan int
+}
+
+func NewRequest(data ...int) *Request {
+	return &Request{data, make(chan int, 1)}
+}
+
+func Process(req *Request) {
+	x := 0
+	for _, i := range req.data {
+		x += i
+	}
+
+	req.ret <- x
+}
+
+func main() {
+	req := NewRequest(10, 20, 30)
+	Process(req)
+	fmt.Println(<-req.ret)
+}
+```
+
+### 函数
+声明方式： func 函数名称(参数 参数类型) (返回类型) {}
+```go
+func test(x, y int, s string) (int, string) {}
+func test(x int) int {}
+```
+- 合并同类型参数，用逗号隔开，类型放后面
+- 没有返回类型可以省略
+
+#### 匿名函数
+- 没有函数名
+- 可以赋值给变量
+- 可以作为一种类型，例如func() string
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	// 普通使用
+	getSprt := func(a float64) float64 {
+		return math.Sqrt(a)
+	}
+	fmt.Println(getSprt(4))
+
+	// 作为管道
+	fc := make(chan func() string, 2)
+	fc <- func() string { return "hello world" }
+	fmt.Println((<-fc)())
+
+	// 作为结构体的一个字段
+	d := struct {
+		fn   func() string
+		name string
+	}{
+		fn:   func() string { return "struct function" },
+		name: "good name",
+	}
+	fmt.Println(d.fn(), d.name)
+}
+```
+
+#### 函数闭包
+一个函数嵌套另一个函数，闭包中变量始终存在，以下面为例：
+```go
+package main
+
+import "fmt"
+
+func test() func() int {
+	i := 0
+	fn := func() int {
+		i++
+		fmt.Println(i)
+		return i
+	}
+	return fn
+}
+
+func main() {
+	a := test()
+	a() // 1
+	a() // 2
+	a() // 3
+
+	b := test()
+	b() // 1
+	b() // 2
+	b() // 3
+}
+```
+- a实际上指向了test()函数中的fn函数，每一次a()调用是直接指向fn函数，所以说，test函数中的i:=0只会在a:=test()执行一次
+- a和b属于两个不同的环境
 
 ### defer延迟调用
-#### 特性：
-- 直到return前才会执行
+- 最后执行
 - 多个defer按照先进后出的方式执行
-#### 用途：
-- 释放资源（如文件句柄，数据库连接）
+- 闭包中会先执行值，最后再调用结果
+```go
+package main
+
+import (
+	"fmt"
+	// "time"
+)
+
+func main() {
+	v := 1
+
+	fn1 := func() {
+		fmt.Println("fn1", v)
+	}
+	fn2 := func() {
+		fmt.Println("fn2", v)
+	}
+	fn3 := func() func() {
+		fmt.Println("闭包")
+		return func() {
+			fmt.Println("fn3")
+		}
+	}
+
+	defer fn1()
+	defer fn2()
+	defer fn3()() // 当代码到这一步时，不会调用，但是会执行闭包内的值
+
+	v = 2 // 改变了v的值，输出结果也跟着改变
+	fmt.Println("runing")
+}
+```
+输出结果：
+```go
+闭包
+runing
+fn3
+fn2 2
+fn1 2
+```
+
+### 异常处理
