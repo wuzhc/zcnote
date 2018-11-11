@@ -470,3 +470,74 @@ fn1 2
 ```
 
 ### 异常处理
+- panic抛出错误
+- recover捕获错误
+go通过panic抛出一个异常，然后在defer中通过recover捕获这个异常
+```go
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+var ErrDivByZero = errors.New("division by zero")
+
+func div(x, y int) (int, error) {
+	if y == 0 {
+		return 0, ErrDivByZero
+	}
+	return x / y, nil
+}
+
+func main() {
+	defer func() {
+		fmt.Println(recover())
+	}()
+
+	switch z, err := div(10, 0); err {
+	case nil:
+		println(z)
+	case ErrDivByZero:
+		panic(err)
+	}
+}
+```
+### 错误处理
+error是一个类型，类似int,float64
+
+### 接口
+一个类型实现了所有接口中定义的方法
+实现的接口的类型，其i.(type)是接口名字
+
+### 类型断言
+- 参数是任意类型,如i interface{}
+- i.(type) ,其中i是接口值，type是类型
+type两种情况，具体类型和接口类型
+- 具体类型：断言成功，可以获得i的具体值，失败则panic
+- 接口类型：...
+
+### 类型转换
+显示 静态类型 底层类型 底层类型相同，也需要强制转换
+- 普通类型向接口类型的转换是隐式的。
+- 接口类型向普通类型转换需要类型断言。
+  
+
+### nil
+nil可以和channel,func,interface,map,slice作比较
+
+
+### 方法
+类型， 该类型拥有的方法 叫方法的接受者是类型
+类型只能是T或*T
+值类型调用方法， 指针类型调用方法
+无视类型调用方法，根据接受者类型操作内部
+匿名字段
+
+### 终端读取
+从os.Stdin读取
+fmt.Scanln(&a, &b) 终端多个值空格隔开，直到换行
+fmt.SScan(string, format, &a, &b, &c)从字符串string按照format格式分别读取a,b,c三个值
+
+### 缓冲IO
+缓冲的IO的作用避免大数据块读写带来的开销

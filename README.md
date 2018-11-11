@@ -41,6 +41,7 @@
     * [常用进制转换](c/hexadecimal.md)
 * [go](go.md)
     * [入门知识](go/go_base.md)
+    * [字节和整数装换](go/go_bytetoint.md)
 * [python](python.md)
 * [redis](redis.md)
     * [应用场景](redis/apply/scene.md)
