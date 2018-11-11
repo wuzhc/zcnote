@@ -98,6 +98,28 @@ func f3() {
 }
 ```
 
+### go转换demo
+```go
+//整形转换成字节
+func IntToBytes(n int) []byte {
+	x := int32(n)
+
+	bytesBuffer := bytes.NewBuffer([]byte{})
+	binary.Write(bytesBuffer, binary.BigEndian, x)
+	return bytesBuffer.Bytes()
+}
+
+//字节转换成整形
+func BytesToInt(b []byte) int {
+	bytesBuffer := bytes.NewBuffer(b)
+
+	var x int32
+	binary.Read(bytesBuffer, binary.BigEndian, &x)
+
+	return int(x)
+}
+```
+
 ### 参考：
 - [详解大端模式和小端模式](https://www.cnblogs.com/little-white/p/3236548.html)
 - [go实用小技能-int类型转成byte类型原理解密](https://blog.csdn.net/m0_37191841/article/details/53908892)
