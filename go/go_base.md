@@ -541,3 +541,13 @@ fmt.SScan(string, format, &a, &b, &c)从字符串string按照format格式分别�
 
 ### 缓冲IO
 缓冲的IO的作用避免大数据块读写带来的开销
+
+### windown和linux，mac交叉编译
+```go
+CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build gofile.go   // mac
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build gofile.go  // window
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build gofile.go    // window
+```
+- GOOS：目标可执行程序运行操作系统，支持 darwin，freebsd，linux，windows
+- GOARCH：目标可执行程序操作系统构架，包括 386，amd64，arm
+
