@@ -551,3 +551,166 @@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build gofile.go    // window
 - GOOS：目标可执行程序运行操作系统，支持 darwin，freebsd，linux，windows
 - GOARCH：目标可执行程序操作系统构架，包括 386，amd64，arm
 
+### 反射reflect
+反射机制就是在运行时动态的调用对象的方法和属性,官方自带的reflect包就是反射相关的,reflect可以识别interface{}底层具体类型和具体值
+- reflect.Type                     // 具体类型
+- reflect.Value                    // 具体值
+- reflect.TypeOf(obj)              // 返回具体类型 
+- reflect.ValueOf(obj)             // 返回具体值
+- reflect.TypeOf(obj).Kind()       // 返回具体类型的类别
+- reflect.ValueOf(obj).Numfield()  // 具体值有多少个字段
+- reflect.ValueOf(obj).Field(num)  // 第num个字段的值
+- Int()                            // 将值转为int
+- String()                         // 将值转为string
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type Order struct {
+	ID   int
+	Name string
+	Age  int
+}
+
+func (o Order) Create() {
+	fmt.Println("生成订单")
+}
+
+func main() {
+	order := Order{1, "Allen.Wu", 25}
+	t := reflect.TypeOf(order)
+	v := reflect.ValueOf(order)
+	k := t.Kind()
+	fmt.Println("reflect.Type=", t)
+	fmt.Println("reflect.Value=", v)
+	fmt.Println("t.Kind()=", k)
+
+	fmt.Println("reflect.ValueOf().NumField()=", v.NumField())
+	fmt.Println("reflect.ValueOf().Field(i)=", v.Field(0))
+	fmt.Println("reflect.ValueOf().Field(i).Interface()=", v.Field(0).Interface())
+	fmt.Println("reflect.TypeOf().NumField()=", t.NumField())
+	fmt.Println("reflect.TypeOf().Field(i)=", t.Field(0))
+	fmt.Println("reflect.TypeOf().Field(i).Name=", t.Field(0).Name)
+	fmt.Println("reflect.TypeOf().Field(i).Type=", t.Field(0).Type)
+	fmt.Println("reflect.TypeOf().NumMethod()=", t.NumMethod())
+	fmt.Println("reflect.TypeOf().Method(i)=", t.Method(0))
+	fmt.Println("reflect.TypeOf().Method(i).Name=", t.Method(0).Name)
+	fmt.Println("reflect.TypeOf().Method(i).Type=", t.Method(0).Type)
+
+	if reflect.TypeOf(order).Kind() == reflect.Struct {
+		v := reflect.ValueOf(order)
+		fmt.Println("number of fields:", v.NumField())
+		for i := 0; i < v.NumField(); i++ {
+			fmt.Printf("Field:%d type:%T value:%v v:%v \n", i, v.Field(i), v.Field(i), v.Field(i).Interface())
+		}
+	}
+}
+
+
+```
+结果如下：
+```
+reflect.Type= main.Order
+reflect.Value= {1 Allen.Wu 25}
+t.Kind()= struct
+reflect.ValueOf().NumField()= 3
+reflect.ValueOf().Field(i)= 1
+reflect.ValueOf().Field(i).Interface()= 1
+reflect.TypeOf().NumField()= 3
+reflect.TypeOf().Field(i)= {ID  int  0 [0] false}
+reflect.TypeOf().Field(i).Name= ID
+reflect.TypeOf().Field(i).Type= int
+reflect.TypeOf().NumMethod()= 1
+reflect.TypeOf().Method(i)= {Create  func(main.Order) <func(main.Order) Value> 0}
+reflect.TypeOf().Method(i).Name= Create
+reflect.TypeOf().Method(i).Type= func(main.Order)
+number of fields: 3
+Field:0 type:reflect.Value value:1 v:1 
+Field:1 type:reflect.Value value:Allen.Wu v:Allen.Wu 
+Field:2 type:reflect.Value value:25 v:25
+```
+- Order的字段首字母需要大写，否则v.Field(0).Interface()报错
+- Field是struct结构才有的，像float64，int是没有这个的
+- 类型转换，struct结构可以通过v.Field(0).Interface()获得结果，而float64则需要通过v.Interface().(float64)获得结果
+- reflect.TypeOf(n)等效于reflect.ValueOf(n).Type()
+
+#### reflect类型
+- reflect.Int
+- reflect.String
+- reflect.Struct
+- reflect.Func 可以调用.Call()  
+
+#### reflect具体类型转换
+通过reflect.ValueOf(t interface{})可以获得类型为reflect.Value的值，如果需要进一步使用该值，需要进行转换，如下：
+强制类型转换用Interface().(type)；格式为：reflect.ValueOf(t).Interface().(type)
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+func main() {
+	var n float64 = 1.23456
+	value := reflect.ValueOf(n)
+	fmt.Printf("类型是%T，值是%v \n", value, value)
+
+	var v float64
+	v = value.Interface().(float64)
+	fmt.Printf("类型是%T，值是%f \n", v, v)
+}
+```
+输出结果：
+```
+类型是reflect.Value，值是1.23456 
+类型是float64，值是1.234560 
+```
+需要注意的是，转换的时候需要区分指针和值，如value.Interface().(float64)和value.Interface().(*float64)是不一样的
+
+#### 通过反射调用方法
+reflect.ValueOf(n).MethodByName("funcName").Call([]reflect.Value)流程如下：
+- 获得reflect.Value反射类型对象
+- 通过reflect.Value调用MethodByName()获得reflect.Value方法名
+- 参数格式[]reflect.Value
+- 调用Call
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type Order struct {
+	Id   int
+	Name string
+}
+
+func (o Order) Handle(code string) {
+	fmt.Println("处理订单号：", code)
+}
+
+func (o Order) Create() {
+	fmt.Println("创建订单成功")
+}
+
+func main() {
+	var order = Order{1, "淘宝"}
+	getValue := reflect.ValueOf(order)
+
+	// 没有参数
+	createMethod := getValue.MethodByName("Create")
+	args := make([]reflect.Value, 0)
+	createMethod.Call(args)
+
+	// 有参数
+	handleMethod := getValue.MethodByName("Handle")
+	args2 := []reflect.Value{reflect.ValueOf("xxxxdeewew33242342343333")}
+	handleMethod.Call(args2)
+}
+```
