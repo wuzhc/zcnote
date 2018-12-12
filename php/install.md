@@ -68,3 +68,8 @@ echo "已完成swoole"
 
 ### 编译工具
 ![](https://box.kancloud.cn/302fc3e158fcb689336665ddf01b47cb_537x361.png)
+
+### 启动内置web服务
+```bash
+php -S 127.0.0.1:端口 -t 网站根目录
+```
