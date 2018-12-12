@@ -15,6 +15,7 @@
     * [yaf扩展底层源码](php/yaf.md)
     * [swoole扩展底层源码](php/swoole.md) 
         * [memoryGlobal内存池](php/swoole/memory_global.md)
+    * [单点登录sso原理](php/sso.md)
 * [c & linux](c.md)
     * [gcc](c/gcc.md)
     * [指针](c/pointer.md)
