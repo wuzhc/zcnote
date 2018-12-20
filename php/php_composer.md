@@ -200,8 +200,8 @@ php composer.phar init
 ```
 - psr-4命名空间，保存在autoload_psr4.php文件中
 - files全局函数，保存在autoload_files.php文件中
-- classmap扫描src所有文件，以namespace+classname作为键，文件作为值，保存在autoload_classmap.php文件中  @see autoload_classmap.php
-修改composer.json后，需要composer update
+- classmap扫描src所有文件，以namespace+classname作为键，文件作为值，保存在autoload_classmap.php文件中  
+##### 注意：修改composer.json后，需要composer update
 
 ## 4.3.3 安装第三方库
 ```bash

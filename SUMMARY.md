@@ -18,6 +18,7 @@
         * [swoole协程使用记录](php/swoole/swoole_co.md)
     * [单点登录sso原理](php/sso.md)
     * [compser使用](php/php_composer.md)
+    * [session实现机制](php/php_session.md)
 * [c & linux](c.md)
     * [gcc](c/gcc.md)
     * [指针](c/pointer.md)
