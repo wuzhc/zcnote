@@ -1,0 +1,6 @@
+- apt-get update:更新安装列表
+- apt-get upgrade:升级软件
+- apt-get install software_name :安装软件
+- apt-get --purge remove  software_name :卸载软件及其配置
+- apt-get autoremove software_name:卸载软件及其依赖的安装包
+- dpkg --list:罗列已安装软件

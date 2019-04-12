@@ -13,7 +13,7 @@ iptables默认有3个规则链，分别是INPUT（输入），OUTPUT（输出）
 - -s：指定来源地址
 - -i：指定入口网卡
 - -o：指定出口网卡
-- –dport：指定目标端口，input指定 
+- –dport：指定目标端口，input指定 (注意:--dport需要和-p结合使用,否则会报--dport不可用)
 - –sport：指定源端口，output指定
 - -j：指定动作类型，ACCEPT（接收）或DROP（拒绝）
 
@@ -25,7 +25,7 @@ iptables -A INPUT -p tcp -s 192.168.1.2 -j DROP
 
 #### 1.2 新增规则
 ```bash
-iptables -I INPUT 1 --dport 80 -j ACCEPT
+iptables -I INPUT 1 -p tcp --dport 80 -j ACCEPT
 ```
 以上在编号为1的位置上新增一条规则，原本该位置(这里是位置1)上的规则将会往后移动一个顺位
 

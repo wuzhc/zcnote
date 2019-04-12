@@ -1,10 +1,16 @@
-## docker入门知识
+### 相关链接
+- [deepin系统下的docker安装](https://www.jianshu.com/p/8200a3a50806)
+- [gitbook](https://yeasy.gitbooks.io/docker_practice/content/introduction/)
+- [Docker——入门实战](https://blog.csdn.net/bskfnvjtlyzmv867/article/details/81044217)
+- [清理Docker占用空间](http://dockone.io/article/3056)
+
 ### 1. docker版本
 Docker 划分为CE 和EE。CE 即社区版（免费，支持周期三个月），EE 即企业版，强调安全，付费使用。
 
 ### 2. docker中基本概念
-- 镜像(Image)
-- 容器(Container)，容器是镜像是实例（即以镜像为基础，创建容器，在容器里面可以部署自己的环境）
+- docker是一个容器,它可以把应用程序所依赖的环境打包到容器中,方便部署
+- 镜像(Image),类
+- 容器(Container)，容器是镜像是实例（对象,即以镜像为基础，创建容器，在容器里面可以部署自己的环境）
 - 仓库(Repository)
 
 ### 3.docker优势
@@ -13,7 +19,7 @@ Docker 划分为CE 和EE。CE 即社区版（免费，支持周期三个月）�
 - 一致的运行环境
 - 分层存储
 #### 3.1 分层存储的意义
-分层存储的特征还使得镜像的复用、定制变的更为容易。甚至可以用之前构建好的镜像作为基础层，然后进一步添加新的层，以定制自己所需的内容，构建新的镜像
+分层存储的特征还使得镜像的复用、定制变的更为容易。甚至可以用之前构建好的镜像作为基础层，然后进一步添加新的层，以定制自己所需的内容，构建新的镜像,总的来说就是复用镜像
 
 ### 4. docker安装
 docker安装可以参考[这里](https://yeasy.gitbooks.io/docker_practice/content/install/)，以下以deepin为例，deepin15.8基于debian 8.0内核（cat /etc/debian_version查看）  
@@ -61,55 +67,94 @@ sudo systemctl stop docker
 ```bash
 # 创建并运行容器
 docker run hello-world
+
 # 创建并运行交互式容器
 # –name 给启动的容器自定义名称，方便后续的容器选择操作
 # -d是后台守护进程的意思
 docker run -t -i -d --name=自定义名称 IMAGE_NAME /bin/bash
+
+# 进入容器
+docker exec -it CONTAINER_NAME bash
+
 # 查看容器
 # -a 列出所有容器
 # -l 列出最近容器
 docker ps [-a] [-l]
+
 # 查看所有容器ID
-# -q 指定查看容器ID
+# -q 指定只查看容器ID
 docker ps -a -q
+
 # 查看用了哪个镜像的容器
 docker ps -a | grep IMAGE_NAME | awk '{print $1}'
+
 # 查看指定容器
 # container-name可以通过docker run时设置--name
 docker inspect CONTAINER_NAME | CONTAINER_ID
+
 # 重新启动停止的容器（docker run创建的容器）
 docker start [-i] CONTAINER_NAME
+
 # 删除停止的容器
 docker rm CONTAINER_NAME | CONTAINER_ID
+
 # 日志
 # tail行数，显示最新行数的日志
 docker logs [-f] [-t] [–tail] IMAGE_NAME
+
 # 查看容器内进程
-docker top IMAGE_NAME
+docker top CONTAINER_NAME
+
 # 停止守护式容器
 docker stop CONTAINER_NAME
 docker kill CONTAINER_NAME
+
 # 查看容器端口映射情况
 docker port CONTAINER_NAME
+
 # 删除所有容器
 docker rm `docker ps -a -q`
-# 删除所有镜像（删除镜像前需要确定没有容器使用到该镜像）
+
+# 删除所有镜像（删除镜像前需要确定没有容器使用到该镜像,通过docker ps -a | grep IMAGE_NAME | awk '{print $1}'查询）
 docker rmi `docker images -q`
+
 # 按条件删除镜像
 # 没有打标签
-docker rmi `docker images -q | awk '/^<none>/ { print $3 }'`
+docker rmi `docker images | awk '/^<none>/ { print $3 }'`
+
 # 镜像名包含关键字
 # doss-api为关键字
 docker rmi --force `docker images | grep doss-api | awk '{print $3}'`
+
 # 将镜像保存为一个tar文件
 docker save IMAGE_NAME
+
 # 导入tar文件为镜像
 docker load -i xxx.tar
+
 # 构建镜像
 # -t 指定镜像名称
 # . 指上下文目录
 docker build -t nginx:v3 .
 ```
+### docker系统管理命令
+```bash
+# 查看docker磁盘使用情况
+docker system df
+
+# 清理磁盘,删除关闭容器,无用的数据卷和网络,以及dangling镜像(即无tag的镜像),`-a`删除的更彻底
+docker system prune -a
+
+# 删除所有关闭的容器
+docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
+
+# 删除dangling容器
+docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+
+# 删除dangling数据卷(即无用的volume)
+docker volume rm $(docker volume ls -qf dangling=true)
+```
+
 #### 5.1交互式
 进入容器，可以执行`docker run -t -i IMAGE_NAME /bin/bash`，我们执行完需要的操作退出容器时，不要使用exit退出，可以利用`按Ctrl+P再按下Ctrl+Q`，以守护式形式推出容器。如果要再次进入容器，则执行`docker attach CONTAINER_NAME`
 
@@ -259,7 +304,7 @@ RUN echo "hello" > world.txt
 其结果是会发现找不到 /app/world.txt 文件，或者其内容不是 hello  
 每一个 RUN 都是启动一个容器、执行命令、然后提交存储层文件变更。第一层 RUN cd /app 的执行仅仅是当前进程的工作目录变更，一个内存上的变化而已，其结果不会造成任何文件变更。而到第二层的时候，启动的是一个全新的容器，跟第一层的容器更完全没关系，自然不可能继承前一层构建过程中的内存变化  
 指定WORKDIR，可以改变以后各层的工作目录的位置
-#### USER 指定当前用户
+#### 6.9 USER 指定当前用户
 > USER 指令和 WORKDIR 相似，都是改变环境状态并影响以后的层。WORKDIR 是改变工作目录，USER 则是改变之后层的执行 RUN, CMD 以及 ENTRYPOINT 这类命令的身份
 切换身份可以用gosu命令，如下：
 ```bash
@@ -272,6 +317,23 @@ RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/downloa
 # 设置 CMD，并以另外的用户执行
 CMD [ "exec", "gosu", "redis", "redis-server" ]
 ```
+#### 6.10 HEALTHCHECK 健康检查
+> 和 CMD, ENTRYPOINT 一样，HEALTHCHECK 只可以出现一次，如果写了多个，只有最后一个生效。格式如下：
+```bash
+HEALTHCHECK --interval=5s --timeout=3s ----retries=3
+```
+- --interval 两次健康检查的间隔，默认为 30 秒；
+- --timeout 健康检查命令运行超时时间，如果超过这个时间，本次健康检查就被视为失败，默认 30 秒；
+- --retries 当连续失败指定次数后，则将容器状态视为 unhealthy，默认 3 次。0：成功；1：失败；2：保留
+```bash
+FROM nginx
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+HEALTHCHECK --interval=5s --timeout=3s \
+  CMD curl -fs http://localhost/ || exit 1
+```
+每 5 秒检查一次（这里为了试验所以间隔非常短，实际应该相对较长），如果健康检查命令超过 3 秒没响应就视为失败，并且使用 curl -fs http://localhost/ || exit 1 作为健康检查命令
+可以通过`docker container ls` 看到最初的状态为 (health: starting)
+
 
 ### 7. 镜像构建上下文（Context）
 #### 7.1 构建原理
@@ -298,8 +360,3 @@ COPY failed: Forbidden path outside the build context: ../test.txt ()
 - docker run可以指定端口映射，但是容器一旦生成，就没有一个命令可以直接修改
 参考[修改docker容器端口映射的方法]  (https://blog.csdn.net/m0_37886429/article/details/82757116)，注意需要root权限
 
-### 参考
-
-- [deepin系统下的docker安装](https://www.jianshu.com/p/8200a3a50806)
-- [gitbook](https://yeasy.gitbooks.io/docker_practice/content/introduction/)
-- [Docker——入门实战](https://blog.csdn.net/bskfnvjtlyzmv867/article/details/81044217)

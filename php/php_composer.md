@@ -203,10 +203,19 @@ php composer.phar init
 - classmap扫描src所有文件，以namespace+classname作为键，文件作为值，保存在autoload_classmap.php文件中  
 ##### 注意：修改composer.json后，需要composer update
 
-## 4.3.3 安装第三方库
+## 4.3.3 composer常用命令
 ```bash
-php composer.phar require wuzhc/zcswoole -vvv
+# 安装
+php7 composer.phar require wuzhc/zcswoole -vvv
+# 卸载
+php7 composer.phar remove wuzhc/zcswoole -vvv
+# 创建项目
+composer create-project --prefer-dist yiisoft/yii2-app-advanced yii-application
 ```
+### 参数说明
+- `--prefer-dist` 会从github 上下载.zip压缩包，并缓存到本地。下次再安装就会从本地加载，大大加速安装速度。但她没有保留 .git文件夹,没有版本信息。适合基于这个package进行开发。
+- `--prefer-source` 会从github 上clone 源代码，不会在本地缓存。但她保留了.git文件夹，从而可以实现版本控制。适合用于修改源代码。
+
 
 
 

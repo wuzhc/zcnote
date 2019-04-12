@@ -1,5 +1,5 @@
 ### go特性
-- 1.自动立即回收。
+- 1.自动垃圾回收。
 - 2.更丰富的内置类型。
 - 3.函数多返回值。
 - 4.错误处理。
@@ -12,6 +12,14 @@
 ### 路径
 - GOPATH 项目路径
 - GOROOT go安装路径
+设置路径如下：
+```bash
+vi ~/.bashrc
+export GOROOT=/usr/lib/go
+export GOPATH=/data/wwwroot/go
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+export PATH=$PATH:/opt/php7/bin
+```
 
 ### 命令
 - go run：go run 编译并直接运行程序，它会产生一个临时文件（但不会生成 .exe 文件），直接在命令行输出程序执行结果，方便用户调试。
