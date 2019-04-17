@@ -71,6 +71,8 @@ docker run hello-world
 # 创建并运行交互式容器
 # –name 给启动的容器自定义名称，方便后续的容器选择操作
 # -d是后台守护进程的意思
+# -p 8080:80指定映射端口
+# -v /my/data/:/data/多个挂载卷使用多个-v,注意多个时挂载卷不要相互嵌套
 docker run -t -i -d --name=自定义名称 IMAGE_NAME /bin/bash
 
 # 进入容器
@@ -153,6 +155,11 @@ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 
 # 删除dangling数据卷(即无用的volume)
 docker volume rm $(docker volume ls -qf dangling=true)
+
+# 容器的镜像做了修改,退出保存为新的镜像
+# -a 作者
+# -m 注释
+docker commit -a "wuzhc" -m "test" <container id> <new image name>
 ```
 
 #### 5.1交互式
