@@ -1,78 +1,236 @@
-* ​	[php](php/php.md)
-    * [编译安装](php/install.md)
-    * [基本概念](php/intro.md)
-    * [垃圾回收机制](php/gc.md)
-    * [生命周期](php/life_cycle.md)
-    * [zval底层实现](php/zval.md)
-    * [c扩展开发](php/extend.md)
-        * [gdb调试工具](php/extend/gdb.md)
-        * [自定义扩展简单demo](php/extend/demo.md)
-        * [钩子函数](php/extend/hook.md)
-        * [读取php.ini配置](php/extend/config.md)
-        * [数组](php/extend/array.md)
-        * [函数](php/extend/functions.md)
-        * [类](php/extend/object.md)
-    * [yaf扩展底层源码](php/yaf.md)
-    * [swoole扩展底层源码](php/swoole.md) 
-        * [memoryGlobal内存池](php/swoole/memory_global.md)
-        * [swoole协程使用记录](php/swoole/swoole_co.md)
-    * [单点登录sso原理](php/sso.md)
-    * [compser使用](php/php_composer.md)
-    * [session实现机制](php/php_session.md)
-* [c & linux](c.md)
-    * [gcc](c/gcc.md)
-    * [指针](c/pointer.md)
-    * [结构体,联合和位字段](c/struct_union_bit.md)
-    * [宏定义井号说明](c/define.md)
-    * [printf家族函数和可变参数](c/printf.md)
-    * [共享函数](c/share_core.md)
-    * [静态库和动态库](c/dl.md)
-    * [makefile自动化构建](c/makefile.md)
-    * [信号一](c/signal.md)
-    * [信号二](c/signal_two.md)
-    * [inotify监控文件事件](c/inotify.md)
-    * [socket编程](c/socket/socket.md)
-        * [简介](c/socket/socket_intro.md)
-        * [UNIX DOMAIN](c/socket/unix_domain.md)
-        * [Internet DOMAIN](c/socket/internet_domain.md)
-        * [TCP/IP](c/socket/tcp_ip.md)
-    * [文件IO多路复用](c/io.md)
-    * [内存管理](c/memory.md)
-    * [进程组，会话和控制终端](c/session_tty.md)
-    * [daemon守护进程](c/daemon.md)
-    * [多进程](c/process.md)
-    * [多线程](c/thread.md)
-    * [常用进制转换](c/hexadecimal.md)
-* [go](go.md)
-    * [入门知识](go/go_base.md)
-    * [字节和整数装换](go/go_bytetoint.md)
-* [python](python.md)
-* [redis](redis.md)
-    * [应用场景](redis/apply/scene.md)
-        * [消息队列](redis/apply/queue.md)
-        * [热点数据](redis/apply/cache_data.md)
-        * [扫码登录](redis/apply/scan_login.md)
-        * [订阅发布](redis/apply/publish_subscribe.md)
-        * [次数限制](redis/apply/limit.md)
-        * [抢购超卖](redis/apply/more_buy.md)
-    * [持久化机制](redis/persist.md)
-* [mysql](mysql/mysql.md)
-    * [工作流程](mysql/workflow.md)
-    * [MyISAM和InnoDB区别](mysql/engine_diff.md)
-    * [用户和权限管理](mysql/user_permission.md)
-    * [执行计划](mysql/run_plan.md)
-    * [sql优化](mysql/optimize_sql.md)
-    * [事务和锁](mysql/transaction_lock.md)
-    * [慢查询日志](mysql/slow_query_log.md)
-    * [case...when...then...end用法](mysql/case_when_then.md)
-    * [sql](mysql/sql.md)
-    * [参考](mysql/reffer.md)
-* [linux](linux/linux.md)
-  * [内核参数优化](linux/内核参数优化.md)
-  * [防火墙设置](linux/防火墙设置.md) 
-* [docker](docker/docker.md)
-  * [docker入门知识](docker/docker_base.md)
-* [算法](算法.md)
-    * [多维数组合](算法/array_sort.md)
-    * [DFA算法](dfa.md)
-    * [红包金额分配](红包金额分配.md)
+```bash
+├── book.json
+├── c
+│   ├── c.md
+│   ├── C语言define.md
+│   ├── C语言编译器gcc.md
+│   ├── C语言实现守护进程.md
+│   ├── hexadecimal.md
+│   ├── inotify.md
+│   ├── io.md
+│   ├── memory.md
+│   ├── pointer.md
+│   ├── printf.md
+│   ├── session_tty.md
+│   ├── share_core.md
+│   ├── signal.md
+│   ├── signal_two.md
+│   ├── socket
+│   │   ├── internet_domain.md
+│   │   ├── socket_intro.md
+│   │   ├── socket.md
+│   │   ├── tcp_ip.md
+│   │   └── unix_domain.md
+│   ├── struct_union_bit.md
+│   ├── sysconf.md
+│   └── thread.md
+├── code
+│   ├── domore.php
+│   ├── feof.php
+│   ├── filePoint.php
+│   ├── hello.php
+│   ├── mutilSort.php
+│   ├── need.md
+│   ├── ord.php
+│   ├── pack.php
+│   ├── proxy.php
+│   ├── socks5.php
+│   ├── test.go
+│   └── tip.php
+├── css
+│   └── css_diff.md
+├── daily
+│   ├── 2018-10-15.md
+│   ├── 2018-10-22.md
+│   ├── 2018-10-23.md
+│   ├── 2018-11-01.md
+│   ├── 2018-12-15.md
+│   └── 2018-12-19.md
+├── docker
+│   ├── docker_base学习笔记.md
+│   ├── docker_compose基本使用命令.md
+│   ├── docker_compose网络设置.md
+│   ├── docker构建build镜像原理.md
+│   ├── docker使用Dockerfile定制镜像.md
+│   └── laradock各个服务配置说明.md
+├── go
+│   ├── go_heart.go
+│   ├── go操作文件目录.md
+│   ├── go常用包.md
+│   ├── go常用方法.md
+│   ├── go的http模块.md
+│   ├── go的io操作.md
+│   ├── go接口的使用.md
+│   ├── go入门知识.md
+│   ├── go协程知识.md
+│   ├── go字节转换为整数.md
+│   └── 切边和interface{}转换.md
+├── im
+│   ├── c10k.md
+│   ├── intro.md
+│   ├── nat.md
+│   ├── router_switch_hup.md
+│   ├── survey.md
+│   ├── tcp.md
+│   ├── udp.md
+│   └── websocket.md
+├── images
+│   ├── buy.png
+│   ├── extend_config.png
+│   ├── gdb.png
+│   ├── memory_global.png
+│   ├── php
+│   │   └── yii2
+│   │       └── yii2行为和事件.png
+│   ├── project
+│   │   ├── 美食每刻.png
+│   │   ├── 美食每刻数据库表设计.png
+│   │   └── 推送系统设计.jpg
+│   ├── pusher.png
+│   ├── qianduan
+│   │   └── wx_custom_event.png
+│   ├── signal_handler.png
+│   ├── signal_run.png
+│   ├── signinfo.png
+│   ├── slow_query.png
+│   ├── socket_dgram.png
+│   ├── socket_domain.png
+│   ├── socket_process.png
+│   ├── sso.png
+│   ├── subscribe.png
+│   ├── tcp_ip.png
+│   └── tty_session.png
+├── interview
+│   ├── php.md
+│   └── redis.md
+├── javascript
+│   └── js_dom.md
+├── linux
+│   ├── IO多路复用.md
+│   ├── iptables防火墙设置.md
+│   ├── linux获取系统硬件配置命令.md
+│   ├── linux用户和用户组管理命令.md
+│   ├── nginx location配置说明.md
+│   ├── nginx负载均衡.md
+│   ├── nginx和php工作方式.md
+│   ├── nginx配置优化.md
+│   ├── nginx虚拟域名设置.md
+│   ├── nmap扫描端口.md
+│   ├── sh -c命令.md
+│   ├── ssh远程连接.md
+│   └── 内核参数优化.md
+├── mysql
+│   ├── case_when_then.md
+│   ├── engine_diff.md
+│   ├── mycat数据库中间件
+│   │   └── mycat概述.md
+│   ├── mysql8.0不能登录phpmyadmin问题.md
+│   ├── mysql.md
+│   ├── Mysql错误:Ignoring query to other database解决方法.md
+│   ├── mysql管理命令.md
+│   ├── mysql慢查询日志.md
+│   ├── mysql用户增删改查.md
+│   ├── mysql执行计划.md
+│   ├── optimize_sql.md
+│   ├── phpmyadmin配置.md
+│   ├── reffer.md
+│   ├── sql.md
+│   ├── transaction_lock.md
+│   ├── workflow.md
+│   └── 问题记录.md
+├── object
+│   ├── markdown解析html.md
+│   ├── obj_inject.md
+│   ├── obj_ioc.md
+│   └── obj_service_locator.md
+├── other
+│   ├── deepin安装包命令.md
+│   ├── git常用命令.md
+│   ├── git初始化.md
+│   ├── git日志分析.md
+│   ├── php.sh
+│   ├── phpstorm_setting.md
+│   └── software.md
+├── php
+│   ├── extend
+│   │   ├── array.md
+│   │   ├── class.md
+│   │   ├── config.md
+│   │   ├── demo.md
+│   │   ├── functions.md
+│   │   ├── gdb.md
+│   │   ├── hook.md
+│   │   ├── macro.md
+│   │   ├── object.md
+│   │   └── zend_module_entry.md
+│   ├── gc.md
+│   ├── install.md
+│   ├── intro.md
+│   ├── life_cycle.md
+│   ├── pack.md
+│   ├── php_composer.md
+│   ├── php_regex.md
+│   ├── php_session.md
+│   ├── php_sysvmsg.md
+│   ├── php扩展安装.md
+│   ├── sso.md
+│   ├── swoole
+│   │   ├── memory_global.md
+│   │   ├── server.md
+│   │   ├── signal.md
+│   │   ├── swlock.md
+│   │   └── swoole_co.md
+│   ├── yii2
+│   │   ├── yii2_event_behavior.md
+│   │   ├── yii2_filter.md
+│   │   ├── yii2_fitler_use.md
+│   │   ├── yii2_init.md
+│   │   ├── yii2_migrate.md
+│   │   ├── yii2_problem.md
+│   │   └── yii2_router.md
+│   └── zval.md
+├── python
+│   ├── python基础知识.md
+│   ├── scrapy
+│   │   ├── scrapy简单入门.md
+│   │   ├── scrapy爬虫防止被禁.md
+│   │   ├── scrapy设置日志文件.md
+│   │   ├── scrapy问题记录.md
+│   │   ├── scrapy选择器.md
+│   │   ├── spider配置自己的pipeline.md
+│   │   ├── 谷歌游览器驱动选择.md
+│   │   └── 爬虫scrapy原理.md
+│   ├── 单双引号的区别.md
+│   └── 字节和字符串转换.md
+├── README.md
+├── redis
+│   ├── apply
+│   │   ├── cache_data.md
+│   │   ├── limit.md
+│   │   ├── more_buy.md
+│   │   ├── publish_subscribe.md
+│   │   ├── queue.md
+│   │   ├── scan_login.md
+│   │   └── scene.md
+│   ├── persist.md
+│   └── redis_conf.md
+├── security
+│   ├── jwt.md
+│   ├── oauth2.md
+│   ├── proxy.md
+│   └── rsa.md
+├── 算法
+│   ├── array_sort.md
+│   └── dfa.md
+└── 项目
+    ├── code.md
+    ├── 博客.md
+    ├── 工作周报生成器.md
+    ├── 美食每刻
+    │   ├── 美食每刻.md
+    │   ├── 群聊设计.md
+    │   └── 群聊设计php版本.md
+    ├── 美食每刻.md
+    └── 推送系统设计.md
+
+```
