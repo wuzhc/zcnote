@@ -98,6 +98,17 @@ func main() {
 // 输出：0 1 2 3 4 5 6
 ```
 
+### string类型
+string在go底层中是用byte实现的,具体如下:
+```go
+s:="hello中国"
+len:=len(s) //输出长度11,因为中国换成字节为6个
+
+for k,v:=range s{
+    fmt.Println("key:",k,"value:",v) //range时,自动转换为[]byte类型
+}
+```
+
 ### struct类型
 类型C语言的结构体，用来定义复杂的数据类型
 
