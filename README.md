@@ -1,5 +1,4 @@
-```
-├── book.json
+```bash
 ├── c
 │   ├── C语言define.md
 │   ├── C语言IO多路复用.md
@@ -31,7 +30,9 @@
 │   ├── docker使用Dockerfile定制镜像.md
 │   ├── docker学习笔记.md
 │   └── laradock各个服务配置说明.md
-├── go
+├── golang
+│   ├── beego
+│   │   └── beego入门知识.md
 │   ├── go_heart.go
 │   ├── go操作文件目录.md
 │   ├── go常用包.md
@@ -42,8 +43,11 @@
 │   ├── go调试工具gdb使用.md
 │   ├── go接口的使用.md
 │   ├── go结构体匿名字段.md
+│   ├── go命令行flag解析.md
 │   ├── go入门知识.md
 │   ├── go协程知识.md
+│   ├── go异常处理defer,panic,recover.md
+│   ├── go用sync.WaitGroup实现协程同步.md
 │   ├── go原子操作atomic.md
 │   ├── go字节转换为整数.md
 │   └── 切边和interface{}转换.md
@@ -61,6 +65,7 @@
 ├── linux
 │   ├── IO多路复用.md
 │   ├── iptables防火墙设置.md
+│   ├── linux的sed命令.md
 │   ├── linux获取系统硬件配置命令.md
 │   ├── linux用户和用户组管理命令.md
 │   ├── nginx location配置说明.md
@@ -159,16 +164,15 @@
 │   ├── 单双引号的区别.md
 │   └── 字节和字符串转换.md
 ├── redis
-│   ├── apply
-│   │   ├── cache_data.md
-│   │   ├── limit.md
-│   │   ├── more_buy.md
-│   │   ├── publish_subscribe.md
-│   │   ├── queue.md
-│   │   ├── scan_login.md
-│   │   └── scene.md
-│   ├── persist.md
-│   └── redis_conf.md
+│   ├── redis持久化.md
+│   ├── redis配置文件.md
+│   └── 应用实例
+│       ├── redis订阅发布.md
+│       ├── redis队列实现.md
+│       ├── redis抢购.md
+│       ├── redis热点数据缓存.md
+│       ├── redis实现扫码登录.md
+│       └── redis限制登录次数.md
 ├── security
 │   ├── jwt.md
 │   ├── oauth2.md
@@ -178,6 +182,7 @@
 │   ├── array_sort.md
 │   └── dfa.md
 └── 项目
+    ├── code.md
     ├── 博客.md
     ├── 工作周报生成器.md
     ├── 美食每刻
@@ -186,5 +191,4 @@
     │   └── 群聊设计php版本.md
     ├── 美食每刻.md
     └── 推送系统设计.md
-
 ```
