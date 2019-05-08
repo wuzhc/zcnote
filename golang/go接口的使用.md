@@ -1,5 +1,6 @@
+> 如果一个类型实现了一个 interface 中所有方法，我们说类型实现了该 interface，所以所有类型都实现了 empty interface，因为任何一种类型至少实现了 0 个方法。go 没有显式的关键字用来实现 interface，只需要实现 interface 包含的方法即可。
+
 ## 一个简单的例子
-如果一个类型实现了一个 interface 中所有方法，我们说类型实现了该 interface，所以所有类型都实现了 empty interface，因为任何一种类型至少实现了 0 个方法。go 没有显式的关键字用来实现 interface，只需要实现 interface 包含的方法即可。
 ```go
 type Animal interface {
     Speak() string
@@ -15,8 +16,9 @@ func (d Dog) Speak() string {
 ```
 所有实现了Speak方法的类型称它实现了Animal接口
 
-## 有什么用？
-interface 的重要用途就体现在函数 的参数中，如果有多种类型实现了某个 interface，这些类型的值都可以直接使用 interface 的变量存储。
+## 用法
+- 强调方法,而不是具体类型(简单来说就是各个类型实现相同方法,然后把类型作为参数传递,这个参数就是接口类型,接着就可以使用各个类型的方法)
+- 强调接口值,这种需要用用断言方式来获取具体类型的值`switch x:= x.(type)`
 ```go
 func main() {
     animals := []Animal{Dog{}, Cat{}}
@@ -56,3 +58,40 @@ animals := []Animal{Dog{}, &Cat{}}
 ```
 这里不会报错，因为指针类型`&Cat`可以访问值类型
 Go 中的所有东西都是按值传递的
+
+## 完整例子
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type Animal interface {
+	Speak() string
+}
+
+type Dog struct {
+}
+
+func (d Dog) Speak() string {
+	return "Woof!"
+}
+
+type Cat struct {
+}
+
+func (c *Cat) Speak() string {
+	return "Meow!"
+}
+
+func main() {
+	// Cat does not implement Animal (Speak method has pointer receiver)
+	// animals := []Animal{Dog{}, Cat{}}
+	animals := []Animal{Dog{}, &Cat{}}
+	for _, animal := range animals {
+		fmt.Println(animal.Speak())
+	}
+}
+
+```

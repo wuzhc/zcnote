@@ -111,6 +111,37 @@ for k,v:=range s{
 
 ### struct类型
 类型C语言的结构体，用来定义复杂的数据类型
+> 结构体是值类型，如果两个结构体每个字段都是可比较的(int,string)，且变量字段相等，则说明两个结构体相等。如果结构体中包含不可比较字段(map)，则结构体是不可比较的。
+> 如果是指针,即时值相等,结构体也不相等
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type Stu struct {
+	name string
+}
+
+func NewStu(name string) Stu {
+	return Stu{name}
+}
+
+func NewStuPtr(name string) *Stu {
+	return &Stu{name}
+}
+
+func main() {
+	stu1 := NewStu("wuzhc")
+	stu2 := NewStu("wuzhc")
+	fmt.Println(stu1 == stu2) // true
+
+	stu3 := NewStuPtr("wuzhc")
+	stu4 := NewStuPtr("wuzhc")
+	fmt.Println(stu3 == stu4) // false
+}
+```
 
 ### array类型
 和C语言不一样，go数组是值类型，这意味着赋值，传参会复制数组，而不是指针
