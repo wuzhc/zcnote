@@ -1,5 +1,7 @@
 > 如果一个类型实现了一个 interface 中所有方法，我们说类型实现了该 interface，所以所有类型都实现了 empty interface，因为任何一种类型至少实现了 0 个方法。go 没有显式的关键字用来实现 interface，只需要实现 interface 包含的方法即可。
 
+> 当两个或多个具体类型需要按照统一的方式处理时才需要接口
+
 ## 一个简单的例子
 ```go
 type Animal interface {
@@ -18,7 +20,7 @@ func (d Dog) Speak() string {
 
 ## 用法
 - 强调方法,而不是具体类型(简单来说就是各个类型实现相同方法,然后把类型作为参数传递,这个参数就是接口类型,接着就可以使用各个类型的方法)
-- 强调接口值,这种需要用用断言方式来获取具体类型的值`switch x:= x.(type)`
+- 强调接口值,这种需要用用断言方式来获取具体类型的值`switch x:= x.(type)`,应用在具体类型是固定的,并且类型很少有方法
 ```go
 func main() {
     animals := []Animal{Dog{}, Cat{}}
