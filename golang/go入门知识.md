@@ -294,6 +294,9 @@ fmt.Println(items)
 ### channel管道
 - 类似于unix管道（pipe）
 - 线程安全，多个goroutine同时访问，不需要加锁
+- 和`map`一样,使用`make`创建的数据结构引用,当复制或传参时,都是引用,即引用同一份数据结构,和其他应用类型一样,通道的默认值为`nil`
+- 同种类型通道可以`==`比较
+- 通道可以连接`goroutine`
 channel声明和初始化： chan type，这块相当于一个类型
 ```go
 var ch0 chan int // 一个只能存放整数的名字叫ch0的管道channel
@@ -305,6 +308,37 @@ var ch1 chan int = make(chan int) // 通过make创建一个channel类型
 - 对于发送者来说，直到channel满时会阻塞，直到被接收者接受；
 - 对于接收者来说，channel为空时，接收会阻塞，直到channel有数据
 
+### 无缓冲通道
+无缓冲通道即同步通道,它可以同步两个`goroutine`,当一个`goroutine`读取时,通道没有数据会阻塞,直到另一个`goroutine`写入数据,相反也一样
+
+### 通道的关闭
+- 通道关闭是发送方调用,即写入通道后可以调用`close`关闭,但是,不能在接收方调用`close`关闭通道
+- 关闭通道之后,如果通道有数据可以继续接收,到不能往通道写数据
+```go
+var c = make(chan int)
+for {
+    v, ok := <-c
+    if !ok {
+        break // 通道关闭并且已经读完,需要配合close(channel)使用
+    }    
+}
+close(c)
+
+// 或者用range迭代通道
+for v:= range <-c {
+    // do something
+}
+close(c)
+```
+
+### 错误提示: fatal error: all goroutines are asleep - deadlock!
+>出错信息的意思是： 
+在main goroutine线，期望从管道中获得一个数据，而这个数据必须是其他goroutine线放入管道的 
+但是其他goroutine线都已经执行完了(all goroutines are asleep)，那么就永远不会有数据放入管道。 
+所以，main goroutine线在等一个永远不会来的数据，那整个程序就永远等下去了。 
+这显然是没有结果的，所以这个程序就说“算了吧，不坚持了，我自己自杀掉，报一个错给代码作者，我被deadlock了”
+
+总的来说就是通道用于多个`goroutine`通信,如果只剩一个协程`main goroutine`,就没有意义了
 
 ### channel发送和接受，关闭
 ```go
@@ -349,7 +383,8 @@ for num := range ch0 {
 }
 ```
 
-#### 单向channel
+#### 单向通道类型
+双向通道是可以转为单向通道
 ```go
 c := make(chan int, 3)
 
@@ -367,6 +402,9 @@ if ok {
 ```
 - chan<- 只发送数到channel
 - <-chan 只从channel接收数据
+
+### 缓存通道
+缓存通道通过`make`函数的容量参数来设置,例如:`ch = make(chan string, 3)`,相反,可以通过`cap(ch)`获取缓冲区的容量,`len(ch)`可以获取通道内元素的个数
 
 #### channel demo
 ```go
