@@ -82,5 +82,10 @@ func main() {
 }
 ```
 
+## 简单总结
+- 定义`var wg sync.WaitGroup`
+- 增加一个`goroutine`就执行一下`wg.Add(1)`,必须在之前
+- 执行完一个`goroutine`就执行下`wg.Done()`,计数减一
+- 程序最后用`wg.Wait()`等待所有`goroutine`退出
 
 

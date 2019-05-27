@@ -1,0 +1,39 @@
+## 内部匿名函数获取外部循环变量
+```go
+for i:=0; i<10;i++ {
+    go func() {
+       fmt.Println(i) // 都是输出10 
+    }()
+}
+```
+上面例子是错误的用法,v是被所有匿名函数共享,当循环遍历完毕时,v的值被更新,当goroutine读取v的值时,实际上读取到都是slice的最后一个元素,正确的做法是通过添加显示参数,如下:
+```go
+for i:=0;i<10;i++ {
+    go func(v int) {
+       fmt.Println(i)  
+    }(v)
+}
+```
+
+## goroutine泄露
+```go
+func test() {
+	var c = make(chan int)
+	var n = 10
+
+	for i := 0; i <= n; i++ {
+		go func(i int) {
+			fmt.Println("send:", i)
+			c <- i
+		}(i)
+	}
+
+	for i := 0; i <= n; i++ {
+		if i == 0 {
+			return // 这里会有泄露问题
+		}
+		fmt.Println("recive:", <-c)
+	}
+}
+```
+泄露问题是如果有数据继续往c写数据,讲被阻塞,解决方法是创建缓冲通道

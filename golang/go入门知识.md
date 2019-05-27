@@ -55,6 +55,10 @@ import  _ "fmt" 	表示不使用该包，而是只是使用该包的init函数�
 ```
 Note: 包路径为src目录下，不要用相对路径
 
+### 导入项目的包
+- 导入都是以src为相对路径,例如`import "src/gopl/thumbnail"`
+- 一个`package`一个目录,`package`不能包括`main`函数
+
 ### 项目构建和编译
 - src: 源码文件
 - pkg: 包文件
@@ -312,7 +316,7 @@ var ch1 chan int = make(chan int) // 通过make创建一个channel类型
 无缓冲通道即同步通道,它可以同步两个`goroutine`,当一个`goroutine`读取时,通道没有数据会阻塞,直到另一个`goroutine`写入数据,相反也一样
 
 ### 通道的关闭
-- 通道关闭是发送方调用,即写入通道后可以调用`close`关闭,但是,不能在接收方调用`close`关闭通道
+- 通道关闭是发送方调用,即写入通道后可以调用`close`关闭,但是,不能在接收方调用`close`关闭通道(这个在单向通道时是有区别的)
 - 关闭通道之后,如果通道有数据可以继续接收,到不能往通道写数据
 ```go
 var c = make(chan int)
