@@ -182,6 +182,20 @@ b := [...][2]int{{1, 1}, {2, 2}, {3, 3}} // 第 2 纬度不能用 "..."
 - make 用来创建map、slice、channel，返回对象非指针
 - new 用来创建值类型，返回指向类型值的指针
 
+`make`分配内存之后,返回一个非`nil`的值,这在并发的时候需要关注一下,例如:
+```go
+var m map[string]int
+func getN(key string) int {
+    if m==nil {
+        m=make(map[string]int)
+        m["t1"] = 1
+        m["t2"] = 2
+    }
+    return m["t2"]    
+}
+```
+当多个`goroutine`并发执行时会有问题,因为m不为nil时不代表m已经初始化好,可以用`sync.Once`延迟初始化
+
 ### slice用于变长数组
 slice切片，引用数组,引用数组,引用数组(切片修改的值，原数组也会改变)，初始化如下：
 ```go
