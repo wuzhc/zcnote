@@ -15,6 +15,28 @@ else
 end
 ```
 
+```bash
+SQL> select
+   sum(case u.sex when 1 then 1 else 0 end)男性,
+   sum(case u.sex when 2 then 1 else 0 end)女性,
+   sum(case when u.sex <>1 and u.sex<>2 then 1 else 0 end)性别为空
+ from users u;
+ 
+        男性         女性       性别为空
+---------- ---------- ----------
+         2          0
+
+--------------------------------------------------------------------------------
+SQL> select
+   count(case when u.sex=1 then 1 end)男性,
+   count(case when u.sex=2 then 1 end)女,
+   count(case when u.sex <>1 and u.sex<>2 then 1 end)性别为空
+ from users u;
+ 
+        男性          女       性别为空
+---------- ---------- ----------
+         2          0
+```
 
 
 ### 参考

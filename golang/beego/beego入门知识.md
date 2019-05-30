@@ -60,4 +60,10 @@ func init() {
 - `this.TplName`设置模板名称,默认是渲染模板`<controller>/<方法名>.tpl`
 - `this.Ctx.WriteString("hello")`可以直接输出到游览器
 
+## 静态文件
+```go
+// （在 /main.go 文件中 beego.Run() 之前加入）
+beego.SetStaticPath("/down1", "download1")
+```
+访问 URL http://localhost:8080/down1/123.txt 则会请求 download1 目录下的 123.txt 文件
 
