@@ -51,6 +51,76 @@ func init() {
     beego.Router("/", &controllers.MainController{})
 }
 ```
+### 路由注册规则
+```go
+// 匹配/api或/api/123
+beego.Router("/api/?:id", &controllers.WuzhcController{})
+// 匹配/api/123
+beego.Router("/api/:id", &controllers.WuzhcController{})
+beego.Router("/api/:id([0-9]+)", &controllers.WuzhcController{})
+beego.Router("/api/:id:int", &controllers.WuzhcController{})
+// 匹配/api/xxx
+beego.Router("/api/:username([\\w+]+)", &controllers.WuzhcController{})
+beego.Router("/api/xxx:string", &controllers.WuzhcController{})
+// 匹配/down/xxx/index.xml,其中:path匹配/xxx/index,:ext匹配xml
+beego.Router("/down/*.*", &controllers.WuzhcController{})
+```
+### 自定义方法名
+默认情况下,请求方法名对应请求method,如果需要自定义方法名,如下:
+```go
+beego.Router("/",&IndexController{},"*:Index")
+```
+- `*`表示所有请求方法
+- index表示方法名
+```go
+// 是多个 HTTP Method 指向同一个方法的示例
+beego.Router("/api",&RestController{},"get,post:ApiFunc")
+// 不同的 method 对应不同的方法
+beego.Router("/simple",&SimpleController{},"get:GetFunc;post:PostFunc")
+```
+### 自动匹配
+```go
+// /object/login调用 ObjectController 中的 Login 方法
+beego.AutoRouter(&controllers.ObjectController{})
+```
+### 命名空间
+```go
+package routers
+import (
+	"my-web/controllers"
+	"github.com/astaxie/beego/context"
+	"github.com/astaxie/beego"
+)
+func init() {
+	ns := beego.NewNamespace("v1",
+		// 进入v1的条件,为false时,不会进入
+		beego.NSCond(func(ctx *context.Context) bool {
+			if ctx.Input.Domain() == "api.beego.me" {
+				return false
+			} else {
+				return true
+			}
+		}),
+		// 进入v1之前做一些东西
+		beego.NSBefore(func(ctx *context.Context) {
+			fmt.Println("helo world")
+		}),
+		// 相当于beego.Get
+		beego.NSGet("/notallowd", func(ctx *context.Context) {
+			ctx.Output.Body([]byte("not allowd"))
+		}),
+		// 相当于beego.Router
+		beego.NSRouter("/hello", &controllers.WuzhcController{}),
+		// 嵌套一个namespace
+		beego.NSNamespace("/shop",
+			beego.NSGet("/:id", func(ctx *context.Context) {
+				ctx.Output.Body([]byte("shopinfo"))
+			}),
+		),
+	)
+	beego.AddNamespace(ns)
+}
+```
 
 ## 控制器
 ### 默认请求
@@ -63,7 +133,42 @@ func init() {
 ## 静态文件
 ```go
 // （在 /main.go 文件中 beego.Run() 之前加入）
-beego.SetStaticPath("/down1", "download1")
+// down1映射到download1目录
+// download1目录和static目录同一级
+beego.SetStaticPath("/down1", "download1") 
 ```
 访问 URL http://localhost:8080/down1/123.txt 则会请求 download1 目录下的 123.txt 文件
+
+## 配置
+beego 默认会解析当前应用下的 `conf/app.conf` 文件。`beego.BConfig`为默认配置,`beego.APPConfig`为配置文件解析出来的
+```go
+beego.AppConfig.String("mysqluser")
+```
+### 设置开发环境,生成环境配置
+配置文件可以设置`runmode ="dev"`,对应`[dev]`,如下:
+```bash
+appname = beepkg
+httpaddr = "127.0.0.1"
+httpport = 9090
+runmode ="dev"
+autorender = false
+recoverpanic = false
+viewspath = "myview"
+
+[dev]
+httpport = 8080
+[prod]
+httpport = 8088
+[test]
+httpport = 8888
+​````
+### 多个配置文件
+在第一个配置文件中引入其他的配置文件,如下:
+​```bash
+include "app2.conf"
+```
+更多参考: [https://beego.me/docs/mvc/controller/config.md](https://beego.me/docs/mvc/controller/config.md)
+
+
+
 
