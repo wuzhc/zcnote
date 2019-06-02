@@ -208,7 +208,7 @@ arr2 := arr[1:3] // 1,2
 - end省略表示切切到结尾结束
 - start表示从下标start开始，end表示从下标end-1结束
 
-#### make创建slice
+#### make初始化切片
 ```go
 arr := make([]int, len, cap)
 ```

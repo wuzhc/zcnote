@@ -33,8 +33,14 @@ bee generate migration [migrationfile] [-fields="title:string,body:text"]
 bee generate test [routerfile]
 bee generate docs
 
-# 迁移(还不知道怎么用,估计和gii一样)
+# 运行所有未完成的迁移
 bee migrate [-driver=mysql] [-conn="root:@tcp(127.0.0.1:3306)/test"]
+# 回滚最新的迁移
+bee migrate rollback [-driver=mysql] [-conn="root:@tcp(127.0.0.1:3306)/test"]
+# 回滚所有的迁移
+bee migrate reset [-driver=mysql] [-conn="root:@tcp(127.0.0.1)/test"]
+# 回滚所有的迁移并重新执行
+bee migrate refresh [-driver=mysql] [-conn="root:@tcp(127.0.0.1:3306)/test"]
 
 # 生成dockerfile文件
 bee dockerize -image="library/golang:1.6.4" -expose=9000
@@ -122,6 +128,10 @@ func init() {
 }
 ```
 
+### 路由设置总结
+- 接收参数问题,一般会选择正则匹配方式
+
+
 ## 控制器
 ### 默认请求
 `beego`是一个`restful`框架,默认执行对应`req.Method`的方法,例如`GET METHOD`请求`Get()`方法
@@ -168,6 +178,42 @@ httpport = 8888
 include "app2.conf"
 ```
 更多参考: [https://beego.me/docs/mvc/controller/config.md](https://beego.me/docs/mvc/controller/config.md)
+
+## 数据库操作
+### 使用问题
+- 不要用驼峰法来命名表名,因为不好定义数据库表struct
+- go 的链接池无法让两次查询使用同一个链接的
+
+### 注册
+```go
+RegisterDriver
+RegisterDataBase
+
+// 参数4(可选)  设置最大空闲连接
+// 参数5(可选)  设置最大数据库连接 (go >= 1.2)
+maxIdle := 30
+maxConn := 30
+orm.RegisterDataBase("default", "mysql", "root:root@/orm_test?charset=utf8", maxIdle, maxConn)
+```
+
+### 注册模型
+```go
+RegisterModel
+RegisterModelWithPrefix("tb_",new(User)) // 使用tb_表前缀
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
