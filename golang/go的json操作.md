@@ -147,3 +147,30 @@ func SearchIssues(terms []string) (*SearchResult, error) {
 }
 
 ```
+
+## 标签处理
+### `-` 忽略字段
+忽略某个字段,当输出json时,不包括字段
+```go
+type User struct {
+    Id         int    `json:"id"`
+    Name       string `json:"-"` // 忽略Name,这样在输出json时,不包括Name字段
+}
+```
+
+### `omitempty`可选字段
+输出json时,当字段有值时输出,没值时不输出
+```go
+type User struct {
+    Id         int    `json:"id"`
+    Name       string `json:"name,omitempty"` // 当Name有值时,输出
+}
+```
+
+### `string`转换字段为字符串类型
+```go
+type User struct {
+    Id         int    `json:"id,string"` // id被转为字符串类型
+    Name       string `json:"name"`
+}
+```

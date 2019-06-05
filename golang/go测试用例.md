@@ -6,39 +6,50 @@
 
 ## 功能测试函数
 ```go
-func TestCos(t *testing.T) {/* ... */}
+func TestXXX(t *testing.T) {/* ... */}
 ```
-使用`t.Error()`报错,当某个条目报错时,`t.Error`可以继续往下执行,如果想要终止程序,可以用`t.Fatal()`
+- 调用`t.Error()`或`t.Errorf()`方法记录日志并标记测试失败
+- 调用`t.Fatal()`和`t.Fatalf()`方法，在某条测试用例失败后就跳出该测试函数
+- 调用`t.Skip()`和`t.Skipf()`方法，跳过某条测试用例的执行
+- 调用`t.Parallel()`标记需要并发执行的测试函数
 ```go
-package word
-import (
-	"testing"
-)
-func TestIsPalindrome(t *testing.T) {
-	var tests = []struct {
-		input string
-		want  bool
-	}{
-		{"", true},
-		{"a", true},
-		{"aa", true},
-		{"a man nam a", true},
-		{"aba", true},
-		{"hello", false},
-	}
-	for _, test := range tests {
-		if got := IsPalindrome(test.input); got != test.want {
-			t.Errorf("isPalindrome(%q)=%v", test.input, got)
-		}
-	}
+func TestV(t *testing.T) {
+	t.Error("xxxx") // 调用t.Error记录错误日志
+	t.Fatal("vvvv") // 调用t.Fatal失败后退出该测试函数
 }
-
 ```
-### 运行测试用例:
+#### 执行命令
 ```bash
-# -v 可以输出包中每个测试用例的名称和执行时间
-# -run=测试用例名称 可以指定要运行的测试用例 
-go test -v $GOPATH/gopl/ch11/word1
+go test -v -run <func_name> // 指定测试函数名称
+```
+
+## 性能测试
+```go
+func BenchmarkXXX(b *testing.B) {/****/}
+```
+#### 执行命令
+默认情况下,不会执行性能测试函数,需要在命令行加上`-bench=.`
+```bash
+go test -v -bench=. // . 执行所有性能函数,或者可以指定函数
+```
+
+## 示例函数
+```go
+func ExampleXXX() {/*****/}
+// Output:
+```
+需要指定`Output`,示例函数通过结果和`Output`对比来判断结果
+```go
+func Example_array() {
+	v := []int{1, 2, 3, 4}
+	Display("v", v)
+
+	// Output:
+	// v[0]=1
+	// v[1]=2
+	// v[2]=3
+	// v[3]=4
+}
 ```
 
 ## 白盒测试
