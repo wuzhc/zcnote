@@ -88,13 +88,15 @@ Port 22 (22端口可以省略)
 ```
 
 ## .gitignore 添加已经被追踪的文件或文件夹
+```bash
 git rm -r --cached <filename>   # -r 表示递归
 git commit -m "delete filename"
 git push origin master
-手动添加<filename>到.gitignore
+# 手动添加<filename>到.gitignore
 git commit -m "add filename to .gitignore"
 git push origin master
-说明：--cached 表示删除暂存区或分支上的文件,不删除工作区的文件
+# 说明：--cached 表示删除暂存区或分支上的文件,不删除工作区的文件
+```
 
 撤销分支合并merge
 git log   # 获取上一个commitID
