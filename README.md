@@ -15,8 +15,8 @@
     * socket
         * [socket概述](c%2Fsocket%2Fsocket%E6%A6%82%E8%BF%B0.md)
         * [socket网络字节序](c%2Fsocket%2Fsocket%E7%BD%91%E7%BB%9C%E5%AD%97%E8%8A%82%E5%BA%8F.md)
-        * [tcp ip协议](c%2Fsocket%2Ftcp+ip%E5%8D%8F%E8%AE%AE.md)
-        * [unix domain](c%2Fsocket%2Funix+domain.md)
+        * [tcp ip协议](c%2Fsocket%2Ftcp%20ip%E5%8D%8F%E8%AE%AE.md)
+        * [unix domain](c%2Fsocket%2Funix%20domain.md)
     * [sysconf](c%2Fsysconf.md)
     * [进制运算](c%2F%E8%BF%9B%E5%88%B6%E8%BF%90%E7%AE%97.md)
     * [进程组,会话,控制终端](c%2F%E8%BF%9B%E7%A8%8B%E7%BB%84%2C%E4%BC%9A%E8%AF%9D%2C%E6%8E%A7%E5%88%B6%E7%BB%88%E7%AB%AF.md)
@@ -77,11 +77,11 @@
 * linux
     * [IO多路复用](linux%2FIO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8.md)
     * [iptables防火墙设置](linux%2Fiptables%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE.md)
-    * [linux之sh -c命令](linux%2Flinux%E4%B9%8Bsh+-c%E5%91%BD%E4%BB%A4.md)
+    * [linux之sh -c命令](linux%2Flinux%E4%B9%8Bsh%20-c%E5%91%BD%E4%BB%A4.md)
     * [linux用户和用户组管理命令](linux%2Flinux%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4.md)
     * [linux的sed命令](linux%2Flinux%E7%9A%84sed%E5%91%BD%E4%BB%A4.md)
     * [linux获取系统硬件配置命令](linux%2Flinux%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4.md)
-    * [nginx location配置说明](linux%2Fnginx+location%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E.md)
+    * [nginx location配置说明](linux%2Fnginx%20location%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E.md)
     * [nginx和php工作方式](linux%2Fnginx%E5%92%8Cphp%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F.md)
     * [nginx虚拟域名设置](linux%2Fnginx%E8%99%9A%E6%8B%9F%E5%9F%9F%E5%90%8D%E8%AE%BE%E7%BD%AE.md)
     * [nginx负载均衡](linux%2Fnginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.md)
@@ -112,7 +112,7 @@
     * [mysql用户增删改查](mysql%2Fmysql%E7%94%A8%E6%88%B7%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5.md)
     * [mysql的case_when_then用法](mysql%2Fmysql%E7%9A%84case_when_then%E7%94%A8%E6%B3%95.md)
     * [mysql管理命令](mysql%2Fmysql%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4.md)
-    * [mysql错误:Ignoring query to other database解决方法](mysql%2Fmysql%E9%94%99%E8%AF%AF%3AIgnoring+query+to+other+database%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.md)
+    * [mysql错误:Ignoring query to other database解决方法](mysql%2Fmysql%E9%94%99%E8%AF%AF:Ignoring%20query%20to%20other%20database%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.md)
     * [phpmyadmin配置](mysql%2Fphpmyadmin%E9%85%8D%E7%BD%AE.md)
     * [问题记录](mysql%2F%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95.md)
 * object
