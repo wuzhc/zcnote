@@ -1,5 +1,3 @@
-## 目录自动生成器
-- [https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go](https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go)
 ## 目录
 * c
     * [C语言IO多路复用](c%2FC%E8%AF%AD%E8%A8%80IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8.md)
@@ -209,3 +207,5 @@
         * [群聊设计](%E9%A1%B9%E7%9B%AE%2F%E7%BE%8E%E9%A3%9F%E6%AF%8F%E5%88%BB%2F%E7%BE%A4%E8%81%8A%E8%AE%BE%E8%AE%A1.md)
         * [群聊设计php版本](%E9%A1%B9%E7%9B%AE%2F%E7%BE%8E%E9%A3%9F%E6%AF%8F%E5%88%BB%2F%E7%BE%A4%E8%81%8A%E8%AE%BE%E8%AE%A1php%E7%89%88%E6%9C%AC.md)
     * [美食每刻](%E9%A1%B9%E7%9B%AE%2F%E7%BE%8E%E9%A3%9F%E6%AF%8F%E5%88%BB.md)
+## 目录自动生成器
+- [https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go](https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go)
