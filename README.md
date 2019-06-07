@@ -1,3 +1,5 @@
+## 目录自动生成器
+- [https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go](https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go)
 ## 目录
 * c
     * [C语言IO多路复用](c%2FC%E8%AF%AD%E8%A8%80IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8.md)
