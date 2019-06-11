@@ -1,3 +1,6 @@
+## 参考
+- https://segmentfault.com/a/1190000015464889#articleHeader14
+
 ## 1. 线程模型主要有三种
 ### 1.1 用户级线程模型
 操作系统只知道用户进程而对其中的线程是无感知的，内核的所有调度都是基于用户进程。许多语言实现的 协程库 基本上都属于这种方式（比如python的gevent）,不需要让CPU在用户态和内核态之间切换
@@ -22,6 +25,6 @@ go并发模型是`GPM`
 - P: 可以看作是一个抽象的资源或者一个上下文，一个P绑定一个OS线程
 - M: 把OS线程抽象成一个数据结构
 - G: goroutine单元
-M通过P调度G执行,P为G提供了运行所需的一切资源和环境,因此在G看来P就是运行它的 “CPU”,,P的数量由用户设置的GOMAXPROCS决定
-![https://segmentfault.com/img/remote/1460000015464892?w=506&h=409](https://segmentfault.com/img/remote/1460000015464892?w=506&h=409)
+M通过P调度G执行,P为G提供了运行所需的一切资源和环境,因此在G看来P就是运行它的 “CPU”,,P的数量由用户设置的GOMAXPROCS决定  
+![https://segmentfault.com/img/remote/1460000015464892?w=506&h=409](https://segmentfault.com/img/remote/1460000015464892?w=506&h=409)  
 当通过go关键字创建一个新的goroutine的时候，它会优先被放入P的本地队列。为了运行goroutine，M需要持有（绑定）一个P，接着M会启动一个OS线程，循环从P的本地队列里取出一个goroutine并执行。当然还有上文提及的 work-stealing调度算法：当M执行完了当前P的Local队列里的所有G后，P也不会就这么在那躺尸啥都不干，它会先尝试从Global队列寻找G来执行，如果Global队列为空，它会随机挑选另外一个P，从它的队列里中拿走一半的G到自己的队列中执行。
