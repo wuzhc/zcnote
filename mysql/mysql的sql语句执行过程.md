@@ -2,7 +2,7 @@
 - https://www.cnblogs.com/whgk/p/10993436.html
 
 ## 1. 流程图
-![](./images/mysql/mysql执行过程.png)
+![](https://github.com/wuzhc/zcnote/blob/master/images/mysql/mysql%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
 - client发送sql查询到mysql server
 - 连接mysql,验证用户和密码,找到用户所拥有的权限
 - 先查询缓存,如果命中缓存返回
