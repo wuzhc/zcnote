@@ -1,6 +1,6 @@
 ## gmq流程如下:
 
-![一个不规范的流程图](images/project/gmq流程图.png)
+![一个不规范的流程图](../images/project/gmq流程图.png)
 
 
 ## 使用
