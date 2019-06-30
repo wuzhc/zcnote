@@ -133,7 +133,7 @@ $client->close();
 
 ### 原子性问题
 我们知道redis的命令是排队执行,在一个复杂的业务中可能会多次执行redis命令,如果在大并发的场景下,这个业务有可能中间插入了其他业务的命令,导致出现各种各样的问题;  
-redis保证整个事务原子性和一致性问题一般用`multi/exec`或用`lua脚本`,`gmq`在操作涉及复杂业务时使用的是`lua脚本`,因为`lua脚本`除了有`multi/exec`的功能外,还有`Pipepining`功能(主要打包命令,减少和`redis server`通信次数),下面是一个`gmq`定时器扫描bucket集合到期job的lua脚本:
+redis保证整个事务原子性和一致性问题一般用`multi/exec`或`lua脚本`,`gmq`在操作涉及复杂业务时使用的是`lua脚本`,因为`lua脚本`除了有`multi/exec`的功能外,还有`Pipepining`功能(主要打包命令,减少和`redis server`通信次数),下面是一个`gmq`定时器扫描bucket集合到期job的lua脚本:
 
 ```lua
 -- 获取到期的50个job
@@ -213,11 +213,6 @@ tcp        0      0 10.8.8.188:41482        10.8.8.185:9503         TIME_WAIT   
 - 配置文件,网上很多教程,就是让系统尽快的回收`TIME_WAIT`状态的连接
 - 使用连接池,当连接池耗尽时,阻塞等待,直到回收再利用
 
-- bucket有job,但是pool没有job
-- bucket.JobNum计数有问题
-- bucket存在status=ready的job (原本是在bucket中,job.status=delay,强制重启后job.status=ready,但未被加入到readQueue
-- jobPool出现只有{status:1}的job (10万个快速请求造成的) 可能的原因: addBucket -> 被中断执行了 delete job -> bucket又设置了状态
-- [E][default] [2019-06-23 22:38:24] strconv.Atoi: parsing "": invalid syntax (可能和上一个bug有关)
 
 ## 和有赞设计对比
 - 支持普通消息,在有赞的文章中是延迟队列;事实上,如果延迟时间为0时,就可以当普通队列处理,这个时候不在添加到bucket,而是直接添加到准备就绪队列
