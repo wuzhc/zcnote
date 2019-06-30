@@ -132,11 +132,9 @@ $client->close();
 每一个`bucket`会维护一个定时器,定时器并非周期性的时钟,通俗来讲,即不是每隔多久执行一次;首先先获取`bucket`下一个要执行`job`的时间,然后用这个时间作为定时器的周期,这样当没有job时不会有其他开销;当然,事物都有两面性,这样的设计带来的弊端就是当生成者产生一个新数据时会可能需要重置定时器的时间,频繁产生意味着频繁重置定时器
 
 ### 原子性问题
-成功添加到bucket时,会去设置job.status,但是,因为添加bucket和设置job.status是两个方法,两个方法分别去获取redis连接池句柄,此时会出现添加bucket成功后,但是设置job.status获取连接句柄失败(因为访问量大,连接池耗尽了),设置job.status就会阻塞在那里;如果这个时候定时器扫描到bucket,就会得到status是错误的
-redis对请求是排队处理,假设我们添加一个job到bucket,经历的过程大概是add bucket -> set job status; 此时如果在`add bucket`和`set job status`两个命令之间插入其他命令,就会使得这个事物原子性问题
-gmq会很多这样的场景,为此我用redis的`lua脚本`替换了所有涉及事务的代码,考虑到用`lua脚本`而不是`MULTI/EXEC`是为了减少gmq和`redis server`通信次数,并且`lua脚本`有利于之后的redis分片
+我们知道redis的命令是排队执行,在一个复杂的业务中可以会多次执行redis命令,如果在大并发的场景下,这个业务有可能中间插入了其他业务的命令,导致出现各种各样的问题;  
+redis保证整个事务原子性和一致性问题一般用`multi/exec`或自己写一个`lua脚本`,`gmq`的业务使用`lua脚本`,因为`lua脚本`除了有`multi/exec`的功能外,还有`Pipepining`功能(主要打包命令,减少和`redis server`通信次数),下面是一个`gmq`定时器扫描bucket集合到期job的lua脚本:
 
-#### `timer`扫描job的过程由`lua`脚本实现如下:
 ```lua
 -- 获取到期的50个job
 local jobIds = redis.call('zrangebyscore',KEYS[1], 0, ARGV[4], 'withscores', 'limit', 0, 50)
@@ -173,7 +171,33 @@ return res
 ```
 
 ### redis连接池
-刚好第三方库`redis`自带了连接池,我也可以不需要自行实现连接池,连接池是很有必要的,它带来的好处是限制redis连接数,通过复用redis连接来减少开销,另外可以防止tcp被消耗完,这在生产者大量生成数据时会很有用
+可能一般phper写业务很少会接触到连接池,其实这是由php本身所决定他应用不大,当然在php的扩展`swoole`还是很有用处的  
+`gmq`的redis连接池是使用`gomodule/redigo/redis`自带连接池,它带来的好处是限制redis连接数,通过复用redis连接来减少开销,另外可以防止tcp被消耗完,这在生产者大量生成数据时会很有用
+```go
+// gmq/mq/redis.go
+Redis = &RedisDB{
+    Pool: &redis.Pool{
+        MaxIdle:     30,    // 最大空闲链接
+        MaxActive:   10000, // 最大链接
+        IdleTimeout: 240 * time.Second, // 空闲链接超时
+        Wait:        true, // 当连接池耗尽时,是否阻塞等待
+        Dial: func() (redis.Conn, error) {
+            c, err := redis.Dial("tcp", "127.0.0.1:6379", redis.DialPassword(""))
+            if err != nil {
+                return nil, err
+            }
+            return c, nil
+		},
+        TestOnBorrow: func(c redis.Conn, t time.Time) error {
+            if time.Since(t) < time.Minute {
+            	return nil
+            }
+        	_, err := c.Do("PING")
+        	return err
+        },
+    },
+}
+```
 
 ### 设置job执行超时时间TTR(TIME TO RUN)
 当job被消费者读取后,如果`job.TTR>0`,即job设置了执行超时时间,那么job会在读取后添加到bucket,并且设置`job.delay = job.TTR`,在TTR时间内没有得到消费者ack确认删除job,job将在TTR时间之后添加到`ready queue`,然后再次被消费(如果消费者在TTR时间之后才请求ack,会得到失败的响应)
@@ -184,11 +208,10 @@ return res
 netstat -anp | grep 9503 | wc -l
 tcp        0      0 10.8.8.188:41482        10.8.8.185:9503         TIME_WAIT   -                   
 ```
-这个在大并发的场景下是正常现象,socket连接为了保证每个连接正常关闭,会处于`TIME_WAIT`状态,并且等待2ML时间后消失; 如果要避免大量`TIME_WAIT`的连接导致tcp被耗尽;一般方法如下:
-- 使用长连接,而不是每个请求一个连接
+这个是正常现象,由tcp四次挥手可以知道,当接收到LAST_ACK发出的FIN后会处于`TIME_WAIT`状态,主动关闭方(客户端)为了确保被动关闭方(服务端)收到ACK，会等待2MSL时间，这个时间是为了再次发送ACK,例如被动关闭方可能因为接收不到ACK而重传FIN;另外也是为了旧数据过期,不影响到下一个链接,; 如果要避免大量`TIME_WAIT`的连接导致tcp被耗尽;一般方法如下:
+- 使用长连接
 - 配置文件,网上很多教程,就是让系统尽快的回收`TIME_WAIT`状态的连接
-- 使用连接池,当连接池耗尽时,阻塞等待,直到连接回收
-
+- 使用连接池,当连接池耗尽时,阻塞等待,直到回收再利用
 
 - bucket有job,但是pool没有job
 - bucket.JobNum计数有问题
