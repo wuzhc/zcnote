@@ -1,39 +1,46 @@
 ## 1. 概述
 `gmq`是基于`redis`提供的特性,使用`go`语言开发的一个简单易用的队列;关于redis使用特性可以参考之前本人写过一篇很简陋的文章[Redis 实现队列](https://segmentfault.com/a/1190000011084493);
-`gmq`的灵感和设计是基于[有赞延迟队列设计](https://tech.youzan.com/queuing_delay/),文章内容清晰而且很好理解,但是没有提供源码链接,在文章的最后也提到了一些未来架构方向,于是也就有了`gmq`
-> `gmq`不是简单按照有赞延迟队列设计来实现功能,而是经过自己的思考,在原有的设计的基础上,做了一些修改,文章的最后会有一个和原设计的对比
+`gmq`的灵感和设计是基于[有赞延迟队列设计](https://tech.youzan.com/queuing_delay/),文章内容清晰而且很好理解,但是没有提供源码,在文章的最后也提到了一些未来架构方向;  `gmq`不是简单按照有赞延迟队列的设计实现功能,在它的基础上,做了一些修改和优化,主要如下:
+- 功能上
+	- 多种任务模式,不单单只是延迟队列;例如:延迟队列,普通队列,优先级队列
+- 架构上:
+	-  添加job由`dispatcher`调度分配各个`bucket`,而不是由`timer`
+	-  每个`bucket`维护一个`timer`,而不是所有bucket一个`timer`
+	-  `timer`每次扫描`bucket`到期`job`时,会一次性返回多个到期`job`,而不是每次只返回一个`job`
+	- `timer`的扫描时钟由`bucket`中下个`job`到期时间决定,而不是每秒扫描一次
 
-## 2. gmq流程图如下:
-![一个不规范的流程图](../images/project/gmq流程图.png)
-
-### 2.1 延迟时间delay
-- 当job.delay>0时,job会被分配到bucket中,bucket会有周期性扫描到期job,如果到期,job会被bucket移到`ready queue`,等待被消费
-- 当job.delay=0时,job会直接加到`ready queue`,等待被消费
-
-### 2.2 执行超时时间TTR
-参考第一个图的流程,当job被消费者读取后,如果`job.TTR>0`,即job设置了执行超时时间,那么job会在读取后会被添加到TTRBucket(专门存放设置了超时时间的job),并且设置`job.delay = job.TTR`,如果在TTR时间内没有得到消费者ack确认然后删除job,job将在TTR时间之后添加到`ready queue`,然后再次被消费(如果消费者在TTR时间之后才请求ack,会得到失败的响应)
-
-### 2.3 确认机制
-主要和TTR的设置有关系,确认机制可以分为两种:
-- 当job.TTR=0时,消费者`pop`出job时,即会自动删除`job pool`中的job元数据
-- 当job.TTR>0时,即job执行超时时间,这个时间是指用户`pop`出job时开始到用户`ack`确认删除结束这段时间,如果在这段时间没有`ACK`,job会被再次加入到`ready queue`,然后再次被消费,只有用户调用了`ACK`,才会去删除`job pool`中job元数据
-
-## 3. web监控
-`gmq`提供了一个简单web监控平台,方便查看当前堆积任务数以及运行情况,默认监听端口为`9503`,界面如下:
-![](../images/project/gmq监控.png)
-
-## 4. 应用场景
+## 2. 应用场景
 - 延迟任务
     - 延迟任务,例如用户下订单一直处于未支付状态，半个小时候自动关闭订单
 - 异步任务
     - 异步任务,一般用于耗时操作,例如群发邮件等批量操作
 - 超时任务
-    - 规定时间内`(TTR)`没有执行完毕或程序被意外中断,以致于没有反馈ack给gmq,则gmq会在TTR之后将job重新加到队列然后再次被消费,一般用于数据比较敏感,不容丢失的
+    - 规定时间内`(TTR)`没有执行完毕或程序被意外中断,则消息重新回到队列再次被消费,一般用于数据比较敏感,不容丢失的
 - 优先级任务
-    - 当多个任务同时产生时,按照任务设定等级优先被消费,例如a,b两种类型的job,当有a类型job时优先消费,没有了再消费b类型job
-    
-## 5. 安装
-### 5.1 源码运行
+    - 当多个任务同时产生时,按照任务设定等级优先被消费,例如a,b两种类型的job,优秀消费a,然后再消费b
+
+## 3. gmq原理
+![gmq流程图](https://github.com/wuzhc/zcnote/raw/master/images/project/gmq%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+
+### 3.1 核心概念
+- `dispatcher`任务调度器,负责将`job`分配到`bucket`或直接推送到`ready queue`
+- `bucket`任务桶,用于存放延迟任务;每个`bucket`会维护一个`timer`定时器,然后将到期的`job`推送到`ready queue`
+- `ready queue`存放已准备好的`job`,等待被`consumer`消费
+
+### 3.2 延迟时间delay
+- 当job.delay>0时,job会被分配到bucket中,bucket会有周期性扫描到期job,如果到期,job会被bucket移到`ready queue`,等待被消费
+- 当job.delay=0时,job会直接加到`ready queue`,等待被消费
+
+### 3.3 执行超时时间TTR
+参考第一个图的流程,当job被消费者读取后,如果`job.TTR>0`,即job设置了执行超时时间,那么job会在读取后会被添加到TTRBucket(专门存放设置了超时时间的job),并且设置`job.delay = job.TTR`,如果在TTR时间内没有得到消费者ack确认然后删除job,job将在TTR时间之后添加到`ready queue`,然后再次被消费(如果消费者在TTR时间之后才请求ack,会得到失败的响应)
+
+### 3.3 确认机制
+主要和TTR的设置有关系,确认机制可以分为两种:
+- 当job.TTR=0时,消费者`pop`出job时,即会自动删除`job pool`中的job元数据
+- 当job.TTR>0时,即job执行超时时间,这个时间是指用户`pop`出job时开始到用户`ack`确认删除结束这段时间,如果在这段时间没有`ACK`,job会被再次加入到`ready queue`,然后再次被消费,只有用户调用了`ACK`,才会去删除`job pool`中job元数据
+  
+## 4. 安装
+### 4.1 源码运行
 配置文件位于`gmq/conf.ini`,可以根据自己项目需求修改配置
 ```bash
 git clone https://github.com/wuzhc/gmq.git
@@ -43,81 +50,108 @@ govendor sync
 go run main.go
 # go build # 可编译成可执行文件
 ```
-### 5.2 执行文件运行
+### 3.2 执行文件运行
 ```bash
-./gmq &
+# 启动
+./gmq start
+# 停止
+./gmq stop
+
+# 守护进程模式启动,不输出日志到console
+nohup ./gmq start >/dev/null 2>&1  &
+# 守护进程模式下查看日志输出(配置文件conf.ini需要设置target_type=file,filename=gmq.log)
+tail -f gmq.log
 ```
 
-## 6. 使用
-目前只实现python,go,php语言的客户端的demo
-### 6.1 php
-```php
-// consumer.php 消费者
-$client = new JsonRPC("127.0.0.1", 9503);
-while (true) {
-    $r = $client->Call("Service.Pop", array_slice($topic,rand(0,7)));
-    if (!$r) {
-        // 是否断开连接了
-        print_r($client->getErrors());exit;
-    }
-    print_r($r);
-    // sleep(2);
-    // print_r($r);
-    echo 'POP ' . $r['result']['id'] . PHP_EOL;
-    if (!empty($r['error'])) {
-        if ($r['error'] == 'empty') {
-            echo '[' . date('Y-m-d H:i:s') . '] no jobs and will sleep 3 seconds' . PHP_EOL;
-            echo '已处理' . $n . PHP_EOL;
-            // $client->close();
-            sleep(3);
-            continue;
-        }
-    }
-    $result = $r['result'];
-    if ($result['TTR'] > 0) {
-        echo 'ACK' . $result['id'] . PHP_EOL;
-        $r = $client->Call('Service.Ack', $result['id']);
-        // print_r($r);
-    }
-    $n++;
-    echo '已处理' . $n . PHP_EOL;
+## 5. 客户端
+目前只实现python,go,php语言的客户端的demo,参考:[https://github.com/wuzhc/demo/tree/master/mq](https://github.com/wuzhc/demo/tree/master/mq)
+### 运行
+```bash
+# php
+# 生产者
+php producer.php
+# 消费者
+php consumer.php
+
+# python
+# 生产者
+python producer.py
+# 消费者
+python consumer.py
+```
+
+### 一条消息结构
+```
+{
+    "id": "xxxx",	 # 任务id,这个必须是一个唯一值,将作为redis的缓存键
+    "topic": "xxx",  # topic是一组job的分类名,消费者将订阅topic来消费该分类下的job
+    "body": "xxx",   # 消息内容
+    "delay": "111",  # 延迟时间,单位秒
+    "TTR": "11111",  # 执行超时时间,单位秒
+    "status": 1,     # job执行状态,该字段由gmq生成
+    "consumeNum":1,  # 被消费的次数,主要记录TTR>0时,被重复消费的次数,该字段由gmq生成
 }
-$client->close();
 ```
 
+### 延迟任务
 ```php
-// consumer.php 生产者
-$client = new JsonRPC("127.0.0.1", 9503);
-for ($i = 0; $i < 100000; $i++) {
-    $data = [
+ $data = [
         'id'    => 'xxxx_id' . microtime(true) . rand(1,999999999),
-        'topic' => $topic[rand(0, 7)],
+        'topic' => ["topic_xxx"],
         'body'  => 'this is a rpc test',
-        'delay' => (string)rand(0, 1000),
-        'TTR'   => '3'
+        'delay' => '1800', // 单位秒,半个小时后执行
+        'TTR'   => '0'
     ];
-    $r = $client->Call("Service.Push", $data);
-    if ($client->getErrors()) {
-        echo $client->getErrors() . PHP_EOL;
-        sleep(3);
-    } else {
-        print_r($r);
-        echo $i . ' ' . $r['result'] . '---' . PHP_EOL;
-    }
-}
-$client->close();
 ```
+
+### 超时任务
+```php
+ $data = [
+        'id'    => 'xxxx_id' . microtime(true) . rand(1,999999999),
+        'topic' => ["topic_xxx"],
+        'body'  => 'this is a rpc test',
+        'delay' => '0', 
+        'TTR'   => '100' // 100秒后还未得到消费者ack确认,则再次添加到队列,将再次被被消费
+    ];
+```
+
+### 异步任务
+```php
+$data = [
+        'id'    => 'xxxx_id' . microtime(true) . rand(1,999999999),
+        'topic' => ["topic_xxx"],
+        'body'  => 'this is a rpc test',
+        'delay' => '0', 
+        'TTR'   => '0' 
+    ];
+```
+
+### 优先级任务
+```php
+$data = [
+        'id'    => 'xxxx_id' . microtime(true) . rand(1,999999999),
+        'topic' => ["topic_A","topic_B","topic_C"], //优先消费topic_A,消费完后消费topic_B,最后再消费topic_C
+        'body'  => 'this is a rpc test',
+        'delay' => '0', 
+        'TTR'   => '0' 
+    ];
+```
+
+## 6. web监控
+`gmq`提供了一个简单web监控平台(后期会提供根据job.Id追踪消息的功能),方便查看当前堆积任务数,默认监听端口为`8000`,例如:http://127.0.0.1:8000, 界面如下:
+![](https://github.com/wuzhc/zcnote/raw/master/images/project/gmq%E7%9B%91%E6%8E%A7.png)
+*后台模板来源于https://github.com/george518/PPGo_Job*
 
 ## 7. 遇到问题
 以下是开发遇到的问题,以及一些粗糙的解决方案
 
 ### 7.1 安全退出
 如果强行中止`gmq`的运行,可能会导致一些数据丢失,例如下面一个例子:  
-![gmq之timer定时器](../images/project/gmq之timer定时器.png)  
+![gmq之timer定时器](https://github.com/wuzhc/zcnote/raw/master/images/project/gmq%E4%B9%8Btimer%E5%AE%9A%E6%97%B6%E5%99%A8.png)  
 如果发生上面的情况,就会出现job不在`bucket`中,也不在`ready queue`,这就出现了job丢失的情况,而且将没有任何机会去删除`job pool`中已丢失的job,长久之后`job pool`可能会堆积很多的已丢失job的元数据;所以安全退出需要在接收到退出信号时,应该等待所有`goroutine`处理完手中的事情,然后再退出
 
 ####  7.1.1 `gmq`退出流程
-![gmq安全退出.png](../images/project/gmq安全退出.png)  
+![gmq安全退出.png](https://github.com/wuzhc/zcnote/raw/master/images/project/gmq%E5%AE%89%E5%85%A8%E9%80%80%E5%87%BA.png)  
 首先`gmq`通过context传递关闭信号给`dispatcher`,`dispatcher`接收到信号会关闭`dispatcher.closed`,每个`bucket`会收到`close`信号,然后先退出`timer`检索,再退出`bucket`,`dispatcher`等待所有bucket退出后,然后退出
 
 `dispatcher`退出顺序流程: `timer` -> `bucket` -> `dispatcher`
@@ -128,13 +162,12 @@ $client->close();
 - 15 对应SIGTERM
 - 1 对应SIGHUP
 - 2 对应SIGINT
-- [https://www.jianshu.com/p/5729fc095b2a](https://www.jianshu.com/p/5729fc095b2a)  
-![](https://upload-images.jianshu.io/upload_images/10118224-625e74bf4a2d4204.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/516/format/webp)
+- 信号参考[https://www.jianshu.com/p/5729fc095b2a](https://www.jianshu.com/p/5729fc095b2a)  
 
 ### 7.2 智能定时器
 - 每一个`bucket`都会维护一个`timer`,不同于有赞设计,`timer`不是每秒轮询一次,而是根据`bucket`下一个job到期时间来设置`timer`的定时时间 ,这样的目的在于如果`bucket`没有job或job到期时间要很久才会发生,就可以减少不必要的轮询;
 - `timer`只有处理完一次业务后才会重置定时器;,这样的目的在于可能出现上一个时间周期还没执行完毕,下一个定时事件又发生了
-- 如果到期的时间很相近,`timer`就会频繁重置定时器时间,就目前个人使用来说,还没出现什么性能上的问题
+- 如果到期的时间很相近,`timer`就会频繁重置定时器时间,就目前使用来说,还没出现什么性能上的问题
 
 ### 7.3 原子性问题
 我们知道redis的命令是排队执行,在一个复杂的业务中可能会多次执行redis命令,如果在大并发的场景下,这个业务有可能中间插入了其他业务的命令,导致出现各种各样的问题;  
@@ -204,11 +237,6 @@ Redis = &RedisDB{
 }
 ```
 
-### 7.5 热更新
-程序需要升级,但是又不能直接关闭服务,需要接收客户端的请求;而go不像php一样动态解析代码,go是编译成一个可执行文件,如果需要升级服务需要替换整个执行文件,一般操作如下:
-- 多部署几个服务,当服务需要升级时,一个个替换,把替换的服务请求打到其他服务,替换后在接收请求,类似的方式替换掉所有的服务
-- fork子进程,当子进程重启服务,父进程退出,子进程缺少父进程会成为孤儿进程,托管到init进程
-
 ## 8. 注意问题
 - job.id在`job pool`是唯一的,它将作为redis的缓存键;`gmq`不自动为job生成唯一id值是为了用户可以根据自己生成的job.id来追踪job情况,如果job.id是重复的,push时会报重复id的错误
 - bucket数量不是越多越好,一般来说,添加到`ready queue`的速度取决与redis性能,而不是bucket数量
@@ -227,3 +255,13 @@ tcp        0      0 10.8.8.188:41482        10.8.8.185:9503         TIME_WAIT   
 ## 10. 相关链接
 - [有赞延迟队列设计](https://tech.youzan.com/queuing_delay/)
 - [Redis 实现队列](https://segmentfault.com/a/1190000011084493)
+
+## 11. 未来计划
+- 支持安全传输层协议（TLS）
+- 除了`json`外,可支持`protobuf`序列化
+- web监控工具提供消息追踪功能
+- 增加分布式部署方案
+- 增加数据统计收集器
+- 可持久化到磁盘
+- 支持http协议
+- 增加调试和分析 pprof

@@ -40,4 +40,53 @@ select count(*) as total from user where date_sub(curdate(), interval 7 day) < d
 
 # 统计上一个数据量
 select count(*) as total from user where period_diff(date_format(now(),'%Y-%m'), date_format(create_date, '%Y-%m')) = 1
+
+# 创建表
+create table fund (
+	id int(11) unsigned auto_increment,
+	code varchar(50) not null comment '指数代码',
+	name varchar(225) not null comment '指数名称',
+	cur_rate float default 0 comment '当前估值增长率',
+	profit float default 0 comment '累计盈利',
+	lose float default 0 comment '累计亏本',
+	supplement float default 0 comment '累计补仓',
+	total_money float default 0 comment '当前持仓金额',
+	create_date datetime default null comment '创建时间',
+	buy_date datetime default null comment '购买时间',
+	sell_date datetime default null comment '卖出时间',
+	status tinyint default 0 comment '0正常,1删除',
+	primary key (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '基金表'
+
+create table fund_networth (
+	id int(11) unsigned auto_increment,
+	fund_id int(11) unsigned not null,
+	day date not null comment '净值日期',
+	value float default 0 comment '单位净值',
+	rate float default 0 comment '日增长率',
+	status tinyint(1) default 0 comment '0正常,1删除',
+	primary key (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '基金历史净值表'
+
+
+create table fund_day_profit (
+	id int(11) unsigned auto_increment,
+	fund_id int(11) unsigned not null,
+	day date not null comment '收益日期',
+	profit float default 0 comment '收益',
+	rate float default 0 comment '日增长率',
+	money float default 0 comment '计算收益的金额度',
+	status tinyint(1) default 0 comment '0正常,1删除',
+	primary key (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '基金每天收益表'
+
+create table fund_operation (
+	id int(11) unsigned auto_increment,
+	fund_id int(11) unsigned not null,
+	day date not null comment '操作时间',
+	money float default 0 comment '操作金额',
+	type tinyint(1) not null comment '1买入,2卖出',
+	cur_rate float default 0 comment '当前估值增长率',
+	primary key (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '基金操作表'
 ```

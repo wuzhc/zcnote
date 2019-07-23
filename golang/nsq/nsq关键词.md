@@ -1,0 +1,6 @@
+- 分布式
+- 高吞吐量
+- golang
+- nsqd
+- nsqlookupd
+- nsqadmin

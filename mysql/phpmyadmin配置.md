@@ -13,7 +13,7 @@ $cfg['Servers'][$i]['port'] = 3306
 // mysql套接字,通过mysql的status命令可以知道套接字,只能配合host为localhost有效(MySQL服务器必须和网站服务器在同一台服务器上)
 $cfg['Servers'][$i]['socket'] = 'mysql.sock'
 
-// 认证类型,有四种类型,`config`表示账号密码定义到配置文件,需要账号密码就可以直接进入phpmyadmin,`http`和`cookie`是通过账号密码登录认证,`signon`不懂
+// 认证类型,有四种类型,`config`表示账号密码定义到配置文件,不需要账号密码就可以直接进入phpmyadmin,`http`和`cookie`是通过账号密码登录认证,`signon`不懂
 $cfg['Servers'][$i]['auth_type'] = 'config'
 
 // 允许登录界面输入mysql地址
