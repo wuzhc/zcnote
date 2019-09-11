@@ -45,6 +45,13 @@ fmt.Println(bool(i)) // 报错:cannot convert q (type int) to type bool
 - 函数外部，对当前包可见
 - 函数外部且首字母是大写，对所有包可见
 
+### 变量简短模式
+例如:`name:="wuzhc"`
+变量简短模式限制： 
+- 定义变量同时显式初始化 
+- 不能提供数据类型 
+- 只能在函数内部使用
+
 ### 首行代码 package <name>
 表示当前文件属于哪个包，如果是package main表示当前文件是编译后是一个可执行文件，编译后可执行文件存放在bin目录
 > 但是同一目录下的文件包名必须一致
@@ -81,12 +88,13 @@ f, _ := os.Open("xxxxxx")
 ```
 
 ### 常量定义
-常量是编译阶段就需要确定的,在程序运行的过程中无法改变的值
 ```go
 const  Pi  float32 = 3.14159
 const  Pi = 3.14159 // 可以不指定类型
 const  res = 10 * 10 // 可以是表达式,当必须是知道结果
 ```
+- 常量是编译阶段就需要确定的,在程序运行的过程中无法改变的值
+- 常量不同于变量的在运行期分配内存，常量通常会被编译器在预处理阶段直接展开，作为指令数据使用，所以不能在程序中获取常量的地址
 
 ### 常量值省略
 在常量组中，如不提供类型和初始化值，那么视作与上一个常量相同。一般只要第一个常量初始化值即可
@@ -551,6 +559,7 @@ func main() {
 - 最后执行
 - 多个defer按照先进后出的方式执行
 - 闭包中会先执行值，最后再调用结果
+- defer函数有参数是函数,则会先调用函数计算出结果
 ```go
 package main
 
@@ -563,7 +572,7 @@ func main() {
 	v := 1
 
 	fn1 := func() {
-		fmt.Println("fn1", v)
+		fmt.Println("fn1", v) // v和函数外的v的同一个地址,要改变这种情况,则需要将外层的v作为参数传进来
 	}
 	fn2 := func() {
 		fmt.Println("fn2", v)
@@ -596,6 +605,7 @@ fn1 2
 - panic抛出错误
 - recover捕获错误
 go通过panic抛出一个异常，然后在defer中通过recover捕获这个异常
+- 如果defer中又有`panic`,则会覆盖上一个`panic`
 ```go
 package main
 
@@ -615,7 +625,12 @@ func div(x, y int) (int, error) {
 
 func main() {
 	defer func() {
-		fmt.Println(recover())
+		fmt.Println(recover().(func() error)())
+	}()
+	defer func() {
+		panic(func() error {
+			return errors.New("why...")
+		})
 	}()
 
 	switch z, err := div(10, 0); err {
@@ -844,3 +859,64 @@ go指针没有像C语言的指针那么强大,不能自增自减,不能对下标
 -  可以通过“&”取指针的地址
 - 可以通过“*”取指针指向的数据
 
+### goto的使用
+***goto不能跳转到其他函数或者内层代码***
+```golang
+package main
+import (
+	"fmt"
+)
+func main() {
+	for i := 0; i < 10; i++ {
+		println(i)
+		goto loop
+	}
+loop:
+	fmt.Println("hello")
+}
+```
+
+## type声明或别名
+```golang
+type myInt int //基于int类型创建了myInt类型,int不等于myInt
+type myInt = int //int的别名myInt,int等于myInt,只是别名别名别名
+```
+
+## 组合继承
+匿名字段来实现继承,多个父类时可以有同样的属性名称和方法名称,但是不能调用他们,要指定是哪个父类的
+```golang
+package main
+
+import "fmt"
+
+type T1 struct {
+	name string
+}
+
+func (t T1) m1() {
+	fmt.Println("T1.m1")
+}
+
+func (t T1) m2() {
+	fmt.Println("T1.m2")
+}
+
+type T2 struct {
+	name string
+}
+
+func (t T2) m2() {
+	fmt.Println("T2.m2")
+}
+
+type MyStruct struct {
+	T1
+	T2
+}
+
+func main() {
+	my := MyStruct{}
+	my.m1()
+}
+
+```
