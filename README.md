@@ -83,6 +83,7 @@
         * [nsq基础入门](golang%2Fnsq%2Fnsq%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8.md)
         * [nsq客户端](golang%2Fnsq%2Fnsq%E5%AE%A2%E6%88%B7%E7%AB%AF.md)
         * [nsq疑问](golang%2Fnsq%2Fnsq%E7%96%91%E9%97%AE.md)
+        * [nsq退出流程](golang%2Fnsq%2Fnsq%E9%80%80%E5%87%BA%E6%B5%81%E7%A8%8B.md)
 * javascript
     * [js_dom](javascript%2Fjs_dom.md)
 * linux
@@ -114,6 +115,7 @@
         * [mycat问题汇集](mysql%2Fmycat%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6%2Fmycat%E9%97%AE%E9%A2%98%E6%B1%87%E9%9B%86.md)
     * [mysql8.0不能登录phpmyadmin问题](mysql%2Fmysql8.0%E4%B8%8D%E8%83%BD%E7%99%BB%E5%BD%95phpmyadmin%E9%97%AE%E9%A2%98.md)
     * [mysql事务处理](mysql%2Fmysql%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86.md)
+    * [mysql各种锁简介](mysql%2Fmysql%E5%90%84%E7%A7%8D%E9%94%81%E7%AE%80%E4%BB%8B.md)
     * [mysql存储引擎区别](mysql%2Fmysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E5%8C%BA%E5%88%AB.md)
     * [mysql导入导出数据库数据表](mysql%2Fmysql%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E8%A1%A8.md)
     * [mysql常用sql语句](mysql%2Fmysql%E5%B8%B8%E7%94%A8sql%E8%AF%AD%E5%8F%A5.md)
@@ -217,18 +219,17 @@
 * 算法
     * [array_sort](%E7%AE%97%E6%B3%95%2Farray_sort.md)
     * [dfa](%E7%AE%97%E6%B3%95%2Fdfa.md)
+    * [二叉树](%E7%AE%97%E6%B3%95%2F%E4%BA%8C%E5%8F%89%E6%A0%91.md)
     * [广度搜索算法bfs](%E7%AE%97%E6%B3%95%2F%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95bfs.md)
+    * [最小堆](%E7%AE%97%E6%B3%95%2F%E6%9C%80%E5%B0%8F%E5%A0%86.md)
     * [算术表达式求值](%E7%AE%97%E6%B3%95%2F%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC.md)
 * 项目
-    * [code](%E9%A1%B9%E7%9B%AE%2Fcode.md)
     * [gmq消息队列](%E9%A1%B9%E7%9B%AE%2Fgmq%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97.md)
-    * [博客](%E9%A1%B9%E7%9B%AE%2F%E5%8D%9A%E5%AE%A2.md)
     * [工作周报生成器](%E9%A1%B9%E7%9B%AE%2F%E5%B7%A5%E4%BD%9C%E5%91%A8%E6%8A%A5%E7%94%9F%E6%88%90%E5%99%A8.md)
     * [推送系统设计](%E9%A1%B9%E7%9B%AE%2F%E6%8E%A8%E9%80%81%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1.md)
     * 美食每刻
         * [美食每刻](%E9%A1%B9%E7%9B%AE%2F%E7%BE%8E%E9%A3%9F%E6%AF%8F%E5%88%BB%2F%E7%BE%8E%E9%A3%9F%E6%AF%8F%E5%88%BB.md)
         * [群聊设计](%E9%A1%B9%E7%9B%AE%2F%E7%BE%8E%E9%A3%9F%E6%AF%8F%E5%88%BB%2F%E7%BE%A4%E8%81%8A%E8%AE%BE%E8%AE%A1.md)
-        * [群聊设计php版本](%E9%A1%B9%E7%9B%AE%2F%E7%BE%8E%E9%A3%9F%E6%AF%8F%E5%88%BB%2F%E7%BE%A4%E8%81%8A%E8%AE%BE%E8%AE%A1php%E7%89%88%E6%9C%AC.md)
     * [美食每刻](%E9%A1%B9%E7%9B%AE%2F%E7%BE%8E%E9%A3%9F%E6%AF%8F%E5%88%BB.md)
 ## 目录自动生成器
 - [https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go](https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go)
