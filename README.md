@@ -32,6 +32,7 @@
     * [laradock各个服务配置说明](docker%2Flaradock%E5%90%84%E4%B8%AA%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E.md)
 * golang
     * base
+        * [go切片和interface{}转换](golang%2Fbase%2Fgo%E5%88%87%E7%89%87%E5%92%8Cinterface%7B%7D%E8%BD%AC%E6%8D%A2.md)
         * [go包govendor管理](golang%2Fbase%2Fgo%E5%8C%85govendor%E7%AE%A1%E7%90%86.md)
         * [go协程知识](golang%2Fbase%2Fgo%E5%8D%8F%E7%A8%8B%E7%9F%A5%E8%AF%86.md)
         * [go原子操作atomic](golang%2Fbase%2Fgo%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9Catomic.md)
@@ -59,20 +60,24 @@
         * [go的sync包使用](golang%2Fbase%2Fgo%E7%9A%84sync%E5%8C%85%E4%BD%BF%E7%94%A8.md)
         * [go的并发安全问题](golang%2Fbase%2Fgo%E7%9A%84%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98.md)
         * [go系统命令执行exec](golang%2Fbase%2Fgo%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8Cexec.md)
-        * [go线程池实现](golang%2Fbase%2Fgo%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%AE%9E%E7%8E%B0.md)
+        * [go线程池sync.Pool使用](golang%2Fbase%2Fgo%E7%BA%BF%E7%A8%8B%E6%B1%A0sync.Pool%E4%BD%BF%E7%94%A8.md)
         * [go结构体匿名成员](golang%2Fbase%2Fgo%E7%BB%93%E6%9E%84%E4%BD%93%E5%8C%BF%E5%90%8D%E6%88%90%E5%91%98.md)
         * [go缓冲io之bufio.Scanner](golang%2Fbase%2Fgo%E7%BC%93%E5%86%B2io%E4%B9%8Bbufio.Scanner.md)
         * [go调试工具gdb使用](golang%2Fbase%2Fgo%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7gdb%E4%BD%BF%E7%94%A8.md)
         * [go通信框架thrift使用](golang%2Fbase%2Fgo%E9%80%9A%E4%BF%A1%E6%A1%86%E6%9E%B6thrift%E4%BD%BF%E7%94%A8.md)
         * [go闭包](golang%2Fbase%2Fgo%E9%97%AD%E5%8C%85.md)
-        * [切边和interface{}转换](golang%2Fbase%2F%E5%88%87%E8%BE%B9%E5%92%8Cinterface%7B%7D%E8%BD%AC%E6%8D%A2.md)
     * beego
         * [beego入门知识](golang%2Fbeego%2Fbeego%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86.md)
         * [beego日志模块源码](golang%2Fbeego%2Fbeego%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97%E6%BA%90%E7%A0%81.md)
         * [beego注意问题](golang%2Fbeego%2Fbeego%E6%B3%A8%E6%84%8F%E9%97%AE%E9%A2%98.md)
     * gmq
         * [gmq快速入门](golang%2Fgmq%2Fgmq%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8.md)
+        * [gmq持久化消息](golang%2Fgmq%2Fgmq%E6%8C%81%E4%B9%85%E5%8C%96%E6%B6%88%E6%81%AF.md)
+        * [gmq消息确认机制](golang%2Fgmq%2Fgmq%E6%B6%88%E6%81%AF%E7%A1%AE%E8%AE%A4%E6%9C%BA%E5%88%B6.md)
+        * [gmq通信协议](golang%2Fgmq%2Fgmq%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE.md)
+    * [go临时对象池sync.Pool使用](golang%2Fgo%E4%B8%B4%E6%97%B6%E5%AF%B9%E8%B1%A1%E6%B1%A0sync.Pool%E4%BD%BF%E7%94%A8.md)
     * [go入门知识](golang%2Fgo%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86.md)
+    * [go协议解析](golang%2Fgo%E5%8D%8F%E8%AE%AE%E8%A7%A3%E6%9E%90.md)
     * [go垃圾回收gc机制](golang%2Fgo%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6gc%E6%9C%BA%E5%88%B6.md)
     * [go的interface接口深入理解](golang%2Fgo%E7%9A%84interface%E6%8E%A5%E5%8F%A3%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md)
     * [go的new和make区别](golang%2Fgo%E7%9A%84new%E5%92%8Cmake%E5%8C%BA%E5%88%AB.md)
@@ -80,6 +85,7 @@
     * [go的协程调度原理](golang%2Fgo%E7%9A%84%E5%8D%8F%E7%A8%8B%E8%B0%83%E5%BA%A6%E5%8E%9F%E7%90%86.md)
     * [go闭包详解](golang%2Fgo%E9%97%AD%E5%8C%85%E8%AF%A6%E8%A7%A3.md)
     * nsq
+        * [nsqd磁盘消息](golang%2Fnsq%2Fnsqd%E7%A3%81%E7%9B%98%E6%B6%88%E6%81%AF.md)
         * [nsq基础入门](golang%2Fnsq%2Fnsq%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8.md)
         * [nsq客户端](golang%2Fnsq%2Fnsq%E5%AE%A2%E6%88%B7%E7%AB%AF.md)
         * [nsq疑问](golang%2Fnsq%2Fnsq%E7%96%91%E9%97%AE.md)
@@ -216,14 +222,17 @@
     * [tcp](tcp%2Ftcp.md)
     * [udp](tcp%2Fudp.md)
     * [websocket](tcp%2Fwebsocket.md)
-* 算法
-    * [array_sort](%E7%AE%97%E6%B3%95%2Farray_sort.md)
-    * [dfa](%E7%AE%97%E6%B3%95%2Fdfa.md)
-    * [二叉树](%E7%AE%97%E6%B3%95%2F%E4%BA%8C%E5%8F%89%E6%A0%91.md)
-    * [广度搜索算法bfs](%E7%AE%97%E6%B3%95%2F%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95bfs.md)
-    * [最小堆](%E7%AE%97%E6%B3%95%2F%E6%9C%80%E5%B0%8F%E5%A0%86.md)
-    * [算术表达式求值](%E7%AE%97%E6%B3%95%2F%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC.md)
+* 数据结构和算法
+    * [array_sort](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Farray_sort.md)
+    * [dfa](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fdfa.md)
+    * [二叉树](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E4%BA%8C%E5%8F%89%E6%A0%91.md)
+    * [广度搜索算法bfs](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95bfs.md)
+    * [最小堆](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E6%9C%80%E5%B0%8F%E5%A0%86.md)
+    * [算术表达式求值](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC.md)
+    * [跳跃表](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E8%B7%B3%E8%B7%83%E8%A1%A8.md)
+    * [链表](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E9%93%BE%E8%A1%A8.md)
 * 项目
+    * gmq
     * [gmq消息队列](%E9%A1%B9%E7%9B%AE%2Fgmq%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97.md)
     * [工作周报生成器](%E9%A1%B9%E7%9B%AE%2F%E5%B7%A5%E4%BD%9C%E5%91%A8%E6%8A%A5%E7%94%9F%E6%88%90%E5%99%A8.md)
     * [推送系统设计](%E9%A1%B9%E7%9B%AE%2F%E6%8E%A8%E9%80%81%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1.md)
