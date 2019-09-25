@@ -27,10 +27,43 @@ go test -v -run <func_name> // 指定测试函数名称
 ```go
 func BenchmarkXXX(b *testing.B) {/****/}
 ```
-#### 执行命令
-默认情况下,不会执行性能测试函数,需要在命令行加上`-bench=.`
+
+**默认情况下,不会执行性能测试函数,需要在命令行加上`-bench=.`**
 ```bash
 go test -v -bench=. // . 执行所有性能函数,或者可以指定函数
+```
+- `-benchtime` 可以控制benchmark的运行时间
+- `b.ReportAllocs()` ，在report中包含内存分配信息，例如结果是:
+```
+BenchmarkStringJoin1-4 300000 4351 ns/op 32 B/op 2 allocs/op
+-4表示4个CPU线程执行；300000表示总共执行了30万次；4531ns/op，表示每次执行耗时4531纳秒；32B/op表示每次执行分配了32字节内存；2 allocs/op表示每次执行分配了2次对象。
+```
+-  StopTimer() 和 StartTimer() 暂停和开始计时  
+```go
+func Benchmark_TimeConsumingFunction(b *testing.B) {
+	b.StopTimer() //调用该函数停止压力测试的时间计数
+
+	//做一些初始化的工作,例如读取文件数据,数据库连接之类的,
+	//这样这些时间不影响我们测试函数本身的性能
+
+	b.StartTimer() //重新开始时间
+	for i := 0; i < b.N; i++ {
+		Division(4, 5)
+	}
+}
+```
+
+### 导出pprof文件
+```bash
+# 导出
+go test -bench=. -cpuprofile profile_cpu.out
+go test -bench=. -memprofile profile_mem.out
+# 进入pprof
+go tool pprof skiplist.test profile_cpu.out
+# 导出svg
+go tool pprof -svg profile_cpu.out > profile_cpu.svg
+# 导出火焰图
+go-torch -b profile_cpu.out -f profile_cpu.torch.svg
 ```
 
 ## 示例函数
