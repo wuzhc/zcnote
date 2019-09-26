@@ -28,7 +28,11 @@ go run main.go # 启动节点,启动成功后,节点会向注册中心注册自�
 ```
 
 ## 工作原理
-![https://github.com/wuzhc/zcnote/raw/master/images/gmq/gmq%E6%B5%81%E7%A8%8B%E5%9B%BE.png](https://github.com/wuzhc/zcnote/raw/master/images/gmq/gmq%E6%B5%81%E7%A8%8B%E5%9B%BE.png)  
+### 发布和拉取消息
+![发布和拉取消息](https://github.com/wuzhc/zcnote/raw/master/images/gmq/gmq%E6%B5%81%E7%A8%8B%E5%9B%BE.png) 
+
+### 确认消息
+![确认消息](https://raw.githubusercontent.com/wuzhc/zcnote/master/images/gmq/%E6%B6%88%E6%81%AF%E7%A1%AE%E8%AE%A4%E6%9C%BA%E5%88%B6.png)  
 
 ## 传输协议
 ### 请求数据包
