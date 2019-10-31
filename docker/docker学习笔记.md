@@ -72,6 +72,8 @@ docker run hello-world
 # –name 给启动的容器自定义名称，方便后续的容器选择操作
 # -d是后台守护进程的意思
 # -p 8080:80指定映射端口
+# -i interactive告诉docker保持标准输入流对容器开发
+# -t tty告诉docker为容器分配一个虚拟终端
 # -v /my/data/:/data/多个挂载卷使用多个-v,注意多个时挂载卷不要相互嵌套
 docker run -t -i -d --name=自定义名称 IMAGE_NAME /bin/bash
 
@@ -146,6 +148,10 @@ docker system df
 
 # 清理磁盘,删除关闭容器,无用的数据卷和网络,以及dangling镜像(即无tag的镜像),`-a`删除的更彻底
 docker system prune -a
+
+# 查看容器列名
+docker ps --format "table"
+docker ps -a --format "{{.Image}} {{.Names}}" | grep gmq
 
 # 删除所有关闭的容器
 docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
@@ -274,6 +280,14 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 EXPOSE 6379
 CMD [ "redis-server" ]
 ```
+##### CMD和ENTRYPOINT经常一起使用
+`ENTRYPOINT`作为执行命令,`CMD`作为命令参数,例如下面的dockerfile的定义:
+```
+CMD ["-node_id=1"]
+ENTRYPOINT ["gnode"]
+```
+如果`docker run`不带有参数时,会执行如下命令:`gnode -node_id=1`,如果带有参数则参数会覆盖CMD命令,然后作为`ENTRYPOINT`命令的参数
+
 docker-entrypoint.sh脚本中会根据CMD ["redis-server"]的命令作为参数，例如$1==redis-server
 #### 6.5 ENV 设置环境变量
 > ENV 设置环境变量可以在Dockerfile使用，或者在容器运行时使用
@@ -324,6 +338,12 @@ RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/downloa
 # 设置 CMD，并以另外的用户执行
 CMD [ "exec", "gosu", "redis", "redis-server" ]
 ```
+
+`docker`还为`docker run`和`docker create`提供`-u`或`--user`选项来设置`run-as`用户,例如将用户设置为`nobody`:
+```bash
+docker run --rm --user nobody:用户组 镜像 id
+```
+
 #### 6.10 HEALTHCHECK 健康检查
 > 和 CMD, ENTRYPOINT 一样，HEALTHCHECK 只可以出现一次，如果写了多个，只有最后一个生效。格式如下：
 ```bash
@@ -350,7 +370,6 @@ docker是C/S架构，构建是发生在Server端，例如当我们进行镜像�
  docker build -t nginx:v3 . 
 ```
 ` docker build -t nginx:v3 .`**最后面的点是在指定上下文的目录（默认和Dockerfile同个目录），不是当前目录的意思**，docker build 命令会将该目录下的内容打包交给 Docker 引擎以帮助构建镜像。知道这点有什么有？举个例子，Dockerfile中`COPY ./package.json /app/`指令中，拷贝上下文目录的package.json到app，如果理解为当前目录，然后用`COPY ../package.json /app/`指令来拷贝是上一级目录文件，这是错误的做法，报错如下，因为上下文目录是点，docker引擎只知道该目录，并不知道上一级目录
-
 报错信息：
 
 ```bash
@@ -366,4 +385,7 @@ COPY failed: Forbidden path outside the build context: ../test.txt ()
 ### 疑问
 - docker run可以指定端口映射，但是容器一旦生成，就没有一个命令可以直接修改
 参考[修改docker容器端口映射的方法]  (https://blog.csdn.net/m0_37886429/article/details/82757116)，注意需要root权限
+
+## docker守护进程启动选项
+- https://www.cnblogs.com/or2-/p/8087301.html
 

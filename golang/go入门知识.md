@@ -349,6 +349,28 @@ var ch1 chan int = make(chan int) // 通过make创建一个channel类型
 - 对于发送者来说，直到channel满时会阻塞，直到被接收者接受；
 - 对于接收者来说，channel为空时，接收会阻塞，直到channel有数据
 
+## 缓存channel迭代
+**使用range迭代channel时,需要在channel的最后调用close,否则会一直迭代下去,直到channel没有数据报错**
+```go
+package main
+
+import "fmt"
+
+func main() {
+	c := make(chan string)
+
+	go func() {
+		for i := 0; i < 10; i++ {
+			c <- "hello there"
+		}
+		close(c) // 要调用close
+	}()
+	for msg := range c {
+		fmt.Println(msg) 
+	}
+}
+```
+
 ### 无缓冲通道
 无缓冲通道即同步通道,它可以同步两个`goroutine`,当一个`goroutine`读取时,通道没有数据会阻塞,直到另一个`goroutine`写入数据,相反也一样
 
@@ -382,6 +404,7 @@ close(c)
 总的来说就是通道用于多个`goroutine`通信,如果只剩一个协程`main goroutine`,就没有意义了
 
 ### channel发送和接受，关闭
+关闭带有缓存的channel时,程序会在读取完channel所有数据,然后在执行关闭
 ```go
 var ch chan int = make(chan int)
 ch <- 1 // 发送数据到channel
