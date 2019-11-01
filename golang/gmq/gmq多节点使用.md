@@ -1,7 +1,13 @@
-- `gregister`是`gmq`的注册中心,它的职责仅仅是记录每一个`gnode`的基本信息,不涉及消息的路由和分派
-- 每一个`gnode`启动的时候,都会向`gregister`注册自己
-- `gnode`运行不依赖于`gregister`,即`gregister`挂掉不会影响`gnode`的运行,客户端可以选择直接连接`gnode`,或者连接`gregister`获得各个`gnode`节点信息然后再把消息分派给`gnode`
-- `gregister`提供了获取注册中心节点的`api`接口,默认可以请求`http://127.0.0.1:9595/getNodes`,返回结构`json`格式,如下:
+如图:
+- node节点为客户端提供消息处理的服务
+- 每一个node节点启动的时候,都会向register注册中心注册自己的信息
+- 客户端通过获取register注册中心已注册的节点列表,然后选择节点建立连接
+
+说明:  
+在这个过程中,`register`仅仅只是提供`node`节点信息存储,不参与其他业务,而`client`是直接连接到`node`,所以即使`register`挂掉,也不会影响`node`的运行,客户端仍然可以继续推送消费消息
+
+## 多节点使用
+`register`提供了用于获取节点列表`api`接口,register`启动时http默认端口为`9595`,可以通过调用`http://127.0.0.1:9595/getNodes`获取,返回结构如下:
 ```json
 {
     "code": 0,
@@ -22,14 +28,14 @@
 }
 ```
 - `id` 节点ID,取值范围为1到1024,每个节点的ID必须是唯一
-- `http_addr` api接口地址
+- `http_addr` 节点http服务地址
 - `http_tls` 是否启用tls,0否,1是
-- `tcp_addr` tcp地址
+- `tcp_addr` 节点tcp服务地址
 - `tcp_tls` 是否启用tls,0否,1是
 - `join_time` 节点注册时间
 - `weight` 节点权重,客户端可以根据节点权重分配消息
 
-## 客户端
+## 客户端建立和节点的连接
 首先需要从注册中心获得所有节点信息,然后根据节点的`tcp_addr`地址来建立连接,一个客户端会维护一个节点连接,客户端结构如下:
 
 ```go
