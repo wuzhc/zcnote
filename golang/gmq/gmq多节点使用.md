@@ -1,4 +1,5 @@
 如图:
+![多节点使用](https://gitee.com/wuzhc123/zcnote/raw/master/images/gmq/gmq%E5%A4%9A%E8%8A%82%E7%82%B9%E6%B3%A8%E5%86%8C.png)
 - node节点为客户端提供消息处理的服务
 - 每一个node节点启动的时候,都会向register注册中心注册自己的信息
 - 客户端通过获取register注册中心已注册的节点列表,然后选择节点建立连接
@@ -182,5 +183,5 @@ for i := 0; i < 10; i++ {
 ```
 
 ## 客户端完整代码
-- [golang版本](https://github.com/wuzhc/gmq-client)
+- [gmq客户端完整代码](https://github.com/wuzhc/gmq-client)
 
