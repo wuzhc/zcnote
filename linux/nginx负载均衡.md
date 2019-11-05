@@ -33,7 +33,7 @@ server {
 - 轮询权重weight
 - ip_hash 将ip固定分配到某台服务器,可以解决session共享问题
 - url_hash
-- least_conn
+- least_conn 最小链接数
 
 ## upstream设置负载均衡调度状态
 - down 当前server不参与负载均衡
