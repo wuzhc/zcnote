@@ -1,27 +1,35 @@
-- nsqd是如何做存储,为什么性能这么快
-- 发布一个消息到nsqd后,是写入存储后返回给client吗,client是接收响应后再进行下一个消息推送吗?
-  - publish命令 
-  - 包装成ProducerTransaction结构,写入w.transactionChan通道,等待doChan返回 
-  - 有个select轮询会在等待着 
-  - select响应w.transactionChan通道,把ProducerTransaction结构写入w.transactions切片,然后发送命令发送给server 
-  - select响应w.responseChan,从w.transactions切片获得ProducerTransaction结构,完成ProducerTransaction.doChan
+- 去中心化,处理单点故障
+- 消息的可靠性,持久化
+- 消息负载处理,合理不超过客户端消费能力情况下把消息分发到不同的客户端
 
-- tlsConfig的值怎么用的,要通过configHandlers来操作吗
+## server端
+client有好几个状态
+- sampleRate
+- SetOutputBuffer
+- IdentifyEventChan
 
-- 消费者是不是要指定消费某个channel 
-> 是的
+- subEventChan
 
-- 多个channel都是同一份数据,会不会浪费
-> 这是为了分发,到底会不会浪费,要看下是如何存储数据的
+## 发送`rdy`,服务端会怎么处理?
+- 设置客户端的`ReadyCount`为`rdy`
+- 尝试更新准备状态`tryUpdateReadyState` -> `ReadyStateChan<-1`
 
-- 消费者通过`rdy`告诉`nsq`自己可以处理多少条消息,那么nsq是一条条返回还是批量一致性返回给消费者
-> 待定
+## 服务端是有消息就主动推送,还是接收到`rdy`才被动推送?
+服务端是通过启用`messagePump`协程来主动推送的,推送的频率根据客户端的`rdy`来限制,`rdy`会和服务端的`inFlight`做比较,当`inFlight`正在处理的消息超过`rdy`,不推送
 
-- 如果多个消费者同时订阅同一个topic,这种时候nsq是如何分配给多个消费者,每个消费者的rdy应该不一样的吧
-> 待定
+## 服务端如何保证推送速度不会压垮消费速度慢的客户端
+客户端发送`rdy`的频率怎么样?
+- 比如服务端没有消息了,这个时候客户端是定期发送`rdy`吗
+- 是不是发送的`rdy = rdyCount - inFlight`?
+- 接收到一个消息`inFilght+1`,处理完一个消息`inFilght-1`?
+- 客户端是拥有多个连接的,`totalRdyCount`是要分配给各个连接吗?
+- 客户端`inBackoff`又是表示什么意思?
+- 消费者的`maxInFlight`和`totalRdyCount`有什么关系?
+## 解答
+- 当一个连接发送`rdy`给服务端,会更新消费者的`totalRdyCount`
+- 如果消息消费失败,消费者会暂停从服务器消费消息,给其他消费者更多机会
 
-- nsqd用到了很多的atomic.Value.Store来保存值,这有什么用呢???
 
-- nsqd将消息存放在磁盘哪里,格式是怎么样的?
 
-- nsqd如何处理延迟消息
+
+

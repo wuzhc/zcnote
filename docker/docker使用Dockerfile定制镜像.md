@@ -58,3 +58,13 @@ USER redis
 # -t指定镜像的名称, .表示上下文(当前目录)
 docker build -t nginx:v3 .
 ```
+
+## 加速`apt-get`命令
+https://learnku.com/articles/26066	
+https://opsx.alibaba.com/mirror
+```bash
+RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list && rm -Rf /var/lib/apt/lists/* && apt-get update
+```
+
+
+

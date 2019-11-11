@@ -13,7 +13,7 @@
 ## 连接过程
 - 服务端启动sshd,自动生成公钥到`/etc/ssh/ssh_host_*`
 - 客户端连接请求
-- 服务端传送自己的公钥到客户端
+- 服务端传送自己的公钥发给到客户端
 - 客户端将服务端的公钥记录到`~/.ssh/known_hosts`,并利用服务端的公钥加密数据,将数据传输给服务端
 - 服务端利用自己的私钥进行数据解密
 
@@ -50,7 +50,7 @@ Are you sure you want to continue connecting (yes/no)? yes
 删除`/etc/ssh/ssh_host*`,然后重启`sshd`
 ```bash
 rm /etc/ssh/ssh_host*
-sudo /etc/init.d/ssh start
+sudo /etc/init.d/sshd start
 ```
 
 ## 更新客户端
@@ -127,7 +127,7 @@ ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
 ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
 
-# 修改root密码,这里连接到时候需要密码,或者不同root,自己新建一个用户
+# 修改root密码,这里连接到时候需要密码,或者不用root,自己新建一个用户
 passwd root
 
 # 编写启动脚本

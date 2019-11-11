@@ -52,6 +52,19 @@ fmt.Println(bool(i)) // 报错:cannot convert q (type int) to type bool
 - 不能提供数据类型 
 - 只能在函数内部使用
 
+### 位运算,取反运算
+以下需要常记的
+```bash
+# 左移
+1<<2 # 表示2的2次方
+1<<10 # 表示1024即2的10次方
+1<<12 # 1<<10 * 1<<2 即1024*4=4096
+
+# 取反
+a:=12
+^a+1=-12
+```
+
 ### 首行代码 package <name>
 表示当前文件属于哪个包，如果是package main表示当前文件是编译后是一个可执行文件，编译后可执行文件存放在bin目录
 > 但是同一目录下的文件包名必须一致
@@ -269,7 +282,7 @@ slice e : [1 2 3 4 5 6 7 8 9 10]
 a[x:y:z] 切片内容 [x:y] 切片长度: y-x 切片容量:z-x  
 x是可以忽略的，即a[:y:z]的长度为y,切片容量为z
 
-### 容器map
+### map结构
 声明和初始化： map[keyType]valueType，这块相当于一个类型
 ```go
 var m1 map[string]float32 = map[string]float32{"c":5, "go":5.5}
@@ -628,7 +641,6 @@ fn1 2
 - panic抛出错误
 - recover捕获错误
 go通过panic抛出一个异常，然后在defer中通过recover捕获这个异常
-- 如果defer中又有`panic`,则会覆盖上一个`panic`
 ```go
 package main
 
@@ -652,7 +664,7 @@ func main() {
 	}()
 	defer func() {
 		panic(func() error {
-			return errors.New("why...")
+			return errors.New("why...") // 在defer产生的panic需要下个defer用recover捕获
 		})
 	}()
 
@@ -664,6 +676,31 @@ func main() {
 	}
 }
 ```
+- `panic`会终止当前程序往下执行,然后遍历`defer`链,可以在`defer`链使用`recover`捕获`panic`,如果`panic`被捕获,则程序可以继续往下执行,若没有被捕获,则程序会`crash`,程序不再继续执行
+-  父函数可以捕获子函数产生的`panic`
+- defer中可以再次产生`panic`
+- 如果在`defer`中产生`panic`,则需要下个`defer`才能捕获,并且会覆盖上一个的`panic`
+- `defer`要非常非常注意参数是引用外部变量,才是传参进来的,如下:
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	a := 1
+	defer func() {
+		fmt.Println(a) // 引用外部变量,输出123
+	}()
+	defer func(a int) {
+		fmt.Println(a) // 使用传参,输出1
+	}(a)
+	a = 123 // 改变a的值
+}
+```
+
+
 ### 错误处理
 error是一个类型，类似int,float64
 

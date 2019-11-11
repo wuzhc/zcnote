@@ -45,3 +45,17 @@
 ## gc触发时机
 - golang 的 gc 时机是根据当前与上次的 heap size 的比例来决定，默认情况下是100，即新增一倍就会触发。尝试把这个比例调大 export GOGC=400，降低 gc 触发频率
 - 手动触发`runtime.GC()`
+
+
+
+##  如何减少垃圾
+[https://www.cnblogs.com/shanyou/p/4296181.html](https://www.cnblogs.com/shanyou/p/4296181.html)
+- 避免把[]byte 转化为字符串类型
+- 重复使用缓存或者对象（有时也许是sync.Pool又称为issue4720）
+- 预分配切片（特别是make的能力）并总是知晓链中各个条目的数量和大小
+- 
+
+
+
+
+
