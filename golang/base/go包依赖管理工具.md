@@ -1,4 +1,42 @@
-# govendor使用
+# gomod(推荐)
+https://segmentfault.com/a/1190000018536993
+## 设置GO111MODULE
+当modules 功能启用时，依赖包的存放位置变更为$GOPATH/pkg，允许同一个package多个版本并存，且多个项目可以共享缓存的 module。
+- `GO111MODULE=on`,go命令行会使用modules，而一点也不会去GOPATH目录下查找
+- `GO111MODULE=off`,go命令行将不会支持module功能，寻找依赖包的方式将会沿用旧版本那种通过vendor目录或者GOPATH模式来查找。
+- `GO111MODULE=auto`,如果项目不在`$GOPATH/src`路径之下,并且项目包含`go.mod`,则启用gomod
+- `GO111MODULE=auto`,如果项目在`$GOPATH/src`路径之下,并且项目包含`go.mod`,则启用gomod
+
+
+```bash
+# 设置GO111MODULE
+export GO111MODULE=on
+# 初始化
+go mod init
+# 设置代理,这步主要是解决防火墙问题
+export GOPROXY=https://goproxy.io
+# 运行程序,go mod会自动查找依赖并自动下载
+go run main.go
+# 检查可以升级的package
+go list -m -u all
+# 升级所有依赖
+go get -u 
+# 将依赖包复制到vendor目录下
+go mod vendor
+# 添加新包或移除不使用的包
+go mod tidy
+```
+
+## 使用`replace`替换包下载路径
+例如golang.org下载不了,可以替换为github.com下载,如下
+```bash
+replace (
+    golang.org/x/crypto v0.0.0-20190313024323-a1f597ede03a => github.com/golang/crypto v0.0.0-20190313024323-a1f597ede03a
+)
+```
+
+
+# govendor使用(不推荐)
 ## 参考 
 - https://blog.csdn.net/benben_2015/article/details/80614873
 
@@ -47,7 +85,7 @@ govendor fetch
 +program   (p) main包中包
 ```
 
-# glide使用
+# glide使用(不推荐)
 ## 安装 
 ```
 git clone https://github.com/xkeyideal/glide.git $GOPATH/src/github.com/xkeyideal/glide
