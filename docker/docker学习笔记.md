@@ -389,3 +389,17 @@ COPY failed: Forbidden path outside the build context: ../test.txt ()
 ## docker守护进程启动选项
 - https://www.cnblogs.com/or2-/p/8087301.html
 
+## 使用scratch镜像
+- scratch: 空的基础镜像，最小的基础镜像
+- busybox: 带一些常用的工具，方便调试， 以及它的一些扩展busybox:glibc
+- alpine: 另一个常用的基础镜像，带包管理功能，方便下载其它依赖的包
+
+## 上传镜像到公用仓库
+```bash
+# 给redis打标签
+docker tag gmq:v1 wuzhc/gmq:v1
+# 登录
+docker login
+# 推送
+docker push wuzhc/gmq:v1
+```

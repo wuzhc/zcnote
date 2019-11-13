@@ -750,6 +750,16 @@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build gofile.go    // window
 - GOOS：目标可执行程序运行操作系统，支持 darwin，freebsd，linux，windows
 - GOARCH：目标可执行程序操作系统构架，包括 386，amd64，arm
 
+
+### go构建命令使用-ldflags="-s -w"
+```bash
+GOOS=linux CGO_ENABLED=0 go build -ldflags="-s -w" -o app main.go
+```
+作用是减少执行文件的体积
+- -s: 省略符号表和调试信息
+- -w: 省略DWARF符号表
+
+
 ### 反射reflect
 反射机制就是在运行时动态的调用对象的方法和属性,官方自带的reflect包就是反射相关的,reflect可以识别interface{}底层具体类型和具体值
 - reflect.Type                     // 具体类型

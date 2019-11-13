@@ -21,7 +21,7 @@
 https://www.cnblogs.com/sablier/p/11605606.html
 ```bash
 # 镜像为mysql:5.7
-docker run -p 13306:13306 --name mysql_1 --network mysql-network -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7
+docker run -p 13306:3306 --name mysql_1 --network mysql-network -e MYSQL_ROOT_PASSWORD=123456 -d mysql:v57
 # 进入容器 
 docker exec -it mysql_1 /bin/bash
 # 允许root远程登录mysql
@@ -40,6 +40,9 @@ mysqldump  -u用户名  -p密码  --all-databases  --master-data=1 > dbdump.db
 ```
 配置`my.cnf`
 ```bash
+# docker默认路径`/etc/mysql/my.cnf`
+vi /etc/mysql/my.cnf
+
 [mysqld]
 log-bin=mysql-bin
 server-id=1
@@ -67,3 +70,51 @@ start slave;
 # 查看是否成功
 show slave status\G
 ```
+
+## 测试sql
+```sql
+# 创建users表
+create table users( id int(11) auto_increment, name varchar(100) not null, age int(1) default 0, primary key(id) )engine=InnoDB default charset=utf8;
+# 插入一条数据
+insert into users(name,age) values('wuzhc',20),('mayun',65);
+```
+
+## 复制过程
+当master上写操作繁忙时，当前POS点例如是10，而slave上IO_THREAD线程接收过来的是3，此时master宕机，会造成相差7个点未传送到slave上而数据丢失
+- 异步复制
+- 半同步复制
+
+
+## 常见的错误
+- master上删除一条记录，而slave上找不到 
+	- `set global sql_slave_skip_counter=1;`
+- 主键重复。在slave已经有该记录，又在master上插入了同一条记录
+	- 删除从库重复的记录
+-  在master上更新一条记录，而slave上找不到，丢失了数据
+	- 从库补充数据,跳过`set global sql_slave_skip_counter=1;`
+
+## 恢复relay-log日志
+从库有两个线程,一个是`Slave_IO_Running`,一个是`Slave_SQL_Running`
+### Slave_IO_Running ：接收master的binlog信息
+- Master_Log_File
+- Read_Master_Log_Pos
+### Slave_SQL_Running：执行写操作
+- Relay_Master_Log_File
+- Exec_Master_Log_Pos
+```bash
+stop slave;
+# MASTER_LOG_FILE对应Relay_Master_Log_File,MASTER_LOG_POS对应Exec_Master_Log_Pos
+CHANGE MASTER TO MASTER_LOG_FILE='mysql-bin.000001',MASTER_LOG_POS=1609;
+start slave;
+show slave status\G;
+```
+
+
+
+
+
+
+
+
+
+
