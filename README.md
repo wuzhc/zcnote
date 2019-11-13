@@ -29,6 +29,7 @@
     * [docker使用Dockerfile定制镜像](docker%2Fdocker%E4%BD%BF%E7%94%A8Dockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F.md)
     * [docker学习笔记](docker%2Fdocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
     * [docker学习笔记二](docker%2Fdocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C.md)
+    * [docker安装gitlab](docker%2Fdocker%E5%AE%89%E8%A3%85gitlab.md)
     * [docker数据卷volume](docker%2Fdocker%E6%95%B0%E6%8D%AE%E5%8D%B7volume.md)
     * [docker构建build镜像原理](docker%2Fdocker%E6%9E%84%E5%BB%BAbuild%E9%95%9C%E5%83%8F%E5%8E%9F%E7%90%86.md)
     * [docker网络访问](docker%2Fdocker%E7%BD%91%E7%BB%9C%E8%AE%BF%E9%97%AE.md)
@@ -245,6 +246,7 @@
     * [udp](tcp%2Fudp.md)
     * [websocket](tcp%2Fwebsocket.md)
 * 操作系统
+    * [内存映射mmap](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2F%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84mmap.md)
     * [内核态和用户态](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2F%E5%86%85%E6%A0%B8%E6%80%81%E5%92%8C%E7%94%A8%E6%88%B7%E6%80%81.md)
     * [操作系统的启动](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%90%AF%E5%8A%A8.md)
 * 数据结构和算法
