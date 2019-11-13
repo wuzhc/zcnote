@@ -10,14 +10,15 @@ TCP 内部的很多算法机制让他保持连接的过程中是很可靠的。�
 - 当写缓冲的内容拷贝到网卡后，是不会立即从写缓冲中将这些拷贝的内容移除的，而要等待对方的ack过来之后才会移除。如果网络状况不好，ack迟迟不过来，写缓冲很快就会满的
 
 ### 三次握手  
-![](http://www.52im.net/data/attachment/forum/201604/26/141753hc3p885th8e6z55n.png)  
-- 标志位ACK和确认需要ack不要搞混
-- Client将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。
-- Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=J+1，随机产生一个值seq=K，并将该数据包发送给Client
-以确认连接请求，Server进入SYN_RCVD状态。
-- Client收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=K+1，并将该数据包发送给Server，Server检查ack是否为K+1，ACK
-是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。
+![](https://img2018.cnblogs.com/blog/184881/201809/184881-20180925181810810-423396758.png)  
+- 客户端主动发送连接请求报文段，将SYN标识位置为1，Sequence Number置为x（TCP规定SYN=1时不能携带数据，x为随机产生的一个值），然后进入SYN_SEND状态
+- 服务器收到SYN报文段进行确认，将SYN标识位置为1，ACK置为1，Sequence Number置为y，Acknowledgment Number置为x+1，然后进入SYN_RECV状态，这个状态被称为半连接状态
+- 客户端再进行一次确认，将ACK置为1（此时不用SYN），Sequence Number置为x+1，Acknowledgment Number置为y+1发向服务器，最后客户端与服务器都进入ESTABLISHED状态
 
+### seq序列号和ack确认号
+seq是序列号，这是为了连接以后传送数据用的，ack是对收到的数据包的确认，值是等待接收的数据包的序列号。  
+在第一次消息发送中，A随机选取一个序列号作为自己的初始序号发送给B；第二次消息B使用ack对A的数据包进行确认，因为已经收到了序列号为x的数据包，准备接收序列号为x+1的包，所以ack=x+1，同时B告诉A自己的初始序列号，就是seq=y；第三条消息A告诉B收到了B的确认消息并准备建立连接，A自己此条消息的序列号是x+1，所以seq=x+1，而ack=y+1是表示A正准备接收B序列号为y+1的数据包。  
+seq是数据包本身的序列号；ack是期望对方继续发送的那个数据包的序列号。  
 
 ### SYN攻击
 SYN攻击就是Client在短时间内伪造大量不存在的IP地址，并向Server不断地发送SYN包，Server回复确认包，并等待Client的确认，由于源地址是不存在的，
@@ -67,7 +68,9 @@ TCP头里有一个字段叫Window，又叫Advertised-Window，这个字段是接
 避免发送大量小包的问题
 - 1)接收端一直在通知一个小的窗口;
 - 2)发送端本身问题，一直在发送小包。
-一种是接收端有足够的空间再发ACK到发送端,另一种是发送端积累后变大包再发送
+  一种是接收端有足够的空间再发ACK到发送端,另一种是发送端积累后变大包再发送
+
+
 
 ### TCP的拥塞处理 – Congestion Handling
 - 1）慢启动；
@@ -75,38 +78,62 @@ TCP头里有一个字段叫Window，又叫Advertised-Window，这个字段是接
 - 3）拥塞发生；
 - 4）快速恢复。
 
+
+
 ### 四次挥手
+
+https://blog.csdn.net/yu876876/article/details/81560122
+
 ![](http://www.52im.net/data/attachment/forum/201604/26/142520px6qkzx886895jn8.png)  
 - Client发送一个FIN，用来关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态。
-- Server收到FIN后，发送一个ACK给Client，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号），Server进入CLOSE_WAIT状态。
+
+- Server收到FIN后，发送一个ACK给Client，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号），Server进入CLOSE_WAIT状态。而客户端得到服务端ack后进入FIN_WAIT_2状态
+
 - Server发送一个FIN，用来关闭Server到Client的数据传送，Server进入LAST_ACK状态。
+
 - Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+1，Server进入CLOSED状态，完成四次挥手。
 
+  
+
 ### 为什么要四次挥手
-关闭连接时，当收到对方的FIN报文时，仅仅表示对方不再发送数据了但是还能接收数据，己方也未必全部数据都发送给对方了，所以己方可以立即close，也可以发送一些数
-据给对方后，再发送FIN报文给对方来表示同意现在关闭连接，因此，己方ACK和FIN一般都会分开发送。
+第二次握手的时候确认和请求回复可以合并为一步,但是挥手不可以
+
+挥手的时候,接收到客户端的FIN报文后,先进行确认,但是不能请求回复,因为这个时候服务端可能还有数据没有发送完成,只有当服务端发送完数据之后才会发送FIN给客户端,请求客户端回复,所以服务端的确认和请求回复是分开的
+
+
 
 ### 为什么要三次握手
-Server发送SYN包是作为发起连接的SYN包，还是作为响应发起者的SYN包呢？怎么区分？比较容易引起混淆；  
-Server的ACK确认包和接下来的SYN包可以合成一个SYN ACK包一起发送的，没必要分别单独发送，这样省了一次交互同时也解决了问题
+主要问题是第三次握手有没有必要,其实是为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误,例如如果没有第三次握手,服务端接收到失效的连接请求后就建立连接,然后等待客户端发送数据,实际上客户端已经退出了,客户端不会发送任何东西给服务端,所以服务端完全没有必要建立连接,所以需要第三次握手,只有得到客户端的确认后才建立连接
+
+
 
 ### 数据打包
 出输层    网络层   链路层
 段       包       帧
 segment->packet->frame
 
-### TIME_WAIT
-为什么要这有TIME_WAIT？为什么不直接给转成CLOSED状态呢？主要有两个原因：1）TIME_WAIT确保有足够的时间让对端收到了ACK，如果被动关闭的那方没有收到Ack，
-就会触发被动端重发Fin，一来一去正好2个MSL，2）有足够的时间让这个连接不会跟后面的连接混在一起  
-从上面的描述我们可以知道，TIME_WAIT是个很重要的状态，但是如果在大并发的短链接下，TIME_WAIT 就会太多，这也会消耗很多系统资源  
-TIME_WAIT表示的是主动断连接  
-主动关闭方需要进入TIME_WAIT以便能够重发丢掉的被动关闭方FIN的ACK  
 
+
+
+
+### TIME_WAIT
+为什么要这有TIME_WAIT？为什么不直接给转成CLOSED状态呢？主要有两个原因：
+
+- 1）TIME_WAIT确保有足够的时间让对端收到了ACK，如果被动关闭的那方没有收到Ack，
+
+就会触发被动端重发Fin，一来一去正好2个MSL
+
+- 2）有足够的时间让这个连接不会跟后面的连接混在一起,因为一个报文段最大生存时间为MSL    
 
 ### TIME_WAIT重用
+
+从上面的描述我们可以知道，TIME_WAIT是个很重要的状态，但是如果在大并发的短链接下，TIME_WAIT 就会太多，这也会消耗很多系统资源  
+
 - 1）新连接SYN告知的初始序列号比TIME_WAIT老连接的末序列号大；
 - 2）如果开启了tcp_timestamps，并且新到来的连接的时间戳比老连接的时间戳大。
-要同时开启tcp_tw_reuse选项和tcp_timestamps 选项才可以开启TIME_WAIT重用
+  要同时开启tcp_tw_reuse选项和tcp_timestamps 选项才可以开启TIME_WAIT重用
+
+
 
 
 ### tcp协议头格式 

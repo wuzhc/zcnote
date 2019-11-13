@@ -10,6 +10,8 @@ client有好几个状态
 
 - subEventChan
 
+## 消息通过topic分发到channel,那么每一个channel都有一份数据吗?
+
 ## 发送`rdy`,服务端会怎么处理?
 - 设置客户端的`ReadyCount`为`rdy`
 - 尝试更新准备状态`tryUpdateReadyState` -> `ReadyStateChan<-1`

@@ -109,7 +109,18 @@ start slave;
 show slave status\G;
 ```
 
-
+## mysql自定义dock镜像
+```bash
+FROM mysql:5.7
+RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list \
+	&& sed -i "s@http://security.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list \
+	&& rm -Rf /var/lib/apt/lists/* \
+	&& apt-get update \
+	&& apt-get install vim -y \
+	&& apt-get install iputils-ping -y \
+	&& apt-get install net-tools -y \
+	&& apt-get install ssh -y 
+```
 
 
 
