@@ -100,6 +100,7 @@ RTT——Round Trip Time，也就是一个数据包从发出去到回来的时�
 
 
 ### tcp重传机制
+https://blog.csdn.net/zgege/article/details/80445324
 发送方发送一个数据包给接收方后,需要得到接收方的`ACK`,如果超过`RTO`时间后还没得到接收方的`ACK`,发送方会进行重传数据包
 ![https://images2018.cnblogs.com/blog/1233668/201806/1233668-20180613233505890-1600510236.png](https://images2018.cnblogs.com/blog/1233668/201806/1233668-20180613233505890-1600510236.png)
 

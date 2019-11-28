@@ -1,3 +1,4 @@
+## 索引优化
 #### 不能使用索引
 - 负向条件不能使用索引,用in
 - 前缀模糊匹配不能使用索引,例如'like %name',改为'like name%'
@@ -42,11 +43,5 @@ from city;
 12. 分拆很长的列：一般情况下，TEXT、BLOB，大于512字节的字符串，基本上都是为了显示信息，而不会用于查询条件， 因此表设计的时候，应该将这些列独立到另外一张表
 13. 有时候排序或分组交给php处理,避免临时表 (如获取每个地区数据之后,再用array_multisort)
 
-#### 其他一些优化
-##### 字段类型为字符串，并建立索引，sql查询的时候需要加上引号,例如outside为varchar(20)，sql如下:
-```sql
-select * from user where outside = '123456' # 会走索引
-select * from user where outside = 123456 # 不会走索引
-```
 
 

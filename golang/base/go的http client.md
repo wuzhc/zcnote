@@ -1,28 +1,3 @@
-构建一个`http server`,包括注册路由，开启监听，处理连接，路由处理函数。
-## 注册路由
-多路复用器`mutilplexer`用于找到处理器函数`handler`,go有内置的`mutilplexer`,如`DefaultServerMux`
-go中最重要是要理解`mutilplexer`和`handler`,`mutiplexer`基于`ServerMux`结构,同时也实现了`handler`接口
-
-## handler
-serverHttp  ->  handler函数,即`func(w http.ResponseWriter, r *http.Request)`
-		-> handler对象,即实现serverHttp方法的结构对象
-		-> handler处理器,即经过HandlerFunc结构包装,具有ServerHttp方法
-
-## serverMux
-`serverMux`会使用`handler`并调用其`serverHttp`方法处理请求并返回响应
-
-
-
-Golang中一个完整的http服务，包括注册路由，开启监听，处理连接，路由处理函数。
-ServeMux
-multiplexer 多路复用器管理路由
-ServeMux和handler处理器函数的连接桥梁就是Handler接口
-ServeMux -> ServeHTTP处理handler -> request,response
-ServeHTTP方法就是真正处理请求和构造响应的地方
-
-ServeMux.handler
-handler.ServeHTTP
-
 ```go
 conn,err := net.Dail(net, addr string) (Conn,error)
 ```
@@ -79,4 +54,3 @@ if err == nil {
     fmt.Fprintln(w, "Value:", cookie.Value)
 }
 ```
-

@@ -32,7 +32,7 @@ sed -n 2~5p filename
 ```bash
 sed s/love/**&**/
 ```
-love 变成**love**
+love 变成`**love**`
 
 ### s 正则替换
 ```bash
