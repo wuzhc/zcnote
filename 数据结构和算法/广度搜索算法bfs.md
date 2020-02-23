@@ -1,8 +1,9 @@
 ## 参考
+- https://www.cnblogs.com/nr-zhang/p/11236369.html
 - https://blog.csdn.net/u010363932/article/details/82990966
 - https://www.cnblogs.com/xbblogs/p/10104800.html
 
-> 广度算法用队列,目标是遍历所有节点
+> 广度(宽度)算法用队列,目标是遍历所有节点
 
 ```go
 package main
@@ -38,9 +39,9 @@ var dirs = [4]point{
 }
 
 func walk(maze [][]int, start, end point) [][]int {
-
 	steps := make([][]int, len(maze))
 
+    // 二维切片需要再次make
 	for i := range steps {
 		steps[i] = make([]int, len(maze[i]))
 	}
@@ -57,7 +58,6 @@ func walk(maze [][]int, start, end point) [][]int {
 
 		for _, dir := range dirs {
 			next := cur.add(dir)
-
 			val, ok := next.at(maze)
 
 			//next点在数组中，且不能为墙 ，next点不能是起点
@@ -82,7 +82,6 @@ func walk(maze [][]int, start, end point) [][]int {
 
 func readMaze(fileName string) [][]int {
 	file, _ := os.Open(fileName)
-
 	defer file.Close()
 	var row, col int
 	fmt.Fscanf(file, "%d %d", &row, &col)
@@ -98,7 +97,6 @@ func readMaze(fileName string) [][]int {
 }
 
 func main() {
-
 	maze := readMaze("arr.in")
 	steps := walk(maze, point{0, 0}, point{len(maze) - 1, len(maze[0]) - 1})
 	for _, row := range steps {

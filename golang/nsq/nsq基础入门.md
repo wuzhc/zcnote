@@ -35,7 +35,6 @@ go run main.go
 
 # 启动nsqd
 cd $GOPATH/src/github.com/nsqio/nsq/apps/nsqd
-go run main.go options.go  --lookupd-tcp-address=127.0.0.1:4160
 go run main.go options.go --lookupd-tcp-address=127.0.0.1:4160 -tcp-address=0.0.0.0:4152 -http-address=0.0.0.0:4153
 
 # 启动nsqadmin(web地址:http://127.0.0.1:4171/)

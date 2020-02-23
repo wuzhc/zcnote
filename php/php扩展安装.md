@@ -1,6 +1,7 @@
 ```bash
-phpize
+phpize7
 ./configure --with-php-config=/opt/php7/bin/php-config
+ /opt/lampp/bin/php-config
 make
 sudo make install
 # 打开php.ini位置,追加如下

@@ -1,15 +1,27 @@
 ## 参考
 - https://www.cnblogs.com/whgk/p/10993436.html
+- https://segmentfault.com/a/1190000015979741
 
 ## 1. 流程图
-![](https://github.com/wuzhc/zcnote/blob/master/images/mysql/mysql%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png)
+![https://segmentfault.com/img/bVbfddI?w=855&h=707](https://segmentfault.com/img/bVbfddI?w=855&h=707)
 - client发送sql查询到mysql server
-- 连接mysql,验证用户和密码,找到用户所拥有的权限
+- 连接mysql,验证用户和密码,找到用户所拥有的权限(连接器)
 - 先查询缓存,如果命中缓存返回
-- 分析器,sql解析(检测关键字),预处理(检测数据库表,列,别名)
-- 优化器,生成执行计划,选择最佳索引
-- 执行器,根据执行计划调用存储引擎接口执行查询
+- 分析器,sql解析(检测关键字),预处理(检测数据库表,列,别名（解析器）
+- 优化器,生成执行计划，执行计划也是可以缓存的，,选择最佳索引（优化器）
+- 执行器,根据执行计划调用存储引擎接口执行查询（执行器）
 - 返回结果
+
+### 关于查询缓存一些问题
+- 查询缓存系统会跟踪查询中涉及的每个表，如果这些表发生了变化，那么和这个表相关的所有缓存数据都将失效
+- 任何字符上的不同，例如空格、注解等都会导致缓存的不命中
+- 查询sql语句包含函数，包含函数的sql查询结果不会存放在缓存中
+```sql
+# 查询是否开启缓存，设置为OFF、ON和DEMAND，DEMAND表示只有在查询语句中明确写明SQL_CACHE的语句才会放入查询缓存
+show variables like "query_cache_type"
+# 询缓存使用的总内存空间
+show variables like "query_cache_size"
+```
 
 ## 2. 管理员修改权限用户后,已连接的用户不会收到影响
 就是说,用户先登录mysql,从mysql.user找到自己权限,在断开连接之前,如果管理员修改用户权限并不会影响到用户,除非是断开连接重连
