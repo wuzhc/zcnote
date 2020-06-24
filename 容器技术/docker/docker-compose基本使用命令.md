@@ -1,4 +1,4 @@
-> 用户可以很方便使用Dockerfile模板来定义一个应用容器,实际应用程序中,需要多个容器一起使用,这个时候就是docker-compose的用途了
+>  用户可以很方便使用Dockerfile模板来定义一个应用容器,实际应用程序中,需要多个容器一起使用,这个时候就是docker-compose的用途了
 
 ## 安装
 ```bash
@@ -26,7 +26,7 @@ services:
 ### 服务(service)
 如上配置文件中的`services`,下面的`webapp`就是其中一个服务(容器)
 ### 项目(project)
-整个docker-compose就是一个项目
+整个docker-compose就是由多个服务组成的环境
 
 ## 命令
 ### 重新构建服务

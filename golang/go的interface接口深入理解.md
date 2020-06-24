@@ -12,6 +12,8 @@
 
 下方高能警惕!!!
 ## interface底层结构
+![https://static.bookstack.cn/projects/qcrao-Go-Questions/a8c48da0ef59d8921ee4a3875fb2402b.png](https://static.bookstack.cn/projects/qcrao-Go-Questions/a8c48da0ef59d8921ee4a3875fb2402b.png)
+
 根据是否有method方法,底层由两种`struct`表示
 - eface `empty interface`,没有method
 ```go
@@ -57,3 +59,5 @@ type iface struct {
 
 interface包含两个指针,一个指向值的类型,一个指向实际值,对于一个interface类型的nil变量来说,它的两个指针都是0
 
+## fmt.Println()
+参数是`interface`，对于内置类型，函数内部会用穷举法，得出它的真实类型，然后转换为字符串打印；而对于自定义类型，首先确定该类型是否实现了` String() `方法，如果实现了，则直接打印输出` String() `方法的结果；否则，会通过`反射`来遍历对象的成员进行打印。

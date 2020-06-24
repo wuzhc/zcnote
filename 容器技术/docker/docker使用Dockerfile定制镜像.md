@@ -26,8 +26,8 @@ ADD ./xxx.tar.gz /opt/
 
 # CMD指定默认的容器主进程的启动命令
 CMD ["nginx", "-g", "daemon off;"]
-# 入口点,和CMD类似,指定容器启动程序和参数,如果指定了ENTRYPOINT,那么CMD不会直接执行命令,而是作为参数,传递给ENTRYPOINT执行,CMD和ENTRYPOINT可以同时存在,但是CMD会作为参数传递给ENTRYPOINT执行
 
+# 入口点,和CMD类似,指定容器启动程序和参数,如果指定了ENTRYPOINT,那么CMD不会直接执行命令,而是作为参数,传递给ENTRYPOINT执行,CMD和ENTRYPOINT可以同时存在,但是CMD会作为参数传递给ENTRYPOINT执行
 ENTRYPOINT [ "curl", "-s", "https://ip.cn" ]
 # ENV设置环境变量,在Dockerfile中可以通过$ENV获取变量值,在容器运行时是存在这些的
 

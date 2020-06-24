@@ -1,63 +1,18 @@
-package main
+测试用例方法名`func TestXxx(t *testing.T)`使用的方法包括`Error`、`Errorf`、`FailNow`、`Fatal`、`FatalIf`,调用`Log`方法来记录测试信息
 
-import (
-	"flag"
-	"log"
-	"net/http"
-	_ "net/http/pprof"
-	"os"
-	"path/filepath"
-	"sync"
+压力测试方法名`func BenchmarkXXX(b *testing.B)`,默认情况下`get test`不会执行压力测试,需要加上`-test.bench`,例如`go test -test.bench`
 
-	"github.com/judwhite/go-svc/svc"
-	"github.com/wuzhc/gmq/internal/gnode"
-)
-
-// program implements svc.Service
-type program struct {
-	once sync.Once
-	gn   *gnode.Gnode
-}
-
-func main() {
-	prg := &program{}
-	if err := svc.Run(prg); err != nil {
-		log.Fatal(err)
+```bash
+func TestIntArray_Shift(t *testing.T) {
+	arr := NewIntArray()
+	arr.Push(1, 2, 3)
+	res := arr.Shift()
+	if res == 1 {
+		t.Log("pass")
+	} else {
+		t.Errorf(fmt.Sprintf("expect:1, result:%d", res))
 	}
 }
 
-func (p *program) Init(env svc.Environment) error {
-	if env.IsWindowsService() {
-		dir := filepath.Dir(os.Args[0]) //获取路径最后一个斜杠前面部分路径即目录
-		return os.Chdir(dir)            //改变当前工作目录
-	}
-	return nil
-}
 
-func (p *program) Start() error {
-	p.gn = gnode.New()
-
-	cfgFile := flag.String("config_file", "", "config file")
-	flag.Parse()
-	if len(*cfgFile) > 0 {
-		p.gn.SetConfig(*cfgFile)
-	}
-
-	go func() {
-		p.gn.Run()
-	}()
-
-	// pprof监控
-	go func() {
-		http.ListenAndServe("0.0.0.0:9512", nil)
-	}()
-
-	return nil
-}
-
-func (p *program) Stop() error {
-	p.once.Do(func() {
-		p.gn.Exit()
-	})
-	return nil
-}
+```

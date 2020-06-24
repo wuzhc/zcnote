@@ -41,9 +41,35 @@ go run main.go options.go --lookupd-tcp-address=127.0.0.1:4160 -tcp-address=0.0.
 cd $GOPATH/src/github.com/nsqio/nsq/apps/nsqadmin
 go run main.go --lookupd-http-address=127.0.0.1:4161
 
-# 启动nsq_to_file
+# nsq_tail
+# 消费指定的话题（topic）/通道（channel），并写到 stdout (和 tail(1) 类似)。
+./nsq_tail --lookupd-http-address=127.0.0.1:4161 --topic=wmzz-topic-1
+-channel="": NSQ 通道（channel）
+-consumer-opt=: 传递给 nsq.Consumer (可能会给多次, http://godoc.org/github.com/bitly/go-nsq#Config)
+-lookupd-http-address=: lookupd HTTP 地址 (可能会给多次)
+-max-in-flight=200: 最大的消息数 to allow in flight
+-n=0: total messages to show (will wait if starved)
+-nsqd-tcp-address=: nsqd TCP 地址 (可能会给多次)
+-reader-opt=: (已经抛弃) 使用 --consumer-opt
+-topic="": NSQ 话题（topic）
+-version=false: 打印版本信息
+
+# nsq_to_file
+# 消费指定的话题（topic）/通道（channel），并写到文件中，有选择的滚动和/或压缩文件。
 cd $GOPATH/src/github.com/nsqio/nsq/apps/nsq_to_file
-go run *.go --topic=test --output-dir=/tmp --lookupd-http-address=127.0.0.1:4161
+./nsq_to_file --topic=test --output-dir=/tmp --lookupd-http-address=127.0.0.1:4161
+
+# nsq_stat
+# 为所有的话题（topic）和通道（channel）的生产者轮询 /stats，并显示统计数据：
+./nsq_stat --topic=wmzz-topic-1 --channel=wmzz-channel-1 --lookupd-http-address=127.0.0.1:4161
+-channel="": NSQ 通道（channel）
+-lookupd-http-address=: lookupd HTTP 地址 (可能会给多次)
+-nsqd-http-address=: nsqd HTTP 地址 (可能会给多次)
+-status-every=2s: 轮询/打印输出见的时间间隔
+-topic="": NSQ 话题（topic）
+-version=false: 打印版本
+
+# 
 
 # 发布数据
 curl -d 'hello world 2' 'http://127.0.0.1:4151/pub?topic=test'

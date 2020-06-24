@@ -18,7 +18,6 @@ vi ~/.bashrc
 export GOROOT=/usr/lib/go
 export GOPATH=/data/wwwroot/go
 export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
-export PATH=$PATH:/opt/php7/bin
 ```
 
 ### 命令
@@ -66,7 +65,7 @@ a:=12
 ```
 
 ### 首行代码 package <name>
-表示当前文件属于哪个包，如果是package main表示当前文件是编译后是一个可执行文件，编译后可执行文件存放在bin目录
+表示当前文件属于哪个包，如果是`package main`表示当前文件是编译后是一个可执行文件，编译后可执行文件存放在bin目录
 > 但是同一目录下的文件包名必须一致
 
 ### import 导入包
@@ -154,6 +153,8 @@ for k,v:=range s{
 - 结构体是值类型，如果两个结构体每个字段都是可比较的(int,string)，且变量字段相等，则说明两个结构体相等。如果结构体中包含不可比较字段(map)，则结构体是不可比较的。
 - 如果是指针,即时值相等,结构体也不相等
 - 和其他可比较类型一样,可比较的结构体类型都可以作为`map`的键
+20200622补充
+`struct`结构体是否可以比较，如果结构体包含不可比较的类型，则不能比较，包括`map`,`slice`,`function`，只有可比较的类型才能作为`map`的键，指针比较的是地址，所以即使值相同，两个指针也是不相同的
 ```go
 package main
 
@@ -700,6 +701,8 @@ func main() {
 }
 ```
 
+### defer和panic的关系
+协程会先遍历`defer`链，如果在defer链中有`recover`捕获`panic`，则程序可以继续往下执行，否则在遍历完`defer`链后报错中止程序
 
 ### 错误处理
 error是一个类型，类似int,float64
@@ -725,7 +728,6 @@ type两种情况，具体类型和接口类型
 ### nil
 nil可以和channel,func,interface,map,slice作比较
 
-
 ### 方法
 类型， 该类型拥有的方法 叫方法的接受者是类型
 类型只能是T或*T
@@ -747,19 +749,47 @@ rice embed-go
 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags="-s -w" gofile.go   // mac
 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" gofile.go  // window
 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" gofile.go    // linux
+https://studygolang.com/articles/16751?fr=sidebar
 ```
 - GOOS：目标可执行程序运行操作系统，支持 darwin，freebsd，linux，windows
 - GOARCH：目标可执行程序操作系统构架，包括 386，amd64，arm
 
 
-### go构建命令使用-ldflags="-s -w"
+### go构建命令
 ```bash
 GOOS=linux CGO_ENABLED=0 go build -ldflags="-s -w" -o app main.go
 ```
-作用是减少执行文件的体积
-- -s: 省略符号表和调试信息
-- -w: 省略DWARF符号表
+- `-race` 允许数据竞争检测(仅支持amd64)
 
+#### go build -ldflags
+- `-s`: 省略符号表和调试信息
+- `-w`: 省略DWARF符号表
+
+#### go build -gcflags
+- `-m`: 输出优化信息
+- `-N`: 禁用优化
+- `-l`: 禁止内联
+- `-u`: 禁用unsafe函数
+```bash
+go build -gcflags "-N -l" -o hello src/main.go
+-gcflags "-N -l" 是为了关闭编译器优化和函数内联，防止后面在设置断点的时候找不到相对应的代码位置。
+```
+
+### go函数外部引用问题
+```golang
+func main() {
+	var num int
+	fn := func() {
+		fmt.Println("我引用了外部的num:", num)
+	}
+	num = 23
+	fn()
+}
+```
+最终结果输出23
+
+### 组合继承
+golang可以使用组合来实现oop
 
 ### 反射reflect
 反射机制就是在运行时动态的调用对象的方法和属性,官方自带的reflect包就是反射相关的,reflect可以识别interface{}底层具体类型和具体值

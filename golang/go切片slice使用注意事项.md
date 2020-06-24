@@ -1,3 +1,6 @@
+## 参考
+https://www.jianshu.com/p/abacb34fb631
+
 `slice`是一个指向数组的指针,它的结构体如下:
 ```go
 type slice struct {
@@ -37,3 +40,22 @@ func ap(a []int) {
 - 只追加一个,没有超过cap(a),修改a[0]到a[3]会影响原来的值,因为共享同个底层数组
 - 影响的是slice.array,slice.len和slice.cap不会收到影响,因为是值传递
 
+## 解决方案
+传递切片地址
+```golang
+package main
+
+import "fmt"
+
+func main() {
+	si := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	fmt.Printf("%v  len %d \n", si, len(si))
+	test1(&si)
+	fmt.Printf("%v  len %d \n", si, len(si))
+}
+
+func test1(si *[]int) {
+	*si = append((*si)[:3], (*si)[4:]...)
+}
+
+```

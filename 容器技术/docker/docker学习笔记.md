@@ -99,7 +99,7 @@ docker inspect CONTAINER_NAME | CONTAINER_ID
 # 重新启动停止的容器（docker run创建的容器）
 docker start [-i] CONTAINER_NAME
 
-# 删除停止的容器
+# 删除容器
 docker rm CONTAINER_NAME | CONTAINER_ID
 
 # 日志
@@ -311,7 +311,7 @@ ARG功能类似于ENV，不同的是ARG不能在容器运行时使用
 ```bash
 VOLUME /data
 # 或者
-docker run -d -v mydata:/data xxxx
+docker run -d -v mydata:/data xxxx # 宿主机的映射目录的路径是不是没有要求
 ```
 #### 6.8 WORKDIR 指定工作目录
 ```bash
@@ -347,7 +347,7 @@ docker run --rm --user nobody:用户组 镜像 id
 #### 6.10 HEALTHCHECK 健康检查
 > 和 CMD, ENTRYPOINT 一样，HEALTHCHECK 只可以出现一次，如果写了多个，只有最后一个生效。格式如下：
 ```bash
-HEALTHCHECK --interval=5s --timeout=3s ----retries=3
+HEALTHCHECK --interval=5s --timeout=3s --sretries=3
 ```
 - --interval 两次健康检查的间隔，默认为 30 秒；
 - --timeout 健康检查命令运行超时时间，如果超过这个时间，本次健康检查就被视为失败，默认 30 秒；

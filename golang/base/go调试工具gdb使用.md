@@ -3,6 +3,8 @@
 go build -gcflags "-N -l" hello.go
 ```
 `-gcflags "-N -l"`阻止编译器使用内联函数和变量
+- `-N`参数代表禁止优化
+- `-l`参数代表禁止内联
 
 ## 开始调试
 ```go

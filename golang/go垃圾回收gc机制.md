@@ -2,6 +2,7 @@
 > 对不再使用的内存资源进行自动回收的功能就被称为垃圾回收,golang的gc回收主要基于标记-清扫的算法,在此基础进行了改进
 
 ## 参考
+- https://studygolang.com/articles/27243?fr=sidebar
 - https://www.jb51.net/article/157744.htm
 - https://studygolang.com/articles/21840?fr=sidebar
 
@@ -43,9 +44,15 @@
 
 
 ## gc触发时机
-- golang 的 gc 时机是根据当前与上次的 heap size 的比例来决定，默认情况下是100，即新增一倍就会触发。尝试把这个比例调大 export GOGC=400，降低 gc 触发频率
 - 手动触发`runtime.GC()`
-
+- 内存大小阈值， 内存达到上次gc后的2倍
+- 达到定时时间 ，2m interval
+但是，如果Go运行时一段时间（通常约5分钟）不使用，它将把内存返回给OS。
+如果在此期间内存使用量增加（并且有选择地再次缩小），则很有可能不会将内存返回给操作系统。
+debug.FreeOSMemory
+在经过几次ForceGC和scavenge后，才会释放内存给操作系统。 尝试过多次，基本在15分钟左右。
+https://www.jianshu.com/p/f807373ad681
+`GODEBUG=madvdontneed=1 go run main.go`
 
 
 ##  如何减少垃圾
