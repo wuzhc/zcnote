@@ -1,0 +1,4 @@
+- 1、BIN：binary，二进制的;
+- 2、OCT：octal，八进制的;
+- 3、HEX：hexadecimal，十六进制的;
+- 4、DEC：decimal，十进制的。bai
