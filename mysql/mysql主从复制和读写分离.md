@@ -62,9 +62,8 @@ server-id=2
 
 # 重启
 /etc/init.d/mysqld restart
-
+# 设置主库信息
 change master to master_host='mysql_1',master_user='repl',master_password='123456';
-
 # 启动
 start slave;
 # 查看是否成功
@@ -86,12 +85,14 @@ insert into users(name,age) values('wuzhc',20),('mayun',65);
 
 
 ## 常见的错误
+`sql_slave_skip_counter`表示跳过复制错误
 - master上删除一条记录，而slave上找不到 
 	- `set global sql_slave_skip_counter=1;`
 - 主键重复。在slave已经有该记录，又在master上插入了同一条记录
 	- 删除从库重复的记录
 -  在master上更新一条记录，而slave上找不到，丢失了数据
 	- 从库补充数据,跳过`set global sql_slave_skip_counter=1;`
+
 
 ## 恢复relay-log日志
 从库有两个线程,一个是`Slave_IO_Running`,一个是`Slave_SQL_Running`
@@ -122,10 +123,21 @@ RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/source
 	&& apt-get install ssh -y 
 ```
 
+## 主从复制需要考虑哪些问题？
+### 主从复制延迟
+- 升级从库配置
+- 升级mysql到5.6之后，采用并行复制
+- 分库
+- 写一份数据到redis，读从库没有数据时从redis读
+- 更改读库的方式
+- 使用事务
+### 事务
+同一个事务的sql发到同个从库
 
+## 主从复制有哪些方式？
+- 半同步复制；防止主库挂掉后数据丢失（半同步复制确保事务提交后binlog至少传输到一个从库，只是传输到从库，不保证从库应用完这个事务的binlog ）
+- 并行复制；主要解决主从复制延迟问题
 
-
-
-
-
+## 如何查看主从延迟的时间？
+通过在从库执行命令`show status`，其中`Seconds_Behind_Master`可以反映延迟时间
 

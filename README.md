@@ -81,6 +81,8 @@
         * [etcd应用场景](golang%2Fetcd%2Fetcd%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF.md)
     * geecache
         * [geecache](golang%2Fgeecache%2Fgeecache.md)
+    * gin
+        * [go框架gin一些理解](golang%2Fgin%2Fgo%E6%A1%86%E6%9E%B6gin%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3.md)
     * gmq
         * [gmq多节点使用](golang%2Fgmq%2Fgmq%E5%A4%9A%E8%8A%82%E7%82%B9%E4%BD%BF%E7%94%A8.md)
         * [gmq客户端命令](golang%2Fgmq%2Fgmq%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%91%BD%E4%BB%A4.md)
@@ -102,7 +104,7 @@
     * [go垃圾回收gc机制](golang%2Fgo%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6gc%E6%9C%BA%E5%88%B6.md)
     * [go正则表达式regexp](golang%2Fgo%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8Fregexp.md)
     * [go的Makefile](golang%2Fgo%E7%9A%84Makefile.md)
-    * [go的channel管道读写数据](golang%2Fgo%E7%9A%84channel%E7%AE%A1%E9%81%93%E8%AF%BB%E5%86%99%E6%95%B0%E6%8D%AE.md)
+    * [go的channel](golang%2Fgo%E7%9A%84channel.md)
     * [go的etcd使用](golang%2Fgo%E7%9A%84etcd%E4%BD%BF%E7%94%A8.md)
     * [go的goroutine泄露](golang%2Fgo%E7%9A%84goroutine%E6%B3%84%E9%9C%B2.md)
     * [go的interface接口深入理解](golang%2Fgo%E7%9A%84interface%E6%8E%A5%E5%8F%A3%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3.md)
@@ -158,6 +160,7 @@
     * [linux修改TCP最大连接数](linux%2Flinux%E4%BF%AE%E6%94%B9TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0.md)
     * [linux用户和用户组管理命令](linux%2Flinux%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4.md)
     * [linux的sed命令](linux%2Flinux%E7%9A%84sed%E5%91%BD%E4%BB%A4.md)
+    * [linux的shell参数](linux%2Flinux%E7%9A%84shell%E5%8F%82%E6%95%B0.md)
     * [linux获取系统硬件配置命令](linux%2Flinux%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4.md)
     * [nginx location配置说明](linux%2Fnginx%20location%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E.md)
     * [nginx和php工作方式](linux%2Fnginx%E5%92%8Cphp%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F.md)
@@ -192,25 +195,24 @@
         * [mycat表join](mysql%2Fmycat%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6%2Fmycat%E8%A1%A8join.md)
         * [mycat问题汇集](mysql%2Fmycat%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E9%97%B4%E4%BB%B6%2Fmycat%E9%97%AE%E9%A2%98%E6%B1%87%E9%9B%86.md)
     * [mysql8.0不能登录phpmyadmin问题](mysql%2Fmysql8.0%E4%B8%8D%E8%83%BD%E7%99%BB%E5%BD%95phpmyadmin%E9%97%AE%E9%A2%98.md)
-    * [mysql主从复制](mysql%2Fmysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6.md)
-    * [mysql事务处理](mysql%2Fmysql%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86.md)
-    * [mysql多版本控制mvcc](mysql%2Fmysql%E5%A4%9A%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6mvcc.md)
+    * [mysql主从复制和读写分离](mysql%2Fmysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%92%8C%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB.md)
+    * [mysql事务和mvcc多版本控制](mysql%2Fmysql%E4%BA%8B%E5%8A%A1%E5%92%8Cmvcc%E5%A4%9A%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6.md)
+    * [mysql优化心得](mysql%2Fmysql%E4%BC%98%E5%8C%96%E5%BF%83%E5%BE%97.md)
     * [mysql存储引擎区别](mysql%2Fmysql%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E5%8C%BA%E5%88%AB.md)
     * [mysql导入导出数据库数据表](mysql%2Fmysql%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E8%A1%A8.md)
     * [mysql常用sql语句](mysql%2Fmysql%E5%B8%B8%E7%94%A8sql%E8%AF%AD%E5%8F%A5.md)
-    * mysql总结
-        * [mysql事务总结](mysql%2Fmysql%E6%80%BB%E7%BB%93%2Fmysql%E4%BA%8B%E5%8A%A1%E6%80%BB%E7%BB%93.md)
-        * [mysql锁总结](mysql%2Fmysql%E6%80%BB%E7%BB%93%2Fmysql%E9%94%81%E6%80%BB%E7%BB%93.md)
     * [mysql慢查询日志](mysql%2Fmysql%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97.md)
     * [mysql执行计划](mysql%2Fmysql%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92.md)
     * [mysql操作buffer知识](mysql%2Fmysql%E6%93%8D%E4%BD%9Cbuffer%E7%9F%A5%E8%AF%86.md)
-    * [mysql查询sql优化](mysql%2Fmysql%E6%9F%A5%E8%AF%A2sql%E4%BC%98%E5%8C%96.md)
     * [mysql死锁问题](mysql%2Fmysql%E6%AD%BB%E9%94%81%E9%97%AE%E9%A2%98.md)
-    * [mysql用户增删改查](mysql%2Fmysql%E7%94%A8%E6%88%B7%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5.md)
+    * [mysql用户授权管理grants](mysql%2Fmysql%E7%94%A8%E6%88%B7%E6%8E%88%E6%9D%83%E7%AE%A1%E7%90%86grants.md)
     * [mysql的case_when_then用法](mysql%2Fmysql%E7%9A%84case_when_then%E7%94%A8%E6%B3%95.md)
+    * [mysql的count(*) 和 count(1)和count(列名)区别](mysql%2Fmysql%E7%9A%84count%28%2A%29%20%E5%92%8C%20count%281%29%E5%92%8Ccount%28%E5%88%97%E5%90%8D%29%E5%8C%BA%E5%88%AB.md)
     * [mysql的sql语句执行过程](mysql%2Fmysql%E7%9A%84sql%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.md)
+    * [mysql的各种日志redo undo binlog](mysql%2Fmysql%E7%9A%84%E5%90%84%E7%A7%8D%E6%97%A5%E5%BF%97redo%20undo%20binlog.md)
+    * [mysql的存储过程](mysql%2Fmysql%E7%9A%84%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B.md)
     * [mysql管理命令](mysql%2Fmysql%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4.md)
-    * [mysql索引](mysql%2Fmysql%E7%B4%A2%E5%BC%95.md)
+    * [mysql索引知识包括b+树](mysql%2Fmysql%E7%B4%A2%E5%BC%95%E7%9F%A5%E8%AF%86%E5%8C%85%E6%8B%ACb+%E6%A0%91.md)
     * [mysql连接数和线程池](mysql%2Fmysql%E8%BF%9E%E6%8E%A5%E6%95%B0%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0.md)
     * [mysql锁竞争调试](mysql%2Fmysql%E9%94%81%E7%AB%9E%E4%BA%89%E8%B0%83%E8%AF%95.md)
     * [mysql锁简介](mysql%2Fmysql%E9%94%81%E7%AE%80%E4%BB%8B.md)
@@ -291,12 +293,14 @@
     * [单双引号的区别](python%2F%E5%8D%95%E5%8F%8C%E5%BC%95%E5%8F%B7%E7%9A%84%E5%8C%BA%E5%88%AB.md)
     * [字节和字符串转换](python%2F%E5%AD%97%E8%8A%82%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2.md)
 * redis
-    * [redis分布式锁原理](redis%2Fredis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%8E%9F%E7%90%86.md)
+    * [redis五种数据类型底层原理](redis%2Fredis%E4%BA%94%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86.md)
+    * [redis实现布隆过滤器](redis%2Fredis%E5%AE%9E%E7%8E%B0%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8.md)
+    * [redis常见问题](redis%2Fredis%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.md)
     * [redis底层数据结构](redis%2Fredis%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.md)
     * [redis持久化](redis%2Fredis%E6%8C%81%E4%B9%85%E5%8C%96.md)
-    * [redis数据类型底层原理](redis%2Fredis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86.md)
+    * [redis架构模式](redis%2Fredis%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F.md)
+    * [redis的lua脚本](redis%2Fredis%E7%9A%84lua%E8%84%9A%E6%9C%AC.md)
     * [redis配置文件](redis%2Fredis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.md)
-    * [redis集群部署](redis%2Fredis%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2.md)
     * 应用实例
         * [redis实现扫码登录](redis%2F%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%2Fredis%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95.md)
         * [redis抢购](redis%2F%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%2Fredis%E6%8A%A2%E8%B4%AD.md)
@@ -322,6 +326,8 @@
     * [websocket](tcp%2Fwebsocket.md)
 * 分布式
     * [分布式事务](%E5%88%86%E5%B8%83%E5%BC%8F%2F%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1.md)
+* 安全
+    * [如何预防XSS和CSRF跨站攻击](%E5%AE%89%E5%85%A8%2F%E5%A6%82%E4%BD%95%E9%A2%84%E9%98%B2XSS%E5%92%8CCSRF%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB.md)
 * 容器技术
     * [Minikube使用](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2FMinikube%E4%BD%BF%E7%94%A8.md)
     * docker
@@ -332,6 +338,7 @@
         * [docker学习笔记](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
         * [docker学习笔记二](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C.md)
         * [docker安装gitlab](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E5%AE%89%E8%A3%85gitlab.md)
+        * [docker搭建php开发环境](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E6%90%AD%E5%BB%BAphp%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83.md)
         * [docker数据卷volume](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E6%95%B0%E6%8D%AE%E5%8D%B7volume.md)
         * [docker构建build镜像原理](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E6%9E%84%E5%BB%BAbuild%E9%95%9C%E5%83%8F%E5%8E%9F%E7%90%86.md)
         * [docker网络访问](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E7%BD%91%E7%BB%9C%E8%AE%BF%E9%97%AE.md)
@@ -356,6 +363,7 @@
     * [elasticsearch聚合统计](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%2Felasticsearch%E8%81%9A%E5%90%88%E7%BB%9F%E8%AE%A1.md)
     * [elasticsearch部署和配置](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%2Felasticsearch%E9%83%A8%E7%BD%B2%E5%92%8C%E9%85%8D%E7%BD%AE.md)
 * 操作系统
+    * [ascii码](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2Fascii%E7%A0%81.md)
     * [内存映射mmap](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2F%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84mmap.md)
     * [内核态和用户态](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2F%E5%86%85%E6%A0%B8%E6%80%81%E5%92%8C%E7%94%A8%E6%88%B7%E6%80%81.md)
     * [守护进程](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2F%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B.md)
@@ -384,6 +392,9 @@
     * [算术表达式求值](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC.md)
     * [跳跃表](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E8%B7%B3%E8%B7%83%E8%A1%A8.md)
     * [链表](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E9%93%BE%E8%A1%A8.md)
+* 架构模式
+    * [LVS负载均衡](%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F%2FLVS%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.md)
+    * [微服务](%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1.md)
 * 消息中间件
     * rabbitmq
         * [rabbitmq交换器和绑定](%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%2Frabbitmq%2Frabbitmq%E4%BA%A4%E6%8D%A2%E5%99%A8%E5%92%8C%E7%BB%91%E5%AE%9A.md)
@@ -399,8 +410,6 @@
     * [tcp传输协议](%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%2Ftcp%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE.md)
     * [传输层](%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%2F%E4%BC%A0%E8%BE%93%E5%B1%82.md)
     * [物理层](%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%2F%E7%89%A9%E7%90%86%E5%B1%82.md)
-* 集群
-    * [LVS负载均衡](%E9%9B%86%E7%BE%A4%2FLVS%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.md)
 * 项目
     * gmq
     * [gmq消息队列](%E9%A1%B9%E7%9B%AE%2Fgmq%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97.md)

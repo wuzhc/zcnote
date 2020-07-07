@@ -1,7 +1,0 @@
-- 从一个nil channel读数据，造成永远阻塞
-- 给一个nil channel写数据，造成永远阻塞
-- 从一个已关闭的channel读数据，返回零值
-- 给一个已关闭的channel写数据，会引发panic
-- 多次关闭channel会引发panic
-- 判断channel是否关闭，可以使用ok判断法
-- channel是线程安全，多个goroutine操作同个channel，不会发生资源竞争问题

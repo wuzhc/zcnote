@@ -1,3 +1,7 @@
+## 参考
+- https://blog.csdn.net/chenssy/article/details/103856180
+
+
 ## 简单动态字符串（simple dynamic string,SDS）
 ```c
 struct sdshdr{
@@ -66,12 +70,16 @@ https://www.jianshu.com/p/dc252b5efca6
 
 ## 压缩列表
 https://www.jianshu.com/p/d9ac7074f10e
-ziplist 是由一系列特殊编码的内存块构成的列表(像内存连续的数组，但每个元素长度不同)， 一个 ziplist 可以包含多个节点（entry）。
-ziplist 将表中每一项存放在前后连续的地址空间内，每一项因占用的空间不同，而采用变长编码。
-	
+ziplist 将表中每一项存放在前后连续的地址空间内，相对于链表，压缩列表占用一块连续内存	
 ### 原理
-压缩列表不是用某种算法对数据进行压缩，而是将数据按照一定规则编码在一块连续的内存区域
-![https://images2018.cnblogs.com/blog/1120165/201805/1120165-20180528215852732-1088896020.png](https://images2018.cnblogs.com/blog/1120165/201805/1120165-20180528215852732-1088896020.png)
+```bash
+<zlbytes> <zltail> <zllen> <entry> <entry> ... <entry> <zlend>
+```
+- zlbytes：表示这个ziplist占用了多少空间，或者说占了多少字节，这其中包括了zlbytes本身占用的4个字节；
+- zltail：表示到ziplist中最后一个元素的偏移量，有了这个值，pop操作的时间复杂度就是O(1)了，即不需要遍历整个ziplist；
+- zllen：表示ziplist中有多少个entry，即保存了多少个元素。由于这个字段占用16个字节，所以最大值是2^16-1，也就意味着，如果entry的数量超过2^16-1时，需要遍历整个ziplist才知道entry的数量；
+- entry：真正保存的数据，有它自己的编码；
+- zlend：专门用来表示ziplist尾部的特殊字符，占用8个字节，值固定为255，即8个字节每一位都是1。
 压缩列表每个节点构成：
 ![https://images2018.cnblogs.com/blog/1120165/201805/1120165-20180528223605060-899108663.png](https://images2018.cnblogs.com/blog/1120165/201805/1120165-20180528223605060-899108663.png)
 

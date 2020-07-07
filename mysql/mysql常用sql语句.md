@@ -1,4 +1,7 @@
 ```sql
+# 查看表信息
+show table status from met where name="<table>";
+
 # 优化表
 optimize table <table>
 

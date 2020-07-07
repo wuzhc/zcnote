@@ -2,11 +2,11 @@
 - https://www.jianshu.com/p/bab8f4b26445
 - https://www.cnblogs.com/lizhimin123/p/10192217.html
 
-
 > 相对于memcache,redis的是数据可以做持久化处理,主要有两种方式,快照rdb和追加文件aof,redis是持久化处理是比较耗时,一般在主从模式中,master不做持久化处理,由slave处理
 
-## 持久化的意义
-防止数据丢失
+## 什么是Redis持久化？
+持久化就是把内存的数据写到磁盘中去，防止服务宕机了内存数据丢失。
+
 
 ## 快照rdb 
 - redis使用操作系统的多进程COW机制(Copy On Write)复制写机制来实现快照的持久化
@@ -41,19 +41,23 @@ https://www.cnblogs.com/lizhimin123/p/10192217.html
 rdb文件被成为快照文件，子进程所看到的数据在它被创建的一瞬间就固定下来了，父进程修改的某个数据只是该数据的复制品。（父子进程共享内存，数据发生写时会另外复制一份数据进行修改）
 ![https://upload-images.jianshu.io/upload_images/7789414-016d9f4ff4c14e33.png?imageMogr2/auto-orient/strip|imageView2/2/w/1196/format/webp](https://upload-images.jianshu.io/upload_images/7789414-016d9f4ff4c14e33.png?imageMogr2/auto-orient/strip|imageView2/2/w/1196/format/webp)
 
-### 优缺点
-优点:  
+### 优点:  
 - 性能好  
-缺点:  
+### 缺点:  
 - 实时性差  
 
 ## 追加日志aof
 redis将指令追加到日志，通过回放指令来恢复数据，随着时间的增大会有日志文件变大的问题，这就需要重写日志
 
-## aof重写日志
+## aof重写日志的过程是怎么样的？
 ![https://upload-images.jianshu.io/upload_images/7789414-42813796f197b274.png?imageMogr2/auto-orient/strip|imageView2/2/w/957/format/webp](https://upload-images.jianshu.io/upload_images/7789414-42813796f197b274.png?imageMogr2/auto-orient/strip|imageView2/2/w/957/format/webp)
+- fork子进程
+- 子进程遍历内存数据写到新的aof文件
+- 在生成新的aof文件的过程中，如果收到新指令，则继续保存在系统内存缓存中
+- 完成新的aof文件之后，将系统内存缓存数据追加到新的aof文件
+- 新的aof文件代替旧的aof文件
 
-优点:  
-- 实时性小
-缺点:  
+### 优点:  
+- 实时性小  
+### 缺点:  
 - 需要重写日志文件  
