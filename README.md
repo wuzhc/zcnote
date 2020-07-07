@@ -219,11 +219,6 @@
     * [mysql错误:Ignoring query to other database解决方法](mysql%2Fmysql%E9%94%99%E8%AF%AF:Ignoring%20query%20to%20other%20database%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.md)
     * [phpmyadmin配置](mysql%2Fphpmyadmin%E9%85%8D%E7%BD%AE.md)
     * [问题记录](mysql%2F%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95.md)
-* object
-    * [markdown解析html](object%2Fmarkdown%E8%A7%A3%E6%9E%90html.md)
-    * [obj_inject](object%2Fobj_inject.md)
-    * [obj_ioc](object%2Fobj_ioc.md)
-    * [obj_service_locator](object%2Fobj_service_locator.md)
 * other
     * [deepin安装包命令](other%2Fdeepin%E5%AE%89%E8%A3%85%E5%8C%85%E5%91%BD%E4%BB%A4.md)
     * [git reset --soft,--hard的区别](other%2Fgit%20reset%20--soft%2C--hard%E7%9A%84%E5%8C%BA%E5%88%AB.md)
@@ -232,6 +227,7 @@
     * [git执行reset --hard补救方法](other%2Fgit%E6%89%A7%E8%A1%8Creset%20--hard%E8%A1%A5%E6%95%91%E6%96%B9%E6%B3%95.md)
     * [git日志分析](other%2Fgit%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90.md)
     * [http协议](other%2Fhttp%E5%8D%8F%E8%AE%AE.md)
+    * [markdown解析html](other%2Fmarkdown%E8%A7%A3%E6%9E%90html.md)
     * [php](other%2Fphp.sh)
     * [phpstorm_setting](other%2Fphpstorm_setting.md)
     * [software](other%2Fsoftware.md)
@@ -410,6 +406,10 @@
     * [tcp传输协议](%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%2Ftcp%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE.md)
     * [传输层](%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%2F%E4%BC%A0%E8%BE%93%E5%B1%82.md)
     * [物理层](%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%2F%E7%89%A9%E7%90%86%E5%B1%82.md)
+* 面向对象编程
+    * [面向对象之依赖注入](%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5.md)
+    * [面向对象之容器注入](%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%AE%B9%E5%99%A8%E6%B3%A8%E5%85%A5.md)
+    * [面向对象之服务定位器](%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%BD%8D%E5%99%A8.md)
 * 项目
     * gmq
     * [gmq消息队列](%E9%A1%B9%E7%9B%AE%2Fgmq%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97.md)
