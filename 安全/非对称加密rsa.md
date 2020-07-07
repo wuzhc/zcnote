@@ -1,4 +1,4 @@
-### 生成秘钥和公钥
+## 生成秘钥和公钥
 ```bash
 # 秘钥
 openssl genrsa -out rsa_private_key.pem 1024  
@@ -7,13 +7,13 @@ openssl genrsa -out rsa_private_key.pem 1024
 openssl rsa -in rsa_private_key.pem -pubout -out rsa_public_key.pem  
 ```
 
-### php
+## php
 ```php
 openssl_public_encrypt($params, $encrypted, $pu_key);//公钥加密
 openssl_private_decrypt(base64_decode($params), $decrypted, $pi_key);//私钥解密
 ```
 
-### RSA的公钥和私钥到底哪个才是用来加密和哪个用来解密?
+## RSA的公钥和私钥到底哪个才是用来加密和哪个用来解密?
 其实公钥和私钥都可以用来加密或解密---只要能保证用A加密，就用B解密就行。至于A是公钥还是私钥，其实可以根据不同的用途而定。  
 例如说，如果你想把某个消息秘密的发给某人，那你就可以用他的公钥加密。因为只有他知道他的私钥，所以这消息也就只有他本人能解开，于是你就达到了你的目的。  
 但是如果你想发布一个公告，需要一个手段来证明这确实是你本人发的，而不是其他人冒名顶替的。那你可以在你的公告开头或者结尾附上一段用你的私钥加密的内容（例如说就是你公告正文的一段话），那所有其他人都可以用你的公钥来解密，看看解出来的内容是不是相符的。如果是的话，那就说明这公告确实是你发的---因为只有你的公钥才能解开你的私钥加密的内容，而其他人是拿不到你的私钥的。  
