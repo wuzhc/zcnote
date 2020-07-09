@@ -6,7 +6,7 @@ https://www.jianshu.com/p/a1344ca86e9b
 
 ## 杂的知识点
 - `influx`的cli连接的端口是8086
-- influxdb的存储模型，`measurement+tag set+field key`作为key，`field value`作为value，如果没有field则没有了对应的value了，所以`field`是必填的，`tag`是可选的
+- influxdb的存储模型，`measurement+tag_set+field_key`作为key，`field_value`作为value，如果没有field则没有了对应的value了，所以`field`是必填的，`tag`是可选的
 
 ## 基本概念
 - measurement 相当于table
@@ -93,6 +93,37 @@ influxdb的数据存储有三个目录，分别是meta、wal、data：
 - meta 用于存储数据库的一些元数据，meta 目录下有一个 meta.db 文件；
 - wal 目录存放预写日志文件，以 .wal 结尾；
 - data 目录存放实际存储的数据文件，以 .tsm 结尾。
+
+## 保留策略
+保留策略`retention policy`需要指定具体的数据库，一个数据库可以有多个保留策略
+```bash
+create retention policy 保留策略名称 on 数据库 duration 保留时间 replication 副本数 default
+```
+- duration: 定义的数据保存时间，最低为1h，如果设置为0，表示数据持久不失效（默认的策略就是这样的）
+- replication: 定义每个point保存的副本数，默认为1
+- default: 表示将这个创建的保存策略设置为默认的
+
+```bash
+#显示数据库上有哪些策略
+show retenstion policies on 数据库
+#修改策略
+alter retention policy 保留策略名称 on 数据库名称 duration 保留时间 replication 副本数
+#删除策略
+drop retention policy 保留策略名称 on 数据库
+```
+
+## docker安装telegraf
+```bash
+#启动临时容器
+docker run --rm --name=telegraf telegraf 
+#将临时容器的配置文件复制出来
+docker cp telegraf:/etc/telegraf/telegraf.conf /data/wwwroot/influxdb/telegraf/telegraf.conf
+#启动真正容器
+docker run -d --name=telegraf -v /data/wwwroot/influxdb/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf  telegraf
+```
+
+docker run -d --name grafana -p 3000:3000 grafana/grafana
+docker run --rm --name=telegraf -v /data/wwwroot/influxdb/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf  telegraf
 
 ## 主题问题
 - where子句如果是字符串需要引号，例如`select * from t where "name" ='wuzhc'`,name需要双引号，wuzhc需要单引号

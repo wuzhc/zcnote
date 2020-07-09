@@ -1,4 +1,5 @@
 ## 参考
+- https://blog.csdn.net/zxljsbk/article/details/89153690
 - https://github.com/link1st/go-stress-testing#4go-stress-testing-go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7
 -https://www.cnblogs.com/cwp-bg/p/8377742.html
 
@@ -28,7 +29,7 @@ sysctl -p
 ## 用户允许打开的最大文件数
 ```bash
 # 查看系统默认的值
-ulimit -n
+ulimit -n #默认为1024，即只能一个进程只能打开1024个文件描述符，也就是只能维持1024个tcp连接
 # 临时设置最大打开文件数
 ulimit -n 1040000
 # ulimit -Sn 软限制
@@ -38,11 +39,11 @@ ulimit -n 1040000
 ```bash
 vim /etc/security/limits.conf
 
-root soft nofile 1040000
+root soft nofile 1040000 
 root hard nofile 1040000
 
-root soft nofile 1040000
-root hard nproc 1040000
+root soft nofile 1040000 #nofile是每个进程可以打开的文件数的限制
+root hard nproc 1040000 #nproc是操作系统级别对每个用户创建的进程数的限制
 
 root soft core unlimited
 root hard core unlimited
@@ -58,6 +59,10 @@ root hard core unlimited
 ```
 - 如果重启无效，参考[https://www.cnblogs.com/cwp-bg/p/8377742.html](https://www.cnblogs.com/cwp-bg/p/8377742.html)
 - 软限制可以在程序的进程中自行改变(突破限制)，而硬限制则不行(除非程序进程有root权限)
+- soft nproc ：单个用户可用的最大进程数量(超过会警告);
+- hard nproc：单个用户可用的最大进程数量(超过会报错);
+- soft nofile  ：可打开的文件描述符的最大数(超过会警告);
+- hard nofile ：可打开的文件描述符的最大数(超过会报错);
 
 
 ## 可用的端口范围
