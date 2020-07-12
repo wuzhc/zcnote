@@ -79,17 +79,23 @@ show series on <database> from <measurement>
 #limt 1表示每个measurement+tags只显示第条time记录
 #slimit 1表示只显示一个measurement+tags
 select sum(rate) from userlog group by time(20m),uid fill(2000) limit 1
+
+
+SELECT non_negative_derivative(mean("accepts"), 10s) AS "accepts", non_negative_derivative(mean("active"), 10s) AS "active", non_negative_derivative(mean("handled"), 10s) AS "handled", non_negative_derivative(mean("reading"), 10s) AS "reading", non_negative_derivative(mean("requests"), 10s) AS "requests", non_negative_derivative(mean("waiting"), 10s) AS "waiting", non_negative_derivative(mean("writing"), 10s) AS "writing" FROM "nginx"  GROUP BY time(10s) fill(null)
 ```
 
 ## 存储引擎 （Timestamp-Structure Merge Tree）
+`Shard` 在 influxdb中是一个比较重要的概念，它和 `retention policy` 相关联。每一个存储策略下会存在许多 `shard`，每一个 `shard` 存储一个指定时间段内的数据，并且不重复，例如 7点-8点 的数据落入 shard0 中，8点-9点的数据则落入 shard1 中。每一个 shard 都对应一个底层的 tsm 存储引擎，有独立的 `cache`、`wal`、`tsm file`。
+这样做的目的就是为了可以通过时间来快速定位到要查询数据的相关资源，加速查询的过程，并且也让之后的批量删除数据的操作变得非常简单且高效。
+
 存储引擎包含四部分`cache`、`wal`、`tsm file`、`compactor`
-- cache：插入数据时，先往 cache 中写入再写入wal中，可以认为 cache 是 wal 文件中的数据在内存中的缓存，cache 中的数据并不是无限增长的，有一个 maxSize 参数用于控制当 cache 中的数据占用多少内存后就会将数据写入 tsm 文件。如果不配置的话，默认上限为 25MB
-- wal：预写日志，对比MySQL的 binlog，其内容与内存中的 cache 相同，作用就是为了持久化数据，当系统崩溃后可以通过 wal 文件恢复还没有写入到 tsm 文件中的数据，当 InfluxDB 启动时，会遍历所有的 wal 文件，重新构造 cache。
-- tsm file：每个 tsm 文件的大小上限是 2GB。当达到 cache-snapshot-memory-size,cache-max-memory-size 的限制时会触发将 cache 写入 tsm 文件。
-- compactor：主要进行两种操作，一种是 cache 数据达到阀值后，进行快照，生成一个新的 tsm 文件。另外一种就是合并当前的 tsm 文件，将多个小的 tsm 文件合并成一个，减少文件的数量，并且进行一些数据删除操作。 这些操作都在后台自动完成，一般每隔 1 秒会检查一次是否有需要压缩合并的数据。
+- `cache`：插入数据时，先往 `cache` 中写入再写入`wal`中，可以认为 cache 是 wal 文件中的数据在内存中的缓存，cache 中的数据并不是无限增长的，有一个 maxSize 参数用于控制当 cache 中的数据占用多少内存后就会将数据写入 `tsm` 文件。如果不配置的话，默认上限为 25MB
+- `wal`：`预写日志`，对比MySQL的 binlog，其内容与内存中的 cache 相同，作用就是为了持久化数据，当系统崩溃后可以通过 wal 文件恢复还没有写入到 `tsm` 文件中的数据，当 InfluxDB 启动时，会遍历所有的 `wal` 文件，重新构造 cache。
+- `tsm file`：每个 tsm 文件的大小上限是 2GB。当达到 cache-snapshot-memory-size,cache-max-memory-size 的限制时会触发将 cache 写入 tsm 文件。
+- compactor：压缩器，主要进行两种操作，一种是 cache 数据达到阀值后，进行快照，生成一个新的 `tsm` 文件。另外一种就是合并当前的 tsm 文件，将多个小的 tsm 文件合并成一个，减少文件的数量，并且进行一些数据删除操作。 这些操作都在后台自动完成，一般每隔 1 秒会检查一次是否有需要压缩合并的数据。
 
 ### 存储目录
-influxdb的数据存储有三个目录，分别是meta、wal、data：
+influxdb的数据存储有三个目录，分别是`meta`、`wal`、`data`：
 - meta 用于存储数据库的一些元数据，meta 目录下有一个 meta.db 文件；
 - wal 目录存放预写日志文件，以 .wal 结尾；
 - data 目录存放实际存储的数据文件，以 .tsm 结尾。
@@ -112,6 +118,29 @@ alter retention policy 保留策略名称 on 数据库名称 duration 保留时�
 drop retention policy 保留策略名称 on 数据库
 ```
 
+## 连续查询
+连续查询是指数据库自动定时执行一些语句，然后将结果保存到指定的表，作用是为了降低采样率；连续查询和存储策略搭配使用将会大大降低 InfluxDB 的系统占用量
+```bash
+#创建连续查询
+#每三十分钟取一个connected_clients字段的平均值、中位值、最大值、最小值 redis_clients_30m 表中
+create continuous query 连续查询名称 on 数据库名称
+begin
+	SELECT mean(connected_clients), MEDIAN(connected_clients),       
+    MAX(connected_clients), MIN(connected_clients) 
+    INTO redis_clients_30m 
+    FROM redis_clients 
+    GROUP BY ip,port,time(30m) 
+end
+#查询
+show continuous queries  
+#删除
+drop continuous query 连续查询名称 on 数据库
+```
+
+
+## 操作优化
+
+
 ## docker安装telegraf
 ```bash
 #启动临时容器
@@ -124,6 +153,9 @@ docker run -d --name=telegraf -v /data/wwwroot/influxdb/telegraf/telegraf.conf:/
 
 docker run -d --name grafana -p 3000:3000 grafana/grafana
 docker run --rm --name=telegraf -v /data/wwwroot/influxdb/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf  telegraf
+
+## grafana
+http://127.0.0.1:3000
 
 ## 主题问题
 - where子句如果是字符串需要引号，例如`select * from t where "name" ='wuzhc'`,name需要双引号，wuzhc需要单引号

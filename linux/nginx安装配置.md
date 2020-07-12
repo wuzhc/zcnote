@@ -1,3 +1,38 @@
+## 安装
+```bash
+./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module
+make && make install
+```
+
+## 监控
+- 配置nginx.conf
+```bash
+vim nginx.conf
+server { 
+	listen 18088;
+	location /nginx-status {
+		allow 127.0.0.1; 
+		deny all;
+		stub_status on;
+		access_log off;
+	}
+}
+```
+- 通过web地址访问 http://127.0.0.1:18088/nginx-status ，返回如下
+```
+Active connections: 4 
+server accepts handled requests
+ 13 13 21 
+Reading: 0 Writing: 1 Waiting: 3 
+
+active connections – 活跃的连接数量
+server accepts handled requests — 总共处理了11989个连接 , 成功创建11989次握手, 总共处理了11991个请求
+reading — 读取客户端的连接数.
+writing — 响应数据到客户端的数量
+waiting — 开启 keep-alive 的情况下,这个值等于 active – (reading+writing), 意思就是 Nginx 已经处理完正在等候下一次请求指令的驻留连接.
+```
+
+## 配置文件
 ```bash
 #普通配置
 #==性能配置

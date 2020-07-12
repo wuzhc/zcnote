@@ -1,7 +1,7 @@
 > 在扫码登录中,redis主要用于设置二维码过期时间,并在不同阶段保存扫码的不同状态  
 
 扫码登录流程大概如下:
-1. 生成二维码,二维码内容保存一个code,已code作为键,初始内容为{status:0,uid:0,portrait:''}
+1. 生成二维码,二维码内容保存一个code,用code作为键,初始内容为{status:0,uid:0,portrait:''}
 2. 手机扫描二维码,获得code;手机带上code和用户token请求服务端,服务端根据token查询用户信息,并保存到以code为键的缓存,状态设置为已扫描;{status:1,uid:1,portrait:'http://xxx.png'}
 3. 游览器检测登录状态,每隔一秒轮询一次服务端,或者用websocket;如果此时已扫描,则轮询的接口会返回用户的头像到游览器的页面上
 4. 手机确认登录,带上code和用户token请求服务端,服务端设置code状态为确认登录;{status:2,uid:1,portrait:'http://xxx.png'}

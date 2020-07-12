@@ -1021,3 +1021,82 @@ func main() {
 }
 
 ```
+
+## switch的case判断
+- 每个case语句不需要break
+- case中添加fallthrough关键字，会继续执行紧跟的下一个case
+```go
+var n int
+switch n {
+case 1: //当n=1时，不会输出，因为所有都不匹配
+case 2:
+	fmt.Println(222222)
+case 3:
+	fmt.Println(333333) //当n=3时，输出33333和4444444，这是因为有fallthrough
+	fallthrough
+case 4:
+	fmt.Println(444444)
+case 5:
+	fmt.Println(555555)
+case 6,7,8:
+	fmt.Println(666667777788888)
+default:
+	fmt.Println("default")
+}
+```
+
+## 自增自减操作
+golang的自增必须作为独立表达式，如下
+```go
+var i = 0
+j := i++ //这是错误的，应该改成i++ j:=i
+```
+另外golang不支持前缀自增，如`++i`是错误的
+
+## 作用域
+```go
+package main
+import "fmt"
+func main() {
+	x := 1
+	fmt.Println("aaa", x)
+	{ //这个是作用域
+		fmt.Println("bbb", x)
+		i, x := 2, 2
+		fmt.Println("ccc", i, x)
+	}
+	fmt.Println("ddd", x)
+}
+```
+输出结果
+```
+aaa 1
+bbb 1
+ccc 2 2
+ddd 1
+```
+
+## 使用range遍历，复制指针问题
+```golang
+package main
+
+import "fmt"
+
+type Foo struct {
+	bar string
+}
+
+func main() {
+	s1 := []Foo{
+		{"A"},
+		{"B"},
+		{"C"},
+	}
+	s2 := make([]*Foo, len(s1))
+	for i, value := range s1 {
+		s2[i] = &value //s2每个元素的值都指向value的值指针，而value最后一次遍历后value为c，所以所有元素都是c
+	}
+	fmt.Println(s1[0], s1[1], s1[2]) //{A} {B} {C}
+	fmt.Println(s2[0], s2[1], s2[2]) //&{C} &{C} &{C}
+}
+```

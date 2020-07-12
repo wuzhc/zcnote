@@ -1,6 +1,7 @@
 > http协议又称超文本传输协议,应用于应用层
 
 ## 参考
+- https://www.toutiao.com/a6800288572629844491/
 - https://www.cnblogs.com/an-wen/p/11180076.html
 - https://www.cnblogs.com/cr330326/p/9426018.htm
 - https://www.cnblogs.com/taider/p/10716059.htmll
@@ -71,7 +72,8 @@ https://www.cnblogs.com/taider/p/10716059.html
 http不保存通信状态，一般使用cookie机制保存会话机制，游览器会根据从服务器的响应报文内的`set-cookie`首部字段信息设置cookie，而客户端每次发送http请求的时候，都会在报文中携带cookie，服务器根据cookie识别客户端的身份。
 
 ## http的keep-alive
-如果一次请求就建立一个连接就太浪费，http1.1的keepalive通过复用连接来实现，一个tcp连接上可以传送多个http请求和响应，http1.1默认开启Connection: keep-alive，但是是阻塞性，新请求需要需要等待上一个请求响应胡才能发起
+如果一次请求就建立一个连接就太浪费，http1.1的keepalive通过复用连接来实现，一个tcp连接上可以传送多个http请求和响应，http1.1默认开启Connection: keep-alive，但是是阻塞性，新请求需要需要等待上一个请求响应胡才能发起；
+总的来说，默认情况下建立 TCP 连接不会断开，只有在请求报头中声明 Connection: close 才会在请求完成后关闭连接。
 
 ## http2.x有什么优势？
 - 新的二进制格式，http1.1解析的是文本协议。
@@ -100,3 +102,6 @@ http://www.52im.net/thread-2446-1-1.html
 ## 什么是数字证书？
 数字签名 = ca机构秘钥加密(hash(申请信息))
 数字证书 = 公钥+数字签名
+
+## 浏览器对同一 Host 建立 TCP 连接到数量有没有限制？
+有。Chrome 最多允许对同一个 Host 建立六个 TCP 连接。不同的浏览器有一些区别。
