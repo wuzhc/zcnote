@@ -1,8 +1,6 @@
 # composer机制
 >  *Composer* 是 PHP 中用来管理依赖(dependency)关系的工具，它可以帮我们自动加载类文件（前提是定义好命名空间和目录的映射关系），并且是惰性加载，在使用类时才自动加载，而不是一开始就加载全部类文件
 
-
-
 ## 1. 魔术方法__autoload
 当类不存在时，自动加载类文件（前提是自己需要自己定义好类和类文件的映射规则）
 ### 1.1 为什么不用__autoload
@@ -200,8 +198,21 @@ php composer.phar init
 ```
 - psr-4命名空间，保存在autoload_psr4.php文件中
 - files全局函数，保存在autoload_files.php文件中
-- classmap扫描src所有文件，以namespace+classname作为键，文件作为值，保存在autoload_classmap.php文件中  
+- classmap扫描src所有文件，以`namespace+classname`作为键，文件作为值，保存在autoload_classmap.php文件中  
 ##### 注意：修改composer.json后，需要composer update
+
+## classmap的用法
+```json
+{
+  "autoload":{
+    "classmap":["src/"]
+  }
+}
+```
+扫描src目录下的所有文件，以`namespace+classname`作为键，文件作为值，保存在`autoload_classmap.php`文件中，有什么好处呢？
+- 同个src目录下，不同的文件可以使用不同的`namespace`
+- src有子目录同样可以生成键值对保存在`autoload_classmap.php`中
+
 
 ## 4.3.3 composer常用命令
 ```bash

@@ -68,4 +68,4 @@ channel 的发送和接收操作本质上都是 “值的拷贝”，无论是�
 - (4)N 个 sender， M 个 receiver
 对于一个sender而言，在sender关闭
 对于多个sender,一个receiver，则增加多一个channel，接收者通过channel发出关闭指令，发送者监控到channel的关闭指令则停止发送
-对于多个sender,多个receiver而言，需要一个中间人，接收者和发送者都监控中间人关闭状态，另外中间人需要被设计为带缓存的channel,因为如果中间人所在的goroutine未准备好，那么第一个发送信号可能会丢失。
+对于多个sender,多个receiver而言，需要一个中间人，接收者和发送者都监控中间人关闭状态，另外中间人需要被设计为带缓存的channel,这是因为如果中间人所在的goroutine未准备好，那么第一个发送信号可能会丢失。

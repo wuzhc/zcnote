@@ -1,49 +1,36 @@
-TCP 内部的很多算法机制让他保持连接的过程中是很可靠的。比如：TCP 的超时重传、错误重传、TCP 的流量控制、阻塞控制、慢热启动算法、拥塞避免算法、快速恢复算法 等等
+> tcp是面向连接，可靠的，基于字节流的传输控制协议，位于传输层。TCP 内部的很多算法机制让他保持连接的过程中是很可靠的。比如：TCP 的`超时重传`、`错误重传`、`流量控制`、`阻塞控制`、`慢热启动算法`、`拥塞避免算法`、`快速恢复算法`等等
 
-
-
-### 数据打包
-出输层    网络层   链路层
-段       包       帧
-segment->packet->frame
-
-
-
-
-### 阻塞
-
-套接字对象内部有两个重要的缓冲结构,读缓冲和写缓冲;数据通过缓冲区再到网卡硬件
-- 当writer buffer写满时,写会阻塞
-- 当reader buffer为空时,读会阻塞
-- 当写缓冲的内容拷贝到网卡后，是不会立即从写缓冲中将这些拷贝的内容移除的，而要等待对方的ack过来之后才会移除。如果网络状况不好，ack迟迟不过来，写缓冲很快就会满的
-
-
-
-### tcp协议头格式 
+## tcp协议头格式 
 ![](http://www.52im.net/data/attachment/forum/201609/01/134217wuckuyvvcsuygnds.jpg)  
+- 源端口，目标端口
 - Sequence Number：是包的序号，用来解决网络包乱序（reordering）问题。
 - Acknowledgement Number：就是ACK——用于确认收到，用来解决不丢包的问题。
 - Window：又叫Advertised-Window，也就是著名的滑动窗口（Sliding Window），用于解决流控的。
 - TCP Flag ：也就是包的类型，主要是用于操控TCP的状态机的。
 
+## 数据打包
+传输层    网络层   链路层
+段             包            帧
+segment->packet->frame
 
+## 阻塞
+套接字对象内部有两个重要的缓冲结构,读缓冲和写缓冲;数据通过缓冲区再到网卡硬件
+- 当writer buffer写满时,写会阻塞
+- 当reader buffer为空时,读会阻塞
+- 当写缓冲的内容拷贝到网卡后，是不会立即从写缓冲中将这些拷贝的内容移除的，而要等待对方的ack过来之后才会移除。如果网络状况不好，ack迟迟不过来，写缓冲很快就会满的
 
-### 三次握手  
+## 三次握手  
 ![](https://img2018.cnblogs.com/blog/184881/201809/184881-20180925181810810-423396758.png)  
 - 客户端主动发送连接请求报文段，将SYN标识位置为1，Sequence Number置为x（TCP规定SYN=1时不能携带数据，x为随机产生的一个值），然后进入SYN_SEND状态
 - 服务端收到SYN报文段进行确认，将SYN标识位置为1，ACK置为1，Sequence Number置为y，Acknowledgment Number置为x+1，然后进入SYN_RECV状态，这个状态被称为半连接状态
 - 客户端再进行一次确认，将ACK置为1（此时不用SYN），Sequence Number置为x+1，Acknowledgment Number置为y+1发向服务器，最后客户端与服务器都进入ESTABLISHED状态
 
-
-
-### seq序列号和ack确认号
+## seq序列号和ack确认号
 seq是序列号，这是为了连接以后传送数据用的，ack是对收到的数据包的确认，值是等待接收的数据包的序列号。  
 在第一次消息发送中，A随机选取一个序列号作为自己的初始序号发送给B；第二次消息B使用ack对A的数据包进行确认，因为已经收到了序列号为x的数据包，准备接收序列号为x+1的包，所以ack=x+1，同时B告诉A自己的初始序列号，就是seq=y；第三条消息A告诉B收到了B的确认消息并准备建立连接，A自己此条消息的序列号是x+1，所以seq=x+1，而ack=y+1是表示A正准备接收B序列号为y+1的数据包。  
 seq是数据包本身的序列号；ack是期望对方继续发送的那个数据包的序列号。  
 
-
-
-### 四次挥手
+## 四次挥手
 https://blog.csdn.net/yu876876/article/details/81560122
 ![](http://www.52im.net/data/attachment/forum/201604/26/142520px6qkzx886895jn8.png)  
 - Client发送一个FIN，用来关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态。
@@ -51,10 +38,7 @@ https://blog.csdn.net/yu876876/article/details/81560122
 - Server发送一个FIN，用来关闭Server到Client的数据传送，Server进入LAST_ACK状态。
 - Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+1，Server进入CLOSED状态，完成四次挥手。
 
-  
-
-
-### TIME_WAIT
+## TIME_WAIT
 为什么要这有TIME_WAIT？为什么不直接给转成CLOSED状态呢？主要有两个原因：
 - 1）TIME_WAIT确保发送方最后一次能够发送ACK，如果接收方没有收到Ack，
 就会触发被动端重发`Fin+ack`，一来一去正好2个MSL(即报文段生成时间)
