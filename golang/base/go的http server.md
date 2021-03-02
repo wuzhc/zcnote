@@ -1,14 +1,5 @@
-## 参考
-- https://www.jianshu.com/p/be3d9cdc680b
-
-## http服务
-主要有两个对象,如下:
-- `Handler`,它是请求的处理对象,Handler对象需要实现`ServeHTTP`方法,`ServeHTTP`执行的是我们的业务逻辑,一般我们定义的`func(w http.ResponseWriter, r *http.Request)`的方法需要经过`http.HandlerFunc`包装为`Handler`对象
-- `ServeMux`,它相当于一个路由注册器,保存的请求路径`pattern`和`Handler`对象的map表,通过`pattern`找到对应的`Handler`对象,然后执行`Handler`对象的`ServeHTTP`方法
-- `Server`,可以通过自己自定义`http.Server`对象,然后调用`serv.ListenAndServe`来监听和接受请求
-
-
 ## 最简单的http服务
+对于`golang`来说,创建一个http服务是轻而易举的事情,如下,我们创建了一个非常简单的http服务,监听8899端口,只提供一个接口返回hello world
 ```go
 package main
 import (
@@ -22,6 +13,14 @@ func main() {
 	http.ListenAndServe(":8899", nil)
 }
 ```
+当你在游览器输入`http://127.0.0.1:8899`时,便能看到`hello world`的输出
+
+
+## http服务
+对于`golang`的http服务,我们主要理解两个对象,:
+- `Handler`,它是请求的处理对象,`Handler`对象需要实现`ServeHTTP`方法,`ServeHTTP`执行的是我们的业务逻辑,一般我们定义的`func(w http.ResponseWriter, r *http.Request)`的方法需要经过`http.HandlerFunc`包装为`Handler`对象
+- `ServeMux`,它相当于一个路由注册器,保存的请求路径`pattern`和`Handler`对象的map表,通过`pattern`找到对应的`Handler`对象,然后执行`Handler`对象的`ServeHTTP`方法
+简单的说,http的执行对象是`handler`,而要成为`handler`对象.则必须实现`ServeHTTP`方法,例如`HandlerFunc`实现了`ServeHTTP`方法,所以它也是一个`handler`对象
 
 ## handler对象
 ```go
@@ -109,5 +108,10 @@ func ListenAndServe(addr string, handler Handler) error {
 }
 ```
 
+## 来源
+- 
+
+## 参考
+- https://www.jianshu.com/p/be3d9cdc680b
 
 

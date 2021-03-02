@@ -1,4 +1,4 @@
-查看远程库信息：git remote -v（Note:参数v表示详细信息）
+mao 查看远程库信息：git remote -v（Note:参数v表示详细信息）
 推送分支：git push <remote> <name>
 查看分支：git branch
 创建分支：git branch <name>

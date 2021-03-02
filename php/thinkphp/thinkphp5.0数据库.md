@@ -164,8 +164,149 @@ try{
 }
 ```
 
+## 模型
+- 模型名称为去除下划线，去除表前缀，驼峰法
+- 如果不符合第一条，则需要在model模型里面指定`table`
+```php
+<?php
+namespace app\demo\model;
+use think\Model;
+class ChatGroup extends Model
+{
+    protected $table = 'chat_group'; //直接指定表名
+    protected $connection = 'met'; //直接指定数据库名
+}
+```
 
+### 插入数据
+```php
+//普通插入
+$user = new User(); //注意不要在同一个实例里面多次新增数据，一个`new`一个插入
+$user->name     = 'onethink';
+$user->save();
+echo $user->id; //返回插入的ID
 
+//静态方法create插入
+$user = User::create([
+    'name'=>'xxxx',
+]);
+echo $user->id; //create返回的是当前模型对象实例
 
+//指定字段插入
+$user = new User($_POST);
+// post数组中只有name和email字段会写入
+$user->allowField(['name','email'])->save();
 
+//批量插入
+$user = new User();
+$user->saveAll([ 
+    ['name'=>'php','id'=>1],//如果带有主键，则是一个更新操作
+    ['name'=>'golang']
+]);
+```
 
+### 更新数据
+```php
+$user = new User;
+// save方法第二个参数为更新条件
+$user->save([
+    'name'  => 'thinkphp',
+    'email' => 'thinkphp@qq.com'
+],['id' => 1]);
+
+$user = new User();
+// post数组中只有name和email字段会写入
+$user->allowField(['name','email'])->save($_POST, ['id' => 1]);
+
+User::update(['name' => 'thinkphp'],['id'=>1]); //更新多条的
+```
+
+### 删除记录
+```php
+User::destroy(1); //根据主键删除 或者 User::destroy([1,2,3]);
+User::destroy(['name'=>'xxx']) //根据名称删除
+```
+
+### 查询数据
+```php
+User::get(1); //根据主键获取
+User::get(['name'=>'xxx']) //根据名称获取
+User::all(); //查询多条记录
+
+$user = new User();
+$user->where('name', 'thinkphp')
+    ->limit(10)
+    ->order('id', 'desc')
+    ->select();
+    
+//后续该模型的操作从主库读取数据
+$user           = new User;
+$user->name     = 'thinkphp';
+$user->email    = 'thinkphp@qq.com';
+$user->readMaster()->save(); //当设置readMaster(true)时，所有模型查询从主库查找，或者配置文件`'read_master'	=> true`
+```
+
+## 获取器
+获取器的作用是在获取数据的字段值后自动进行处理
+```php
+class User extends Model 
+{
+	//包装status数据，获取$user->status会输出处理后的值
+    public function getStatusAttr($value)
+    {
+        $status = [-1=>'删除',0=>'禁用',1=>'正常',2=>'待审核'];
+        return $status[$value];
+    }
+    
+     //定义一个不存在的字段，第二个参数是一行记录数据
+     public function getStatusTextAttr($value,$data)
+    {
+        $status = [-1=>'删除',0=>'禁用',1=>'正常',2=>'待审核'];
+        return $status[$data['status']];
+    }
+}
+
+$user = new User();
+echo $user->status;
+echo $user->status_text; //获取不存在的字段
+echo $user->getData('status'); //获取原始数据
+$user->toArray(); //获取的字段都是经过获取器的
+```
+
+## 修改器
+修改器的作用是可以在数据赋值的时候自动进行转换处理
+```php
+class User extends Model 
+{
+    public function setNameAttr($value, $data) //第二个参数是当前所有数据
+    {
+        return strtolower($value);
+    }
+}
+
+$user = new User();
+$user->name = 'xxxx';
+$user->save();
+
+//或者用data()的第二个参数为true来触发
+$user->data(['name'=>'xxxx'], true);
+$user->save();
+```
+
+## 自动创建时间和更新时间
+```php
+class User extends Model 
+{
+    protected $autoWriteTimestamp = 'datetime'; //开始自动创建时间和更新时间，如果是datetime类型，需要指定
+    protected $createTime = 'create_at'; //指定创建时间字段名称
+    protected $updateTime = false; //如果没有更新时间，则设置更新时间为false
+}
+```
+
+## 保护字段
+```php
+class User extends Model
+{
+	protected $readonly = ['name','email'];
+}
+```

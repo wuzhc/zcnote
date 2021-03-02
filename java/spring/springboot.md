@@ -1,0 +1,1 @@
+`springboot`是整合了`spring`技术栈的框架，从而简化配置，快速搭建`spring`应用

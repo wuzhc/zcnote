@@ -1,6 +1,6 @@
 ### 用户信息
-`/etc/passwd`保存着linux用户账号信息,内容包括账号,密码,用户ID,用户组ID,用户主目录,shell登录,举个例子：`wuzhc:x:1005:1005::/home/wuzhc:/bin/bash`,各个参数说明如下:
-- wuzhc ： 用户名， 
+`/etc/passwd`保存着linux用户账号信息,内容包括账号,密码,用户ID,用户组ID,用户主目录,shell登录,举个例子：`john:x:1005:1005::/home/wuzhc:/bin/bash`,各个参数说明如下:
+- john ： 用户名， 
 - x ： 密码，对应/etc/shadow
 - 1005 ： UID， 用户ID， 0表示系统管理员，例如root, 1-999系统账号， 1000 - 60000 可登录账号
 - 1005 ： GID， 用户组ID，对应/etc/group
@@ -9,7 +9,7 @@
 
 ### 用户相关命令
 - grep wuzhc /etc/passwd /etc/shadow /etc/group ： 查看wuzhc用户对应信息内容
-- ll -d /home/wuzhc ： 查看wuzhc主文件夹信息
+- ll -d /home/john ： 查看john主文件夹信息
 - id <username> ： 查看用户相关uid，gid信息
 
 ### 目录管理

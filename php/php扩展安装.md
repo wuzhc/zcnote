@@ -1,6 +1,6 @@
 ```bash
 phpize7
-./configure --with-php-config=/opt/php7/bin/php-config
+./configure --with-php-config=/opt/php73/bin/php-config 
  /opt/lampp/bin/php-config
 make
 sudo make install
@@ -16,7 +16,7 @@ extension=gd.so
 进入到php7源码目录`/opt/php-7.2.12/ext/gd`,执行安装gd扩展命令如下:
 ```bash
 phpize7
-./configure --with-php-config=/opt/php7/bin/php-config --with-png-dir --with-freetype-dir --with-jpeg-dir --with-zlib-dir --with-gd
+./configure --with-php-config=/opt/php73/bin/php-config --with-png-dir --with-freetype-dir --with-jpeg-dir --with-zlib-dir --with-gd
 make
 sudo make install
 ```

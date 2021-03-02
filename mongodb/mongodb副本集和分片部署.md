@@ -23,7 +23,7 @@ https://blog.csdn.net/quanmaoluo5461/article/details/85164588
 - 分片以集合为基本单位
 - 集合中的数据通过片键被分成多个部分
 - 片键是集合中某个字段,必须是个索引
-- 自增的片键会导致一直在一个分片写入
+- 自增的片键会导致一直在一个分片写入 ???
 
 ## writeConcern和readConcern
 - 指定 writeConcern:majority 可以保证写入数据不丢失，不会因选举新主节点而被回滚掉。
