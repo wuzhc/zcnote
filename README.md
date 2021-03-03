@@ -149,7 +149,6 @@
     * assets
         * [140615289](java%2Fassets%2F140615289.jpg)
         * [140642106](java%2Fassets%2F140642106.jpg)
-    * [java之Aop面向切面编程](java%2Fjava%E4%B9%8BAop%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B.md)
     * [java写时复制容器CopyOnWrite](java%2Fjava%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6%E5%AE%B9%E5%99%A8CopyOnWrite.md)
     * [java基础内容](java%2Fjava%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9.md)
     * [java多线程编程](java%2Fjava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B.md)
@@ -235,19 +234,6 @@
     * [mysql错误:Ignoring query to other database解决方法](mysql%2Fmysql%E9%94%99%E8%AF%AF:Ignoring%20query%20to%20other%20database%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.md)
     * [phpmyadmin配置](mysql%2Fphpmyadmin%E9%85%8D%E7%BD%AE.md)
     * [问题记录](mysql%2F%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95.md)
-* other
-    * [deepin安装包命令](other%2Fdeepin%E5%AE%89%E8%A3%85%E5%8C%85%E5%91%BD%E4%BB%A4.md)
-    * [git reset --soft,--hard的区别](other%2Fgit%20reset%20--soft%2C--hard%E7%9A%84%E5%8C%BA%E5%88%AB.md)
-    * [git初始化](other%2Fgit%E5%88%9D%E5%A7%8B%E5%8C%96.md)
-    * [git常用命令](other%2Fgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.md)
-    * [git执行reset --hard补救方法](other%2Fgit%E6%89%A7%E8%A1%8Creset%20--hard%E8%A1%A5%E6%95%91%E6%96%B9%E6%B3%95.md)
-    * [git日志分析](other%2Fgit%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90.md)
-    * [http协议](other%2Fhttp%E5%8D%8F%E8%AE%AE.md)
-    * [markdown解析html](other%2Fmarkdown%E8%A7%A3%E6%9E%90html.md)
-    * [php](other%2Fphp.sh)
-    * [phpstorm_setting](other%2Fphpstorm_setting.md)
-    * [session](other%2Fsession.md)
-    * [software](other%2Fsoftware.md)
 * php
     * assets
         * [v2-29ede85958fc967642b18431a49f2801_720w](php%2Fassets%2Fv2-29ede85958fc967642b18431a49f2801_720w.jpg)
@@ -358,6 +344,19 @@
 * security
     * [oauth2](security%2Foauth2.md)
     * [proxy](security%2Fproxy.md)
+* 其他
+    * [deepin安装包命令](%E5%85%B6%E4%BB%96%2Fdeepin%E5%AE%89%E8%A3%85%E5%8C%85%E5%91%BD%E4%BB%A4.md)
+    * [git reset --soft,--hard的区别](%E5%85%B6%E4%BB%96%2Fgit%20reset%20--soft%2C--hard%E7%9A%84%E5%8C%BA%E5%88%AB.md)
+    * [git初始化](%E5%85%B6%E4%BB%96%2Fgit%E5%88%9D%E5%A7%8B%E5%8C%96.md)
+    * [git常用命令](%E5%85%B6%E4%BB%96%2Fgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.md)
+    * [git执行reset --hard补救方法](%E5%85%B6%E4%BB%96%2Fgit%E6%89%A7%E8%A1%8Creset%20--hard%E8%A1%A5%E6%95%91%E6%96%B9%E6%B3%95.md)
+    * [git日志分析](%E5%85%B6%E4%BB%96%2Fgit%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90.md)
+    * [http协议](%E5%85%B6%E4%BB%96%2Fhttp%E5%8D%8F%E8%AE%AE.md)
+    * [markdown解析html](%E5%85%B6%E4%BB%96%2Fmarkdown%E8%A7%A3%E6%9E%90html.md)
+    * [php](%E5%85%B6%E4%BB%96%2Fphp.sh)
+    * [phpstorm_setting](%E5%85%B6%E4%BB%96%2Fphpstorm_setting.md)
+    * [session](%E5%85%B6%E4%BB%96%2Fsession.md)
+    * [software](%E5%85%B6%E4%BB%96%2Fsoftware.md)
 * 分布式
     * [分布式事务](%E5%88%86%E5%B8%83%E5%BC%8F%2F%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1.md)
 * 安全
@@ -546,10 +545,11 @@
     * [使用curl命令请求网络](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2F%E4%BD%BF%E7%94%A8curl%E5%91%BD%E4%BB%A4%E8%AF%B7%E6%B1%82%E7%BD%91%E7%BB%9C.md)
     * [物理层](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2F%E7%89%A9%E7%90%86%E5%B1%82.md)
     * [集线器_交换机_路由器的区别](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2F%E9%9B%86%E7%BA%BF%E5%99%A8_%E4%BA%A4%E6%8D%A2%E6%9C%BA_%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB.md)
-* 面向对象编程
-    * [markdown解析html](%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%2Fmarkdown%E8%A7%A3%E6%9E%90html.md)
-    * [面向对象之依赖注入](%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5.md)
-    * [面向对象之容器注入](%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%AE%B9%E5%99%A8%E6%B3%A8%E5%85%A5.md)
-    * [面向对象之服务定位器](%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%BD%8D%E5%99%A8.md)
+* 设计模式
+    * [Aop面向切面编程](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2FAop%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B.md)
+    * [依赖注入DI和控制反转IOC](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5DI%E5%92%8C%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%ACIOC.md)
+    * [容器注入](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E5%AE%B9%E5%99%A8%E6%B3%A8%E5%85%A5.md)
+    * [服务定位器](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%BD%8D%E5%99%A8.md)
 ## 目录自动生成器
 - [https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go](https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go)
+me/automatic-summary-generate/main.go](https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go)
