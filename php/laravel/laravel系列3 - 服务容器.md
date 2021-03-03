@@ -53,6 +53,6 @@ Route 类实际上是 `Illuminate\Support\Facades\Route` 通过 `class_alias(
 
 
 
-## Application.singleton
+## 
 
 

@@ -74,7 +74,7 @@ https://b.com/oauth/authorize?
 
 上面 URL 中，`response_type`参数表示要求返回授权码（`code`），`client_id`参数让 B 知道是谁在请求，`redirect_uri`参数是 B 接受或拒绝请求后的跳转网址，`scope`参数表示要求的授权范围（这里是只读）。
 
-第二步，用户跳转后，B 网站会要求用户登录，然后询问是否同意给予 A 网站授权。用户表示同意，这时 B 网站就会跳回`redirect_uri`参数指定的网址。跳转时，会传回一个授权码，就像下面这样。
+第二步，请求到B站，B 网站会要求用户登录，然后询问是否同意给予 A 网站授权。用户表示同意，这时 B 网站就会跳回`redirect_uri`参数指定的网址。跳转时，会传回一个授权码，就像下面这样。
 
 ```bash
 https://a.com/callback?code=AUTHORIZATION_CODE
@@ -219,3 +219,20 @@ https://b.com/oauth/token?
 上面 URL 中，`grant_type`参数为`refresh_token`表示要求更新令牌，`client_id`参数和`client_secret`参数用于确认身份，`refresh_token`参数就是用于更新令牌的令牌。
 
 B 网站验证通过以后，就会颁发新的令牌。
+
+
+
+## 数据库表设计
+
+oauth_access_tokens
+
+oauth_auth_codes
+
+### oauth_clients
+
+保存用户申请的client_id，client_secret，redirect_url
+
+oauth_personal_access_clients
+
+oauth_refresh_tokens
+
