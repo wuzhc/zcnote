@@ -25,7 +25,10 @@ chgrp -R <group> <directory>
 # ch修改,grp是用户组,目录放最后
 ```
 
+
+
 ### 用户组管理
+
 #### 增加用户组
 ```bash
 groupadd <group>
@@ -41,7 +44,10 @@ groupdel <group>
 groupmod -n <newname> <group>
 ```
 
+
+
 ### 用户管理
+
 #### 新增用户
 ```bash
 useradd -g <group> <user>

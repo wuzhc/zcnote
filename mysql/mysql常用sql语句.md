@@ -45,6 +45,17 @@ select count(*) as total from user where date_sub(curdate(), interval 7 day) < d
 select count(*) as total from user where period_diff(date_format(now(),'%Y-%m'), date_format(create_date, '%Y-%m')) = 1
 
 # 创建表
+create table score(
+    `id` int(11) auto_increment,
+	`name` varchar(225) collate utf8mb4_unicode_ci default null,
+    `course` varchar(225) collate utf8mb4_unicode_ci default null,
+    `score` float default null,
+	primary key (id)
+) engine=innodb default charset=utf8;
+
+insert into score(name,course,score) values("张三","语文",20),("张三","数学",30),("张三","英语",50),("李四","语文",70),("李四","数学",60),("李四","英语",90)
+
+
 create table fund (
 	id int(11) unsigned auto_increment,
 	code varchar(50) not null comment '指数代码',

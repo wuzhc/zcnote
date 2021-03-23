@@ -70,12 +70,17 @@ key -> 槽 -> 节点
 - 若不是本节点，则回复move重定向错误，通知客户端请求正确的节点
 cli模式下重定向，加上`-c`参数，例如`redis-cli -p 6481 -c`
 ### 如何解决集群mget问题？
-可以为不用的key设置相同的`hash_tag`,例如
-```bash
-set {game}:1
-set {game}:2
-mget {game}:1 {game}:2
-```
+
+集群带来的一个问题是，无法批处理，例如当我们提交了一批命令，往Redis中存储一批键，那么这些键一般会被映射到不同的slot，而不同的slot又可能在Redis Cluster中不同的节点上，这样就和的预期有点不同，有没有办法将这批键映射到同一个slot呢？
+
+可以使用`hash_tag`，哈希标签是确保两个键都在同一个哈希槽里的一种方式。
+
+- 比如这两个键 {user1000}.following 和 {user1000}.followers 会被哈希到同一个哈希槽里，因为只有 user1000 这个子串会被用来计算哈希值。
+- 对于 foo{}{bar} 这个键，整个键都会被用来计算哈希值，因为第一个出现的 { 和它右边第一个出现的 } 之间没有任何字符。
+- 对于 foo{bar}{zap} 这个键，用来计算哈希值的是 bar 这个子串，因为算法会在第一次有效或无效（比如中间没有任何字节）地匹配到 { 和 } 的时候停止。
+
+![1615987751665](assets/1615987751665.png)
+
 ### 集群是如何扩容?
 - 添加新节点，`redis-trib.rb add-node new_host:new_port exitsing_host:existing_port` ，新加入节点刚开始都是主节点状态，没有负责槽，不能接收任何读写操作，需要导入槽和数据，或者是设置为从节点
 - 迁移过程`redis-trib.rb reshard {existing_ip:existing_port}`

@@ -1,47 +1,55 @@
-### 格式：
+## 统计学生各科成绩
 
-```mysql
-case sex
-	when '1' then '男'
-	when '2' then '女'
-else
-	'其他'
-end
-# 或者
-case when sex = '1' then '男'
-	when sex = '2' then '女'
-else
-	'其他'
-end
+### 有如下score表：
+
+```sql
+CREATE TABLE `score` (
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `score` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 ```
 
-```bash
-SQL> select
-   sum(case u.sex when 1 then 1 else 0 end)男性,
-   sum(case u.sex when 2 then 1 else 0 end)女性,
-   sum(case when u.sex <>1 and u.sex<>2 then 1 else 0 end)性别为空
- from users u;
- 
-        男性         女性       性别为空
----------- ---------- ----------
-         2          0
+![img](assets/20200807115010934.png)
 
---------------------------------------------------------------------------------
-SQL> select
-   count(case when u.sex=1 then 1 end)男性,
-   count(case when u.sex=2 then 1 end)女,
-   count(case when u.sex <>1 and u.sex<>2 then 1 end)性别为空
- from users u;
- 
-        男性          女       性别为空
----------- ---------- ----------
-         2          0
+### 现在要求学生的各科成绩和总分，效果图如下，写一段SQL得出如下结果：
+
+![img](assets/20200807115215657.png)
+
+### 查询SQL如下：
+
+```sql
+SELECT DISTINCT name '姓名', 
+SUM(CASE
+	WHEN course='语文' THEN score ELSE 0
+	END) '语文成绩',
+SUM(CASE course 
+	WHEN '数学' THEN score ELSE 0
+	END) '数学成绩',
+SUM(CASE course 
+	WHEN '英语' THEN score ELSE 0
+	END) '英语成绩',
+SUM(score) '总成绩'
+ FROM score GROUP BY name
 ```
 
 
-### 参考
 
-[[mysql操作查询结果case when then else end用法举例](https://www.cnblogs.com/clphp/p/6256207.html)](https://www.cnblogs.com/clphp/p/6256207.html)
+## 求评级
 
+成绩为90-100的评分为A，成绩为75-89的评分为B，成绩为60-74的评分为C，其余的评分都为D 求出所有学生课程为chinese的评分
 
+![在这里插入图片描述](assets/20191120181243871.png)
 
+```sql
+SELECT name,course,CASE 
+WHEN score > 90 AND score <= 100  THEN 'A'
+WHEN score > 75 AND score <= 89  THEN 'B'
+WHEN score > 60 AND score <= 74 THEN 'C'
+ELSE 'D' END  as grade
+FROM
+scores
+where course = 'chinese'
+```
+
+执行结果如下： ![在这里插入图片描述](assets/20191120181046777.png)
