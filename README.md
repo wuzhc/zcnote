@@ -356,314 +356,255 @@
         * [255c811dad47](redis%2Fassets%2F255c811dad47.jpg)
         * [4337694-52e11e3547d9b5a5](redis%2Fassets%2F4337694-52e11e3547d9b5a5.png)
         * [aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMjQ3NDI3NS02OGUwNDVjYzhmNzMwMjcwP2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3RyaXB8aW1hZ2VWaWV3Mi8yL3cvNzc2L2Zvcm1hdC93ZWJw](redis%2Fassets%2FaHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMjQ3NDI3NS02OGUwNDVjYzhmNzMwMjcwP2ltYWdlTW9ncjIvYXV0by1vcmllbnQvc3RyaXB8aW1hZ2VWaWV3Mi8yL3cvNzc2L2Zvcm1hdC93ZWJw)
-        * wuzhc
-            * CLionProjects
-                * untitled
-                    * [CMakeLists](redis%2Fassets%2Fwuzhc%2FCLionProjects%2Funtitled%2FCMakeLists.txt)
-                    * cmake-build-debug
-                        * CMakeFiles
-                    * [main](redis%2Fassets%2Fwuzhc%2FCLionProjects%2Funtitled%2Fmain.c)
-            * Desktop
-                * [1615562843265](redis%2Fassets%2Fwuzhc%2FDesktop%2F1615562843265.png)
-                * [2021-02-22_13-08](redis%2Fassets%2Fwuzhc%2FDesktop%2F2021-02-22_13-08.png)
-                * [624224【Go程序设计语言】（详细书签、清晰完整版） 快捷方式](redis%2Fassets%2Fwuzhc%2FDesktop%2F624224%E3%80%90Go%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E3%80%91%EF%BC%88%E8%AF%A6%E7%BB%86%E4%B9%A6%E7%AD%BE%E3%80%81%E6%B8%85%E6%99%B0%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89%20%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F.pdf)
-                * [Docker实战 快捷方式](redis%2Fassets%2Fwuzhc%2FDesktop%2FDocker%E5%AE%9E%E6%88%98%20%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F.pdf)
-                * [Pycharm](redis%2Fassets%2Fwuzhc%2FDesktop%2FPycharm.desktop)
-                * [clion](redis%2Fassets%2Fwuzhc%2FDesktop%2Fclion.desktop)
-                * [docker镜像仓库使用](redis%2Fassets%2Fwuzhc%2FDesktop%2Fdocker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93%E4%BD%BF%E7%94%A8.txt)
-                * [ebook 快捷方式](redis%2Fassets%2Fwuzhc%2FDesktop%2Febook%20%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F)
-                * [eclipse-cpp](redis%2Fassets%2Fwuzhc%2FDesktop%2Feclipse-cpp.desktop)
-                * [google-chrome](redis%2Fassets%2Fwuzhc%2FDesktop%2Fgoogle-chrome.desktop)
-                * [images 快捷方式](redis%2Fassets%2Fwuzhc%2FDesktop%2Fimages%20%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F)
-                * [jetbrains-goland](redis%2Fassets%2Fwuzhc%2FDesktop%2Fjetbrains-goland.desktop)
-                * [jetbrains-idea-ce(副本)](redis%2Fassets%2Fwuzhc%2FDesktop%2Fjetbrains-idea-ce%28%E5%89%AF%E6%9C%AC%29.desktop)
-                * [jetbrains-idea-ce](redis%2Fassets%2Fwuzhc%2FDesktop%2Fjetbrains-idea-ce.desktop)
-                * [liteide](redis%2Fassets%2Fwuzhc%2FDesktop%2Fliteide.desktop)
-                * [postman](redis%2Fassets%2Fwuzhc%2FDesktop%2Fpostman.desktop)
-                * [robo3t](redis%2Fassets%2Fwuzhc%2FDesktop%2Frobo3t.desktop)
-                * [sublime-text-dev](redis%2Fassets%2Fwuzhc%2FDesktop%2Fsublime-text-dev.desktop)
-                * [wps-office-et](redis%2Fassets%2Fwuzhc%2FDesktop%2Fwps-office-et.desktop)
-                * [wps-office-wpp](redis%2Fassets%2Fwuzhc%2FDesktop%2Fwps-office-wpp.desktop)
-                * [wps-office-wps](redis%2Fassets%2Fwuzhc%2FDesktop%2Fwps-office-wps.desktop)
-                * [作业数据导出模板(1)](redis%2Fassets%2Fwuzhc%2FDesktop%2F%E4%BD%9C%E4%B8%9A%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E6%A8%A1%E6%9D%BF%281%29.xlsx)
-                * [需导出作业数据的学校id20个(1)](redis%2Fassets%2Fwuzhc%2FDesktop%2F%E9%9C%80%E5%AF%BC%E5%87%BA%E4%BD%9C%E4%B8%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%A6%E6%A0%A1id20%E4%B8%AA%281%29.xlsx)
-            * Documents
-                * Navicat
-                    * MySQL
-                        * profiles
-                        * servers
-                    * Premium
-                        * logs
-                        * profiles
-                * Tencent Files
-                    * 1716220125
-                        * AppWebCache
-                        * [ApprovalStorage](redis%2Fassets%2Fwuzhc%2FDocuments%2FTencent%20Files%2F1716220125%2FApprovalStorage.db)
-                        * [ApprovalStorage](redis%2Fassets%2Fwuzhc%2FDocuments%2FTencent%20Files%2F1716220125%2FApprovalStorage.db-journal)
-                        * Audio
-                        * CloudRes
-                        * DiscussHead
-                        * Emoji
-                        * FileCloud
-                        * FileRecv
-                        * Image
-                        * QQ
-                        * RecommendFace
-                        * TIM
-                        * Video
-                    * 2010504188
-                        * AppWebCache
-                        * Audio
-                        * FileCloud
-                        * FileRecv
-                        * Image
-                        * TIM
-                    * All Users
-                        * QQ
-                        * TIM
-                * WeChat Files
-                    * All Users
-                        * config
-                    * wxid_p9zyaj3zb6i822
-                        * Attachment
-                        * Backup
-                        * BackupFiles
-                        * CustomEmoV1
-                        * CustomEmotions
-                        * Data
-                        * FavTemp
-                        * Files
-                        * HDHeadImage
-                        * Image
-                        * Msg
-                        * Video
-                        * config
-                * axure
-                    * ['vboxsrv' 上的 axure (H)](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%27vboxsrv%27%20%E4%B8%8A%E7%9A%84%20axure%20%28H%29.lnk)
-                    * [17点30安徽项目20190509](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F17%E7%82%B930%E5%AE%89%E5%BE%BD%E9%A1%B9%E7%9B%AE20190509.rp)
-                    * 2018-2-23
-                        * 同步学习主页
-                        * 小测记录
-                        * 推送记录（仅教师）
-                        * 消息
-                        * 班级管理（仅教师）
-                    * [2018人人通空间试点-简版（20180523） (1)](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2018%E4%BA%BA%E4%BA%BA%E9%80%9A%E7%A9%BA%E9%97%B4%E8%AF%95%E7%82%B9-%E7%AE%80%E7%89%88%EF%BC%8820180523%EF%BC%89%20%281%29.rp)
-                    * [2018人人通空间试点-简版（20180529） ](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2018%E4%BA%BA%E4%BA%BA%E9%80%9A%E7%A9%BA%E9%97%B4%E8%AF%95%E7%82%B9-%E7%AE%80%E7%89%88%EF%BC%8820180529%EF%BC%89%20.rp)
-                    * [2018人人通空间试点-简版（20180608） ](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2018%E4%BA%BA%E4%BA%BA%E9%80%9A%E7%A9%BA%E9%97%B4%E8%AF%95%E7%82%B9-%E7%AE%80%E7%89%88%EF%BC%8820180608%EF%BC%89%20.rp)
-                    * [2018人人通空间试点-简版（20180625） ](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2018%E4%BA%BA%E4%BA%BA%E9%80%9A%E7%A9%BA%E9%97%B4%E8%AF%95%E7%82%B9-%E7%AE%80%E7%89%88%EF%BC%8820180625%EF%BC%89%20.rp)
-                    * [2018人人通空间试点-简版（20180702） ](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2018%E4%BA%BA%E4%BA%BA%E9%80%9A%E7%A9%BA%E9%97%B4%E8%AF%95%E7%82%B9-%E7%AE%80%E7%89%88%EF%BC%8820180702%EF%BC%89%20.rp)
-                    * [2018人人通空间试点-简版（20191125modify by xiaobing）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2018%E4%BA%BA%E4%BA%BA%E9%80%9A%E7%A9%BA%E9%97%B4%E8%AF%95%E7%82%B9-%E7%AE%80%E7%89%88%EF%BC%8820191125modify%20by%20xiaobing%EF%BC%89.rp)
-                    * [2018学堂家长云APP端20181121](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2018%E5%AD%A6%E5%A0%82%E5%AE%B6%E9%95%BF%E4%BA%91APP%E7%AB%AF20181121.rp)
-                    * [2018学堂家长云APP端20181121](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2018%E5%AD%A6%E5%A0%82%E5%AE%B6%E9%95%BF%E4%BA%91APP%E7%AB%AF20181121.tmp)
-                    * [2018学堂家长云APP端20181126](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2018%E5%AD%A6%E5%A0%82%E5%AE%B6%E9%95%BF%E4%BA%91APP%E7%AB%AF20181126.rp)
-                    * [2019家长云APP端V2.0（5.28加速版）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2019%E5%AE%B6%E9%95%BF%E4%BA%91APP%E7%AB%AFV2.0%EF%BC%885.28%E5%8A%A0%E9%80%9F%E7%89%88%EF%BC%89.rp)
-                    * [20200513-下载错题本-3(1)](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F20200513-%E4%B8%8B%E8%BD%BD%E9%94%99%E9%A2%98%E6%9C%AC-3%281%29.rp)
-                    * [20200515-下载错题本（单科）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F20200515-%E4%B8%8B%E8%BD%BD%E9%94%99%E9%A2%98%E6%9C%AC%EF%BC%88%E5%8D%95%E7%A7%91%EF%BC%89.rp)
-                    * [2020家长云V1.8-1.9（200805）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F2020%E5%AE%B6%E9%95%BF%E4%BA%91V1.8-1.9%EF%BC%88200805%EF%BC%89.rp)
-                    * [APP专递课堂0122(1)](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2FAPP%E4%B8%93%E9%80%92%E8%AF%BE%E5%A0%820122%281%29.rp)
-                    * [APP线下作业0619](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2FAPP%E7%BA%BF%E4%B8%8B%E4%BD%9C%E4%B8%9A0619.rp)
-                    * [AxureRP-Pro-Setup](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2FAxureRP-Pro-Setup.tmp)
-                    * [AxureRP-Setup](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2FAxureRP-Setup.exe)
-                    * AxureRP9.0.0.3611
-                        * 手动汉化包
-                    * [PowerDesigner165_Viewer_XiaZaiBa.zip:Zone](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2FPowerDesigner165_Viewer_XiaZaiBa.zip:Zone.Identifier)
-                    * [TCMeeting](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2FTCMeeting.exe)
-                    * __MACOSX
-                        * exe_files
-                    * [dd](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2Fdd.jpg)
-                    * exe
-                    * [exe](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2Fexe.html)
-                    * exe_files
-                    * go
-                        * sw
-                    * [pdflm16](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2Fpdflm16.dll)
-                    * pdm
-                        * PowerDesigner15.1汉化破解版
-                    * [rr](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2Frr.emf)
-                    * [safemanage](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2Fsafemanage.pdm)
-                    * [个人中心-我的教辅](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83-%E6%88%91%E7%9A%84%E6%95%99%E8%BE%85.rp)
-                    * [作业+家长签名](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E4%BD%9C%E4%B8%9A+%E5%AE%B6%E9%95%BF%E7%AD%BE%E5%90%8D.rp)
-                    * [作业家长签名-2020-01-09](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E4%BD%9C%E4%B8%9A%E5%AE%B6%E9%95%BF%E7%AD%BE%E5%90%8D-2020-01-09.rp)
-                    * [区域教学管理系统1.0版本-2018.08.16](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%8C%BA%E5%9F%9F%E6%95%99%E5%AD%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F1.0%E7%89%88%E6%9C%AC-2018.08.16.rp)
-                    * [区域教学管理系统1.0版本-2018.08.30](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%8C%BA%E5%9F%9F%E6%95%99%E5%AD%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F1.0%E7%89%88%E6%9C%AC-2018.08.30.rp)
-                    * [区域教学管理系统1.0版本-2018.09.12](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%8C%BA%E5%9F%9F%E6%95%99%E5%AD%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F1.0%E7%89%88%E6%9C%AC-2018.09.12.rp)
-                    * [区域机构空间20200811](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%8C%BA%E5%9F%9F%E6%9C%BA%E6%9E%84%E7%A9%BA%E9%97%B420200811.rp)
-                    * [名师课211](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%90%8D%E5%B8%88%E8%AF%BE211.rp)
-                    * [在线考试-2020.03.16](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%9C%A8%E7%BA%BF%E8%80%83%E8%AF%95-2020.03.16.rp)
-                    * [备课包发布课程任务218](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%A4%87%E8%AF%BE%E5%8C%85%E5%8F%91%E5%B8%83%E8%AF%BE%E7%A8%8B%E4%BB%BB%E5%8A%A1218.rp)
-                    * [学习空间-专递课堂9-15](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%AD%A6%E4%B9%A0%E7%A9%BA%E9%97%B4-%E4%B8%93%E9%80%92%E8%AF%BE%E5%A0%829-15.rp)
-                    * [学习空间-名师课213](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%AD%A6%E4%B9%A0%E7%A9%BA%E9%97%B4-%E5%90%8D%E5%B8%88%E8%AF%BE213.rp)
-                    * [学习空间-名师课程213-11](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%AD%A6%E4%B9%A0%E7%A9%BA%E9%97%B4-%E5%90%8D%E5%B8%88%E8%AF%BE%E7%A8%8B213-11.rp)
-                    * [学习空间APP主页面改版20191126（有标顺序）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%AD%A6%E4%B9%A0%E7%A9%BA%E9%97%B4APP%E4%B8%BB%E9%A1%B5%E9%9D%A2%E6%94%B9%E7%89%8820191126%EF%BC%88%E6%9C%89%E6%A0%87%E9%A1%BA%E5%BA%8F%EF%BC%89.rp)
-                    * [学堂web1.7（20180701 17：57）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%AD%A6%E5%A0%82web1.7%EF%BC%8820180701%2017%EF%BC%9A57%EF%BC%89.rp)
-                    * [学堂web1.7（20180713）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%AD%A6%E5%A0%82web1.7%EF%BC%8820180713%EF%BC%89.rp)
-                    * [家长签名](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%AE%B6%E9%95%BF%E7%AD%BE%E5%90%8D.rp)
-                    * [对接答题器0429](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%AF%B9%E6%8E%A5%E7%AD%94%E9%A2%98%E5%99%A80429.rp)
-                    * [小组讨论加角色0619](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%B0%8F%E7%BB%84%E8%AE%A8%E8%AE%BA%E5%8A%A0%E8%A7%92%E8%89%B20619.rp)
-                    * [局微课平台V1.4(1)](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%B1%80%E5%BE%AE%E8%AF%BE%E5%B9%B3%E5%8F%B0V1.4%281%29.rp)
-                    * [归档](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%BD%92%E6%A1%A3.zip)
-                    * [归档1](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%BD%92%E6%A1%A31.zip)
-                    * 归档_true
-                        * __MACOSX
-                        * exe_files
-                    * [微课同步讲（名师） V2.0-移动端5-29](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%BE%AE%E8%AF%BE%E5%90%8C%E6%AD%A5%E8%AE%B2%EF%BC%88%E5%90%8D%E5%B8%88%EF%BC%89%20V2.0-%E7%A7%BB%E5%8A%A8%E7%AB%AF5-29.tmp)
-                    * [微课同步讲（名师）-网页端5-22](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%BE%AE%E8%AF%BE%E5%90%8C%E6%AD%A5%E8%AE%B2%EF%BC%88%E5%90%8D%E5%B8%88%EF%BC%89-%E7%BD%91%E9%A1%B5%E7%AB%AF5-22.rp)
-                    * [微课同步讲（名师）V2.0-网页端5-31](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E5%BE%AE%E8%AF%BE%E5%90%8C%E6%AD%A5%E8%AE%B2%EF%BC%88%E5%90%8D%E5%B8%88%EF%BC%89V2.0-%E7%BD%91%E9%A1%B5%E7%AB%AF5-31.rp)
-                    * [教师培训数据接入学习空间原型20201110](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%99%E5%B8%88%E5%9F%B9%E8%AE%AD%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E5%AD%A6%E4%B9%A0%E7%A9%BA%E9%97%B4%E5%8E%9F%E5%9E%8B20201110.rp)
-                    * [教育均衡0220 14点](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%99%E8%82%B2%E5%9D%87%E8%A1%A10220%2014%E7%82%B9.rp)
-                    * [教育均衡web0218](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%99%E8%82%B2%E5%9D%87%E8%A1%A1web0218.rp)
-                    * [数学高考名师提分课程1025](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%B0%E5%AD%A6%E9%AB%98%E8%80%83%E5%90%8D%E5%B8%88%E6%8F%90%E5%88%86%E8%AF%BE%E7%A8%8B1025.rp)
-                    * [数学高考名师提分课程1101](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%B0%E5%AD%A6%E9%AB%98%E8%80%83%E5%90%8D%E5%B8%88%E6%8F%90%E5%88%86%E8%AF%BE%E7%A8%8B1101.rp)
-                    * [数学高考名师提分课程1106](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%B0%E5%AD%A6%E9%AB%98%E8%80%83%E5%90%8D%E5%B8%88%E6%8F%90%E5%88%86%E8%AF%BE%E7%A8%8B1106.rp)
-                    * [数学高考名师提分课程1112](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%B0%E5%AD%A6%E9%AB%98%E8%80%83%E5%90%8D%E5%B8%88%E6%8F%90%E5%88%86%E8%AF%BE%E7%A8%8B1112.rp)
-                    * [数学高考名师提分课程1113](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%B0%E5%AD%A6%E9%AB%98%E8%80%83%E5%90%8D%E5%B8%88%E6%8F%90%E5%88%86%E8%AF%BE%E7%A8%8B1113.rp)
-                    * [数学高考名师提分课程1215](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%B0%E5%AD%A6%E9%AB%98%E8%80%83%E5%90%8D%E5%B8%88%E6%8F%90%E5%88%86%E8%AF%BE%E7%A8%8B1215.rp)
-                    * [数学高考名师提分课程1217](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%B0%E5%AD%A6%E9%AB%98%E8%80%83%E5%90%8D%E5%B8%88%E6%8F%90%E5%88%86%E8%AF%BE%E7%A8%8B1217.rp)
-                    * [数学高考名师提分课程1218](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%95%B0%E5%AD%A6%E9%AB%98%E8%80%83%E5%90%8D%E5%B8%88%E6%8F%90%E5%88%86%E8%AF%BE%E7%A8%8B1218.rp)
-                    * [星课教学系统](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%98%9F%E8%AF%BE%E6%95%99%E5%AD%A6%E7%B3%BB%E7%BB%9F.rp)
-                    * [智慧测评APP改版2019.11.15](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%99%BA%E6%85%A7%E6%B5%8B%E8%AF%84APP%E6%94%B9%E7%89%882019.11.15.rp)
-                    * [未名云学派V1.0（20190802）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%9C%AA%E5%90%8D%E4%BA%91%E5%AD%A6%E6%B4%BEV1.0%EF%BC%8820190802%EF%BC%89.rp)
-                    * [未名云学派V1.0（20190805）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%9C%AA%E5%90%8D%E4%BA%91%E5%AD%A6%E6%B4%BEV1.0%EF%BC%8820190805%EF%BC%89.rp)
-                    * [未名教育开放平台2021-1-15](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%9C%AA%E5%90%8D%E6%95%99%E8%82%B2%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B02021-1-15.rp)
-                    * [未名教育开放平台（11.28）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%9C%AA%E5%90%8D%E6%95%99%E8%82%B2%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%EF%BC%8811.28%EF%BC%89.rp)
-                    * [未名教育开放平台（2021-1-1](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%9C%AA%E5%90%8D%E6%95%99%E8%82%B2%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%EF%BC%882021-1-1.rp)
-                    * [未名移动设备管控系统0929](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%9C%AA%E5%90%8D%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E7%AE%A1%E6%8E%A7%E7%B3%BB%E7%BB%9F0929.rp)
-                    * [未名移动设备管控系统1015](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%9C%AA%E5%90%8D%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E7%AE%A1%E6%8E%A7%E7%B3%BB%E7%BB%9F1015.rp)
-                    * [未名移动设备管控系统1016](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%9C%AA%E5%90%8D%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E7%AE%A1%E6%8E%A7%E7%B3%BB%E7%BB%9F1016.rp)
-                    * [未名移动设备管控系统1017](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%9C%AA%E5%90%8D%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E7%AE%A1%E6%8E%A7%E7%B3%BB%E7%BB%9F1017.rp)
-                    * [校级考试增加【按班批改】模式](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%A0%A1%E7%BA%A7%E8%80%83%E8%AF%95%E5%A2%9E%E5%8A%A0%E3%80%90%E6%8C%89%E7%8F%AD%E6%89%B9%E6%94%B9%E3%80%91%E6%A8%A1%E5%BC%8F.rp)
-                    * [校级考试选择考试对象支持班级筛选](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%A0%A1%E7%BA%A7%E8%80%83%E8%AF%95%E9%80%89%E6%8B%A9%E8%80%83%E8%AF%95%E5%AF%B9%E8%B1%A1%E6%94%AF%E6%8C%81%E7%8F%AD%E7%BA%A7%E7%AD%9B%E9%80%89.rp)
-                    * [测评系统优化2019.06.13](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%B5%8B%E8%AF%84%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%962019.06.13.rp)
-                    * [渝教-安徽项目20190509](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E6%B8%9D%E6%95%99-%E5%AE%89%E5%BE%BD%E9%A1%B9%E7%9B%AE20190509.rp)
-                    * [用户画像20190701](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F20190701.rp)
-                    * [直播课堂5-30更新](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%9B%B4%E6%92%AD%E8%AF%BE%E5%A0%825-30%E6%9B%B4%E6%96%B0.rp)
-                    * [离线上课(1)](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%A6%BB%E7%BA%BF%E4%B8%8A%E8%AF%BE%281%29.rp)
-                    * [离线上课（2019.8.6）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%A6%BB%E7%BA%BF%E4%B8%8A%E8%AF%BE%EF%BC%882019.8.6%EF%BC%89.rp)
-                    * [空中课堂(2月3日）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%A9%BA%E4%B8%AD%E8%AF%BE%E5%A0%82%282%E6%9C%883%E6%97%A5%EF%BC%89.rp)
-                    * [空中课堂2.0](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%A9%BA%E4%B8%AD%E8%AF%BE%E5%A0%822.0.rp)
-                    * [空中课堂V2.0学生app端-2020-02-07](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%A9%BA%E4%B8%AD%E8%AF%BE%E5%A0%82V2.0%E5%AD%A6%E7%94%9Fapp%E7%AB%AF-2020-02-07.rp)
-                    * [空中课堂V2.0学生app端](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%A9%BA%E4%B8%AD%E8%AF%BE%E5%A0%82V2.0%E5%AD%A6%E7%94%9Fapp%E7%AB%AF.rp)
-                    * [答题卡增加“缺考”标记-2019.12.11](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%AD%94%E9%A2%98%E5%8D%A1%E5%A2%9E%E5%8A%A0%E2%80%9C%E7%BC%BA%E8%80%83%E2%80%9D%E6%A0%87%E8%AE%B0-2019.12.11.rp)
-                    * [管控系统0821早](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%AE%A1%E6%8E%A7%E7%B3%BB%E7%BB%9F0821%E6%97%A9.rp)
-                    * [管控系统0822早](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%AE%A1%E6%8E%A7%E7%B3%BB%E7%BB%9F0822%E6%97%A9.rp)
-                    * [管控系统0828早](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%AE%A1%E6%8E%A7%E7%B3%BB%E7%BB%9F0828%E6%97%A9.rp)
-                    * [管控系统0909（预装应用）](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%AE%A1%E6%8E%A7%E7%B3%BB%E7%BB%9F0909%EF%BC%88%E9%A2%84%E8%A3%85%E5%BA%94%E7%94%A8%EF%BC%89.rp)
-                    * [纠错](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%BA%A0%E9%94%99.rp)
-                    * [纸笔互动课堂(1)](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%BA%B8%E7%AC%94%E4%BA%92%E5%8A%A8%E8%AF%BE%E5%A0%82%281%29.rp)
-                    * [纸笔互动课堂](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%BA%B8%E7%AC%94%E4%BA%92%E5%8A%A8%E8%AF%BE%E5%A0%82.rp)
-                    * [线下作业web 0804](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%BA%BF%E4%B8%8B%E4%BD%9C%E4%B8%9Aweb%200804.rp)
-                    * [线下作业web0806](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E7%BA%BF%E4%B8%8B%E4%BD%9C%E4%B8%9Aweb0806.rp)
-                    * [苏1730分安徽项目20190510](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E8%8B%8F1730%E5%88%86%E5%AE%89%E5%BE%BD%E9%A1%B9%E7%9B%AE20190510.rp)
-                    * [认证服务器](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%99%A8.rp)
-                    * [试卷信息完善8-25](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E8%AF%95%E5%8D%B7%E4%BF%A1%E6%81%AF%E5%AE%8C%E5%96%848-25.rp)
-                    * [账号安全](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E8%B4%A6%E5%8F%B7%E5%AE%89%E5%85%A8.rp)
-                    * [资源管理-教辅管理9-25](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-%E6%95%99%E8%BE%85%E7%AE%A1%E7%90%869-25.rp)
-                    * [超市配置用户协议20200106.2](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E8%B6%85%E5%B8%82%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%8D%8F%E8%AE%AE20200106.2.rp)
-                    * [重评客观题功能-2020.04.20](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E9%87%8D%E8%AF%84%E5%AE%A2%E8%A7%82%E9%A2%98%E5%8A%9F%E8%83%BD-2020.04.20.rp)
-                    * [错题打印样本](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E9%94%99%E9%A2%98%E6%89%93%E5%8D%B0%E6%A0%B7%E6%9C%AC.rp)
-                    * [集团校管理系统](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%E9%9B%86%E5%9B%A2%E6%A0%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.rp)
-                    * [（曾佩怡）渝教-安徽项目20190513](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%EF%BC%88%E6%9B%BE%E4%BD%A9%E6%80%A1%EF%BC%89%E6%B8%9D%E6%95%99-%E5%AE%89%E5%BE%BD%E9%A1%B9%E7%9B%AE20190513.rp)
-                    * [（曾佩怡）渝教-安徽项目20190515](redis%2Fassets%2Fwuzhc%2FDocuments%2Faxure%2F%EF%BC%88%E6%9B%BE%E4%BD%A9%E6%80%A1%EF%BC%89%E6%B8%9D%E6%95%99-%E5%AE%89%E5%BE%BD%E9%A1%B9%E7%9B%AE20190515.rp)
-                * backup
-                    * behavior
-                    * [settings](redis%2Fassets%2Fwuzhc%2FDocuments%2Fbackup%2Fsettings.jar)
-                * [core](redis%2Fassets%2Fwuzhc%2FDocuments%2Fcore)
-                * draw
-                    * [gmqv4.0策划](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2Fgmqv4.0%E7%AD%96%E5%88%92.drawio)
-                    * [gopusher单机架构](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2Fgopusher%E5%8D%95%E6%9C%BA%E6%9E%B6%E6%9E%84)
-                    * [gopusher和card_id](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2Fgopusher%E5%92%8Ccard_id.xml)
-                    * [gopusher架构](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2Fgopusher%E6%9E%B6%E6%9E%84.xml)
-                    * [hyperf框架加载流程](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2Fhyperf%E6%A1%86%E6%9E%B6%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B.png)
-                    * xml
-                    * zcnote
-                        * go
-                        * im
-                        * mysql
-                        * php
-                        * project
-                        * temp
-                        * zhongzhi
-                        * 前端
-                        * 消息中间件
-                    * [交卷流程](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E4%BA%A4%E5%8D%B7%E6%B5%81%E7%A8%8B.drawio)
-                    * [交卷流程20200806](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E4%BA%A4%E5%8D%B7%E6%B5%81%E7%A8%8B20200806.drawio)
-                    * [交卷流程重构](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E4%BA%A4%E5%8D%B7%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84.drawio)
-                    * [交卷重构](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E4%BA%A4%E5%8D%B7%E9%87%8D%E6%9E%84.drawio)
-                    * [交卷重构](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E4%BA%A4%E5%8D%B7%E9%87%8D%E6%9E%84.png)
-                    * [修复aq记录](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E4%BF%AE%E5%A4%8Daq%E8%AE%B0%E5%BD%95.png)
-                    * [修复答案流程](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E4%BF%AE%E5%A4%8D%E7%AD%94%E6%A1%88%E6%B5%81%E7%A8%8B.drawio)
-                    * [流程图说明](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E6%B5%81%E7%A8%8B%E5%9B%BE%E8%AF%B4%E6%98%8E.JPEG)
-                    * [熔断机制](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E7%86%94%E6%96%AD%E6%9C%BA%E5%88%B6.drawio)
-                    * [熔断机制](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E7%86%94%E6%96%AD%E6%9C%BA%E5%88%B6.png)
-                    * [考试批改流程](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E8%80%83%E8%AF%95%E6%89%B9%E6%94%B9%E6%B5%81%E7%A8%8B.drawio)
-                    * [考试批改流程](redis%2Fassets%2Fwuzhc%2FDocuments%2Fdraw%2F%E8%80%83%E8%AF%95%E6%89%B9%E6%94%B9%E6%B5%81%E7%A8%8B.png)
-                * ebook
-                    * AJAX学习电子书
-                    * C C++
-                    * [CSS世界+%2C张鑫旭%40www.java1234.com](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2FCSS%E4%B8%96%E7%95%8C+%252C%E5%BC%A0%E9%91%AB%E6%97%AD%2540www.java1234.com.pdf)
-                    * [CoreSeekSphinx手册](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2FCoreSeekSphinx%E6%89%8B%E5%86%8C.pdf)
-                    * [FTP密码](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2FFTP%E5%AF%86%E7%A0%81.txt)
-                    * [Ffmpeg视频教程三（搭建简单直播系统）](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2FFfmpeg%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B%E4%B8%89%EF%BC%88%E6%90%AD%E5%BB%BA%E7%AE%80%E5%8D%95%E7%9B%B4%E6%92%AD%E7%B3%BB%E7%BB%9F%EF%BC%89.rar)
-                    * HTML学习电子书
-                    * Jquery学习电子书
-                        * 实例下载
-                        * 带锋利的JQuery第二版的源码
-                    * Linux
-                    * MYSQL学习电子书
-                        * MongoDB大数据处理权威指南  第2版
-                    * [PHP使用sphinx资料收集](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2FPHP%E4%BD%BF%E7%94%A8sphinx%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86.wps)
-                    * PHP学习电子书
-                        * 57
-                        * 微信公众平台应用开发实战
-                    * [PHP工具箱SQL追踪器使用教程](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2FPHP%E5%B7%A5%E5%85%B7%E7%AE%B1SQL%E8%BF%BD%E8%B8%AA%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B.txt)
-                    * [PHP：面向对象、模式与实践（第三版）高清PDF和完整源码](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2FPHP%EF%BC%9A%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E3%80%81%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%88%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%89%E9%AB%98%E6%B8%85PDF%E5%92%8C%E5%AE%8C%E6%95%B4%E6%BA%90%E7%A0%81.rar)
-                    * Python
-                    * SEO学习电子书
-                    * [Sphinx搜索引擎架构与使用文档(和MySQL结合)V1.1](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2FSphinx%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84%E4%B8%8E%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%28%E5%92%8CMySQL%E7%BB%93%E5%90%88%29V1.1.doc)
-                    * XML学习电子书
-                    * [YII框架源码分析(百度PHP大牛创作-原版-无广告无水印)](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2FYII%E6%A1%86%E6%9E%B6%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%28%E7%99%BE%E5%BA%A6PHP%E5%A4%A7%E7%89%9B%E5%88%9B%E4%BD%9C-%E5%8E%9F%E7%89%88-%E6%97%A0%E5%B9%BF%E5%91%8A%E6%97%A0%E6%B0%B4%E5%8D%B0%29.pdf)
-                    * [coreseek命令](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2Fcoreseek%E5%91%BD%E4%BB%A4.php)
-                    * docker
-                    * golang
-                    * javascript学习电子书
-                    * [sphinx0.9中文手册](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2Fsphinx0.9%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C.pdf)
-                    * [test](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2Ftest.flv)
-                    * [《etcd技术内幕》_百里燊](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2F%E3%80%8Aetcd%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E3%80%8B_%E7%99%BE%E9%87%8C%E7%87%8A.pdf)
-                    * [云原生分布式存储基石 etcd深入解析@www.java1234.com](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2F%E4%BA%91%E5%8E%9F%E7%94%9F%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E5%9F%BA%E7%9F%B3%20etcd%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90@www.java1234.com.pdf)
-                    * 代码整洁之道
-                        * daimazhengjie
-                    * [代码整洁之道](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2F%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93.zip)
-                    * 企业.生意.管理
-                    * [多用户商城管理系统功能需求](redis%2Fassets%2Fwuzhc%2FDocuments%2Febook%2F%E5%A4%9A%E7%94%A8%E6%88%B7%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82.doc)
-                    * 微服务
-                    * 生活百科
-                    * 算法
-                        * 嗨翻C语言
-                        * 大话数据结构原书+源代码
-                        * 算法导论
-                    * 网上开店指南
-                    * 网络编程
-                        * LINUX网络编程_宋敬彬_孙海滨(pdf&代码)
-                    * 职场人生
-                * jobs
-                    * code
-                    * document
-                        * openvpn
-                    * images
-                    * money
-                    * problem
-                    * program file
-                    * report
-                        * 2018
-                        * 2019
-                    * waibao
-                        * plant
-                    * window docker
-                    * zhongzhidb
-                    * 证书
-                * me
-                    * [6019](redis%2Fassets%2Fwuzhc%2FDocuments%2Fme%2F6019.docx)
-                    * [6019](redis%2Fassets%2Fwuzhc%2FDocuments%2Fme%2F6019.pdf)
+        * [微信截图_20200312114807](redis%2Fassets%2F%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200312114807.png)
+    * [redis五种数据类型底层原理](redis%2Fredis%E4%BA%94%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86.md)
+    * [redis和go的map结构比较](redis%2Fredis%E5%92%8Cgo%E7%9A%84map%E7%BB%93%E6%9E%84%E6%AF%94%E8%BE%83.md)
+    * [redis实现布隆过滤器](redis%2Fredis%E5%AE%9E%E7%8E%B0%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8.md)
+    * [redis常见问题](redis%2Fredis%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.md)
+    * [redis持久化](redis%2Fredis%E6%8C%81%E4%B9%85%E5%8C%96.md)
+    * [redis架构模式](redis%2Fredis%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F.md)
+    * [redis的lua脚本](redis%2Fredis%E7%9A%84lua%E8%84%9A%E6%9C%AC.md)
+    * [redis配置文件](redis%2Fredis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.md)
+    * 应用实例
+        * [redis实现扫码登录](redis%2F%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%2Fredis%E5%AE%9E%E7%8E%B0%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95.md)
+        * [redis抢购](redis%2F%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%2Fredis%E6%8A%A2%E8%B4%AD.md)
+        * [redis热点数据缓存](redis%2F%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%2Fredis%E7%83%AD%E7%82%B9%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98.md)
+        * [redis订阅发布](redis%2F%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%2Fredis%E8%AE%A2%E9%98%85%E5%8F%91%E5%B8%83.md)
+        * [redis队列实现](redis%2F%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%2Fredis%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0.md)
+        * [redis限制登录次数](redis%2F%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%2Fredis%E9%99%90%E5%88%B6%E7%99%BB%E5%BD%95%E6%AC%A1%E6%95%B0.md)
+* security
+    * [oauth2](security%2Foauth2.md)
+    * [proxy](security%2Fproxy.md)
+* 其他
+    * [deepin安装包命令](%E5%85%B6%E4%BB%96%2Fdeepin%E5%AE%89%E8%A3%85%E5%8C%85%E5%91%BD%E4%BB%A4.md)
+    * [git reset --soft,--hard的区别](%E5%85%B6%E4%BB%96%2Fgit%20reset%20--soft%2C--hard%E7%9A%84%E5%8C%BA%E5%88%AB.md)
+    * [git初始化](%E5%85%B6%E4%BB%96%2Fgit%E5%88%9D%E5%A7%8B%E5%8C%96.md)
+    * [git常用命令](%E5%85%B6%E4%BB%96%2Fgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.md)
+    * [git执行reset --hard补救方法](%E5%85%B6%E4%BB%96%2Fgit%E6%89%A7%E8%A1%8Creset%20--hard%E8%A1%A5%E6%95%91%E6%96%B9%E6%B3%95.md)
+    * [git日志分析](%E5%85%B6%E4%BB%96%2Fgit%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90.md)
+    * [http协议](%E5%85%B6%E4%BB%96%2Fhttp%E5%8D%8F%E8%AE%AE.md)
+    * [markdown解析html](%E5%85%B6%E4%BB%96%2Fmarkdown%E8%A7%A3%E6%9E%90html.md)
+    * [php](%E5%85%B6%E4%BB%96%2Fphp.sh)
+    * [phpstorm_setting](%E5%85%B6%E4%BB%96%2Fphpstorm_setting.md)
+    * [session](%E5%85%B6%E4%BB%96%2Fsession.md)
+    * [software](%E5%85%B6%E4%BB%96%2Fsoftware.md)
+* 分布式
+    * [分布式事务](%E5%88%86%E5%B8%83%E5%BC%8F%2F%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1.md)
+* 安全
+    * [jwt json web token](%E5%AE%89%E5%85%A8%2Fjwt%20json%20web%20token.md)
+    * [oauth2](%E5%AE%89%E5%85%A8%2Foauth2.md)
+    * [如何预防XSS和CSRF跨站攻击](%E5%AE%89%E5%85%A8%2F%E5%A6%82%E4%BD%95%E9%A2%84%E9%98%B2XSS%E5%92%8CCSRF%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB.md)
+    * [非对称加密rsa](%E5%AE%89%E5%85%A8%2F%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86rsa.md)
+* 容器技术
+    * [Minikube使用](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2FMinikube%E4%BD%BF%E7%94%A8.md)
+    * docker
+        * [docker-compose基本使用命令](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker-compose%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4.md)
+        * [docker-compose网络设置](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker-compose%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE.md)
+        * [docker-compose部署gopusher环境](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker-compose%E9%83%A8%E7%BD%B2gopusher%E7%8E%AF%E5%A2%83.md)
+        * [docker使用Dockerfile定制镜像](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E4%BD%BF%E7%94%A8Dockerfile%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F.md)
+        * [docker学习笔记](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
+        * [docker学习笔记二](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C.md)
+        * [docker安装gitlab](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E5%AE%89%E8%A3%85gitlab.md)
+        * [docker搭建php开发环境](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E6%90%AD%E5%BB%BAphp%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83.md)
+        * [docker数据卷volume](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E6%95%B0%E6%8D%AE%E5%8D%B7volume.md)
+        * [docker构建build镜像原理](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E6%9E%84%E5%BB%BAbuild%E9%95%9C%E5%83%8F%E5%8E%9F%E7%90%86.md)
+        * [docker网络访问](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Fdocker%E7%BD%91%E7%BB%9C%E8%AE%BF%E9%97%AE.md)
+        * [laradock各个服务配置说明](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fdocker%2Flaradock%E5%90%84%E4%B8%AA%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E.md)
+    * [k8s发现服务](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fk8s%E5%8F%91%E7%8E%B0%E6%9C%8D%E5%8A%A1.md)
+    * [k8s基本概念](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fk8s%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.md)
+    * [k8s标签选择器label seletor](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fk8s%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E5%99%A8label%20seletor.md)
+    * [k8s环境安装](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fk8s%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.md)
+    * [k8s自动扩容](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fk8s%E8%87%AA%E5%8A%A8%E6%89%A9%E5%AE%B9.md)
+    * [k8s配置文件模板](%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%2Fk8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A8%A1%E6%9D%BF.md)
+* 微服务学习笔记系列
+    * Go微服务实战系列
+        * assets
+            * [1608600840177](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2Fassets%2F1608600840177.png)
+        * [系列1 - 技术选型和服务拆分](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%971%20-%20%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E5%92%8C%E6%9C%8D%E5%8A%A1%E6%8B%86%E5%88%86.md)
+        * [系列10 - 链路追踪](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%9710%20-%20%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA.md)
+        * [系列11 - 数据库gorm](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%9711%20-%20%E6%95%B0%E6%8D%AE%E5%BA%93gorm.md)
+        * [系列12 - 客户端负责均衡](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%9712%20-%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%B4%A3%E5%9D%87%E8%A1%A1.md)
+        * [系列2 - 自动生成代码和目录规范](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%972%20-%20%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81%E5%92%8C%E7%9B%AE%E5%BD%95%E8%A7%84%E8%8C%83.md)
+        * [系列3 - 使用consul来实现注册与发现](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%973%20-%20%E4%BD%BF%E7%94%A8consul%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0.md)
+        * [系列4 - 错误处理](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%974%20-%20%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86.md)
+        * [系列5 - 服务限流](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%975%20-%20%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81.md)
+        * [系列6 - 客户端熔断器](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%976%20-%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%86%94%E6%96%AD%E5%99%A8.md)
+        * [系列7 - 日志记录](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%977%20-%20%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95.md)
+        * [系列8 - saga分布式事务解决方案](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%978%20-%20saga%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.md)
+        * [系列8 - 消息订阅和发布](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%978%20-%20%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85%E5%92%8C%E5%8F%91%E5%B8%83.md)
+        * [系列9 - 使用jwt安全认证你的服务](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2FGo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98%E7%B3%BB%E5%88%97%2F%E7%B3%BB%E5%88%979%20-%20%E4%BD%BF%E7%94%A8jwt%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81%E4%BD%A0%E7%9A%84%E6%9C%8D%E5%8A%A1.md)
+    * assets
+        * [1607744621433](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1607744621433.png)
+        * [1607752921020](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1607752921020.png)
+        * [1607752953674](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1607752953674.png)
+        * [1607753223638](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1607753223638.png)
+        * [1607755358988](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1607755358988.png)
+        * [1607933482748](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1607933482748.png)
+        * [1607945134435](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1607945134435.png)
+        * [1607945451702](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1607945451702.png)
+        * [1607956620635](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1607956620635.png)
+        * [1607958099123](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1607958099123.png)
+        * [1608087296514](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1608087296514.png)
+        * [1608087334803](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1608087334803.png)
+        * [1608088076707](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1608088076707.png)
+        * [1608102981038](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1608102981038.png)
+        * [1608103103047](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2Fassets%2F1608103103047.png)
+    * [微服务学习系列1 - 逃离单体地狱](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%B3%BB%E5%88%971%20-%20%E9%80%83%E7%A6%BB%E5%8D%95%E4%BD%93%E5%9C%B0%E7%8B%B1.md)
+    * [微服务学习系列2 - 服务拆分策略](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%B3%BB%E5%88%972%20-%20%E6%9C%8D%E5%8A%A1%E6%8B%86%E5%88%86%E7%AD%96%E7%95%A5.md)
+    * [微服务学习系列3 - 进程间通信](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%B3%BB%E5%88%973%20-%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.md)
+    * [微服务学习系列4 - 使用saga管理事务](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%B3%BB%E5%88%974%20-%20%E4%BD%BF%E7%94%A8saga%E7%AE%A1%E7%90%86%E4%BA%8B%E5%8A%A1.md.md)
+    * [微服务学校系列5 - 链路追踪zipkin](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E6%A0%A1%E7%B3%BB%E5%88%975%20-%20%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AAzipkin.md)
+    * [微服务实战](%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AE%9E%E6%88%98.md)
+* 搜索引擎elasticsearch
+    * assets
+        * [1609896387092](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1609896387092.png)
+        * [1609896424594](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1609896424594.png)
+        * [1609899753751](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1609899753751.png)
+        * [1609899793271](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1609899793271.png)
+        * [1610008601337](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610008601337.png)
+        * [1610008703738](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610008703738.png)
+        * [1610010339759](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610010339759.png)
+        * [1610010423490](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610010423490.png)
+        * [1610025260210](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610025260210.png)
+        * [1610025294183](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610025294183.png)
+        * [1610025370726](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610025370726.png)
+        * [1610025429482](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610025429482.png)
+        * [1610025750584](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610025750584.png)
+        * [1610025818704](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610025818704.png)
+        * [1610025923216](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610025923216.png)
+        * [1610026310329](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610026310329.png)
+        * [1610026338393](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610026338393.png)
+        * [1610177204625](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610177204625.png)
+        * [1610177620768](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610177620768.png)
+        * [1610177657191](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610177657191.png)
+        * [1610178054488](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610178054488.png)
+        * [1610244350043](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610244350043.png)
+        * [1610267290188](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610267290188.png)
+        * [1610269318005](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610269318005.png)
+        * [1610269395727](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610269395727.png)
+        * [1610269850394](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610269850394.png)
+        * [1610269896569](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610269896569.png)
+        * [1610422392566](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1610422392566.png)
+        * [1614134749563](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1614134749563.png)
+        * [1614134903807](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1614134903807.png)
+        * [1614135775317](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1614135775317.png)
+        * [1614136301183](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1614136301183.png)
+        * [1614136417796](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1614136417796.png)
+        * [1614137025985](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1614137025985.png)
+        * [1614218571463](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1614218571463.png)
+        * [1614218605491](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1614218605491.png)
+        * [1614218882692](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F1614218882692.png)
+        * [332898-20170906110451069-1815360680](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2F332898-20170906110451069-1815360680.jpg)
+        * [elas_0901](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Fassets%2Felas_0901.png)
+    * [elasticSearch常见经典面试题](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2FelasticSearch%E5%B8%B8%E8%A7%81%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98.md)
+    * [elasticsearch中文分词](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D.md)
+    * [elasticsearch原理](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E5%8E%9F%E7%90%86.md)
+    * [elasticsearch常用命令](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.md)
+    * [elasticsearch批量操作](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C.md)
+    * [elasticsearch排序(相关性排序score)](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E6%8E%92%E5%BA%8F%28%E7%9B%B8%E5%85%B3%E6%80%A7%E6%8E%92%E5%BA%8Fscore%29.md)
+    * [elasticsearch数据建模](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1.md)
+    * [elasticsearch案例](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E6%A1%88%E4%BE%8B.md)
+    * [elasticsearch疑问](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%96%91%E9%97%AE.md)
+    * [elasticsearch的match匹配](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%9A%84match%E5%8C%B9%E9%85%8D.md)
+    * [elasticsearch系列1-基本概念和环境安装](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%B3%BB%E5%88%971-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.md)
+    * [elasticsearch系列2-快速体验](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%B3%BB%E5%88%972-%E5%BF%AB%E9%80%9F%E4%BD%93%E9%AA%8C.md)
+    * [elasticsearch系列3-mapping使用](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%B3%BB%E5%88%973-mapping%E4%BD%BF%E7%94%A8.md)
+    * [elasticsearch系列4-term查询](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%B3%BB%E5%88%974-term%E6%9F%A5%E8%AF%A2.md)
+    * [elasticsearch系列5-组合查询](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%B3%BB%E5%88%975-%E7%BB%84%E5%90%88%E6%9F%A5%E8%AF%A2.md)
+    * [elasticsearch系列6-索引管理](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%B3%BB%E5%88%976-%E7%B4%A2%E5%BC%95%E7%AE%A1%E7%90%86.md)
+    * [elasticsearch系列7-集群](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%B3%BB%E5%88%977-%E9%9B%86%E7%BE%A4.md)
+    * [elasticsearch系列8-分配和副本问题](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%B3%BB%E5%88%978-%E5%88%86%E9%85%8D%E5%92%8C%E5%89%AF%E6%9C%AC%E9%97%AE%E9%A2%98.md)
+    * [elasticsearch组合查询](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E7%BB%84%E5%90%88%E6%9F%A5%E8%AF%A2.md)
+    * [elasticsearch聚合统计](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E8%81%9A%E5%90%88%E7%BB%9F%E8%AE%A1.md)
+    * [elasticsearch资料](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E8%B5%84%E6%96%99.md)
+    * [elasticsearch部署和配置](%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eelasticsearch%2Felasticsearch%E9%83%A8%E7%BD%B2%E5%92%8C%E9%85%8D%E7%BD%AE.md)
+* 操作系统
+    * [ascii码](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2Fascii%E7%A0%81.md)
+    * [内存映射mmap](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2F%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84mmap.md)
+    * [内核态和用户态](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2F%E5%86%85%E6%A0%B8%E6%80%81%E5%92%8C%E7%94%A8%E6%88%B7%E6%80%81.md)
+    * [守护进程](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2F%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B.md)
+    * [操作系统的启动](%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%2F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%90%AF%E5%8A%A8.md)
+* 数据结构和算法
+    * assets
+        * [1468919-20191103194739538-2034251878](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fassets%2F1468919-20191103194739538-2034251878.png)
+        * [1468919-20191103195149869-1317786481](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fassets%2F1468919-20191103195149869-1317786481.png)
+        * [1609811256528](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fassets%2F1609811256528.png)
+        * [20190917200246823](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fassets%2F20190917200246823.png)
+    * [b-tree和b+tree](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fb-tree%E5%92%8Cb+tree.md)
+    * [hashMap哈希表](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2FhashMap%E5%93%88%E5%B8%8C%E8%A1%A8.md)
+    * leetcode
+        * [994. 腐烂的橘子](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fleetcode%2F994.%20%E8%85%90%E7%83%82%E7%9A%84%E6%A9%98%E5%AD%90.md)
+        * [使用map来记录值的索引位置](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fleetcode%2F%E4%BD%BF%E7%94%A8map%E6%9D%A5%E8%AE%B0%E5%BD%95%E5%80%BC%E7%9A%84%E7%B4%A2%E5%BC%95%E4%BD%8D%E7%BD%AE.md)
+        * [层序遍历二叉树并将结果保存到层级数组中](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fleetcode%2F%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B9%B6%E5%B0%86%E7%BB%93%E6%9E%9C%E4%BF%9D%E5%AD%98%E5%88%B0%E5%B1%82%E7%BA%A7%E6%95%B0%E7%BB%84%E4%B8%AD.md)
+        * 树
+            * [114. 二叉树展开为链表](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fleetcode%2F%E6%A0%91%2F114.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8.md)
+            * [二叉搜索树](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fleetcode%2F%E6%A0%91%2F%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.md)
+            * [检查平衡性](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fleetcode%2F%E6%A0%91%2F%E6%A3%80%E6%9F%A5%E5%B9%B3%E8%A1%A1%E6%80%A7.md)
+        * [记录二叉树节点值前缀和](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fleetcode%2F%E8%AE%B0%E5%BD%95%E4%BA%8C%E5%8F%89%E6%A0%91%E8%8A%82%E7%82%B9%E5%80%BC%E5%89%8D%E7%BC%80%E5%92%8C.md)
+    * [raft算法](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2Fraft%E7%AE%97%E6%B3%95.md)
+    * [二叉树](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E4%BA%8C%E5%8F%89%E6%A0%91.md)
+    * [使用map来记录值的索引位置](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E4%BD%BF%E7%94%A8map%E6%9D%A5%E8%AE%B0%E5%BD%95%E5%80%BC%E7%9A%84%E7%B4%A2%E5%BC%95%E4%BD%8D%E7%BD%AE.md)
+    * [动态规划编程](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%BC%96%E7%A8%8B.md)
+    * [多维数组合并排序](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%90%88%E5%B9%B6%E6%8E%92%E5%BA%8F.md)
+    * [广度搜索算法bfs(由中心向四周搜索)](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95bfs%28%E7%94%B1%E4%B8%AD%E5%BF%83%E5%90%91%E5%9B%9B%E5%91%A8%E6%90%9C%E7%B4%A2%29.md)
+    * [排序算法系列0 - 各种排序算法时间复杂度](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%970%20-%20%E5%90%84%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.md)
+    * [排序算法系列1 - 冒泡排序](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%971%20-%20%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F.md)
+    * [排序算法系列2 - 快速排序](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%972%20-%20%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F.md)
+    * [排序算法系列3 - 堆排序](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%973%20-%20%E5%A0%86%E6%8E%92%E5%BA%8F.md)
+    * [程序常用算法](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E7%A8%8B%E5%BA%8F%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95.md)
+    * [算术表达式求值](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC.md)
+    * [跳跃表](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E8%B7%B3%E8%B7%83%E8%A1%A8.md)
+    * [链表](%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%2F%E9%93%BE%E8%A1%A8.md)
+* 架构模式
+    * [Keepalived高可用](%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F%2FKeepalived%E9%AB%98%E5%8F%AF%E7%94%A8.md)
+    * [LVS负载均衡](%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F%2FLVS%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.md)
+    * [微服务](%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F%2F%E5%BE%AE%E6%9C%8D%E5%8A%A1.md)
+    * [缓存和数据库数据一致性问题](%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F%2F%E7%BC%93%E5%AD%98%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98.md)
+* 消息中间件
+    * rabbitmq
+        * [rabbitmq交换器和绑定](%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%2Frabbitmq%2Frabbitmq%E4%BA%A4%E6%8D%A2%E5%99%A8%E5%92%8C%E7%BB%91%E5%AE%9A.md)
+        * [rabbitmq基本操作](%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%2Frabbitmq%2Frabbitmq%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.md)
+        * [rabbitmq多租户模式和隔离](%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%2Frabbitmq%2Frabbitmq%E5%A4%9A%E7%A7%9F%E6%88%B7%E6%A8%A1%E5%BC%8F%E5%92%8C%E9%9A%94%E7%A6%BB.md)
+        * [rabbitmq运行和管理](%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%2Frabbitmq%2Frabbitmq%E8%BF%90%E8%A1%8C%E5%92%8C%E7%AE%A1%E7%90%86.md)
+    * rocketmq
+        * [消息存储设计](%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%2Frocketmq%2F%E6%B6%88%E6%81%AF%E5%AD%98%E5%82%A8%E8%AE%BE%E8%AE%A1.md)
+        * [消费模式比较](%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%2Frocketmq%2F%E6%B6%88%E8%B4%B9%E6%A8%A1%E5%BC%8F%E6%AF%94%E8%BE%83.md)
+    * [各个消息中间件的比较](%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%2F%E5%90%84%E4%B8%AA%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E6%AF%94%E8%BE%83.md)
+* 网络编程
+    * [http协议](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2Fhttp%E5%8D%8F%E8%AE%AE.md)
+    * [nat](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2Fnat.md)
+    * [osi参考模型](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2Fosi%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B.md)
+    * [socketio编程](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2Fsocketio%E7%BC%96%E7%A8%8B.md)
+    * [tcp传输协议](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2Ftcp%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE.md)
+    * [udp传输协议](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2Fudp%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE.md)
+    * [websocket协议](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2Fwebsocket%E5%8D%8F%E8%AE%AE.md)
+    * [会话机制session](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2F%E4%BC%9A%E8%AF%9D%E6%9C%BA%E5%88%B6session.md)
+    * [传输层](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2F%E4%BC%A0%E8%BE%93%E5%B1%82.md)
+    * [使用curl命令请求网络](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2F%E4%BD%BF%E7%94%A8curl%E5%91%BD%E4%BB%A4%E8%AF%B7%E6%B1%82%E7%BD%91%E7%BB%9C.md)
+    * [物理层](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2F%E7%89%A9%E7%90%86%E5%B1%82.md)
+    * [集线器_交换机_路由器的区别](%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%2F%E9%9B%86%E7%BA%BF%E5%99%A8_%E4%BA%A4%E6%8D%A2%E6%9C%BA_%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB.md)
+* 设计模式
+    * [Aop面向切面编程](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2FAop%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B.md)
+    * assets
+        * [09067f878916c0e4377bfadc82afc248_720w](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2Fassets%2F09067f878916c0e4377bfadc82afc248_720w.jpg)
+        * [0f20f50524336fa9634e19237ce0ec7e_720w](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2Fassets%2F0f20f50524336fa9634e19237ce0ec7e_720w.jpg)
+        * [69ab924585b751cb9e7bc7b7f9f2179b_720w](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2Fassets%2F69ab924585b751cb9e7bc7b7f9f2179b_720w.jpg)
+        * [ab2a90cfcc7a971b1e3127d1f531a486_720w](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2Fassets%2Fab2a90cfcc7a971b1e3127d1f531a486_720w.jpg)
+        * [e8184a3c6b3463338d85c329004d7c64_720w](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2Fassets%2Fe8184a3c6b3463338d85c329004d7c64_720w.jpg)
+        * [v2-2e86fa6f0d4d2aab7dbb0b50e0da406f_720w-1614819539989](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2Fassets%2Fv2-2e86fa6f0d4d2aab7dbb0b50e0da406f_720w-1614819539989.jpg)
+        * [v2-2e86fa6f0d4d2aab7dbb0b50e0da406f_720w](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2Fassets%2Fv2-2e86fa6f0d4d2aab7dbb0b50e0da406f_720w.jpg)
+    * [依赖注入DI和控制反转IOC](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5DI%E5%92%8C%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%ACIOC.md)
+    * [容器注入](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E5%AE%B9%E5%99%A8%E6%B3%A8%E5%85%A5.md)
+    * [服务定位器](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%BD%8D%E5%99%A8.md)
+    * [设计模式1 - 单例模式](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F1%20-%20%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.md)
+    * [设计模式2 - 工厂模式](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F2%20-%20%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.md)
+    * [设计模式3 - 适配器模式](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F3%20-%20%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F.md)
+    * [设计模式4 - 装饰器模式](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F4%20-%20%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F.md)
+    * [设计模式5 - 策略模式](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F5%20-%20%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.md)
+    * [设计模式6 - 责任链模式](%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F6%20-%20%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F.md)
+## 目录自动生成器
+- [https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go](https://github.com/wuzhc/gopl/blob/master/me/automatic-summary-generate/main.go)
+2Fme%2F6019.pdf)
                     * [header](redis%2Fassets%2Fwuzhc%2FDocuments%2Fme%2Fheader.jpg)
                     * [interview(1)](redis%2Fassets%2Fwuzhc%2FDocuments%2Fme%2Finterview%281%29.pdf)
                     * [interview-golang-v2](redis%2Fassets%2Fwuzhc%2FDocuments%2Fme%2Finterview-golang-v2.docx)
